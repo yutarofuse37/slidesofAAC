@@ -7,8 +7,11 @@ const SUB = '#7f96c2'
 const WEAK = '#b42318'
 
 const { $clicks } = useSlideContext()
-/** 0: 点線 → 1: 守備配分 → 2: 攻撃引っ張り → 3: 利得C → 4: 最小化 */
-const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 4))
+/** スライド先頭の導入クリックを除き、ゲーム説明と同期（0..4） */
+const step = computed(() => {
+  const c = Number($clicks.value ?? 0)
+  return Math.min(Math.max(c - 1, 0), 4)
+})
 </script>
 
 <template>

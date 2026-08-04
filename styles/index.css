@@ -17,6 +17,14 @@
   color: var(--st-blue) !important;
 }
 
+/* Seriph theme sets h1 + p to opacity-50 — keep lead lines fully readable */
+.slidev-layout h1 + p {
+  opacity: 1 !important;
+  color: var(--st-ink) !important;
+  margin-top: 0.15rem;
+  margin-bottom: 0.85rem;
+}
+
 .slidev-layout a {
   color: var(--st-blue);
   text-decoration: underline;

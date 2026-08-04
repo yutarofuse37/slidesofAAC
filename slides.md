@@ -49,9 +49,9 @@ layout: section
 
 # ネットワーク設計
 
-現実の多くのシステムは，ネットワークとして表現できる．
+<v-clicks>
 
-<div class="mt-4" />
+現実の多くのシステムは，ネットワークとして表現できる．
 
 - 通信網：障害が起きても通信を維持したい．
 - 交通網・物流網：一部の経路が止まっても全体機能を保ちたい．
@@ -63,33 +63,41 @@ layout: section
 
 </div>
 
-<div class="mt-4">
-
 本研究ではあるグラフが与えられたときに，各辺に重みを配分し，その重み付きグラフの連結性を最大化する問題を考える．
 
-</div>
+</v-clicks>
 
 ---
 
 # 問題の直感
 
+<v-click>
+
 構造が同じグラフでも，重み配分により「分断されにくさ」は大きく変化する．
+
+</v-click>
 
 <div class="diagram-wrap">
   <GraphWeights />
 </div>
 
 <div class="mt-3 text-center">
+<v-click>
 
 「分断されにくさ」を測り，その値を重み配分によって**最大化**できるか．
 
+</v-click>
 </div>
 
 ---
 
 # 連結性指標 $\lambda_2$ とその解釈
 
+<v-click>
+
 重み付きラプラシアン $L(w)$ の第二固有値（algebraic connectivity）<a href="https://dml.cz/handle/10338.dmlcz/101168" target="_blank" rel="noopener">&#91;Fiedler 1973&#93;</a>：
+
+</v-click>
 
 $$
 \lambda_2(L(w))
@@ -122,29 +130,35 @@ $$
 
 # 具体例：パス上の攻撃と守備
 
-<div class="text-sm">
+<v-click>
 
 パス $1$--$2$--$3$--$4$．攻撃：$x=\bigl(-\tfrac12,-\tfrac12,\tfrac12,\tfrac12\bigr)$．
 伸びるのは辺 $\{2,3\}$ のみで，$C(x;w)=w_{23}$．
 
-</div>
+</v-click>
 
 <div class="diagram-wrap">
   <GraphPath />
 </div>
 
 <div class="mt-3 text-sm">
+<v-clicks>
 
 - 同じ引っ張りでも，$w_{23}$ の大きさでコストが大きく変わる．
 - 守備側は，あらゆる攻撃に対してコストが高くなるよう $w$ を配分したい．
 
+</v-clicks>
 </div>
 
 ---
 
 # 守備側の最適化
 
+<v-click>
+
 守備側は，攻撃側の最善（$\min_x$）を見越して $w$ を選ぶ：
+
+</v-click>
 
 $$
 \max_{w\in\Delta_E}\ \lambda_2(L(w))
@@ -157,15 +171,19 @@ $$
 </div>
 
 <div class="mt-2 text-sm">
+<v-clicks>
 
 - 戦略：攻撃されやすい辺の強度を高め，どの引っ張りでもコストが同程度になるようにする．
 - これが algebraic connectivity の最大化問題である．
 
+</v-clicks>
 </div>
 
 ---
 
 # 今回扱う問題
+
+<v-clicks>
 
 - グラフ構造は固定し，辺重みを変数として最適化する．
 - 制約は「非負」かつ「総和1」：$w\in\Delta_E$．
@@ -187,9 +205,13 @@ $$
 
 </div>
 
+</v-clicks>
+
 ---
 
 # この問題の難しさ
+
+<v-clicks>
 
 - 目的関数は固有値に基づく非平滑関数であり，解析・計算の両面で取り扱いが難しい．
 - SDP定式化は可能であるが，実装負荷および計算負荷が高くなりやすい．
@@ -203,6 +225,8 @@ $$
 
 </div>
 
+</v-clicks>
+
 ---
 layout: section
 ---
@@ -213,12 +237,12 @@ layout: section
 
 # 準備：ラプラシアンとFiedlerベクトル
 
+<v-clicks>
+
 無向グラフ $G=(V,E)$ に対し，辺 $e=\{u,v\}$ の辺ラプラシアンを
 $L_e := (\chi_u - \chi_v)(\chi_u - \chi_v)^\top$ と定める．
 
 重み $w\in\Delta_E$ に対するラプラシアンは $L(w)=\sum_{e\in E} w_eL_e$ である．
-
-<div class="mt-4">
 
 - $L(w)$ の最小固有値は常に $0$（対応固有ベクトルは $\mathbf{1}$）．
 - $X := \left\{x \in \mathbb{R}^n \mid x^\top \mathbf{1} = 0, \; \|x\|_2 = 1\right\}$ とおくと：
@@ -227,17 +251,15 @@ $$
 \lambda_2(L(w)) = \min_{x\in X} x^\top L(w) x.
 $$
 
-</div>
-
-<div class="mt-3">
-
 この最小値を与える $x$ は $L(w)$ の第二固有ベクトルであり，**Fiedlerベクトル**と呼ばれる．
 
-</div>
+</v-clicks>
 
 ---
 
 # 近似Fiedlerベクトル
+
+<v-clicks>
 
 正確なFiedlerベクトルの計算は難しいので，**近似Fiedlerベクトル**を用いる．
 
@@ -260,9 +282,13 @@ $x^\top L x \le (1+\alpha)\lambda_2(L)$
 
 </div>
 
+</v-clicks>
+
 ---
 
 # 問題の定式化
+
+<v-clicks>
 
 本研究では，汎用SDPソルバーの代替として，MWUに基づく組合せ的アルゴリズムを提案する．
 
@@ -279,15 +305,15 @@ $$
 
 </div>
 
-<div class="mt-4">
-
 また，$1/n^3\le \mathsf{OPT}\le 2/(n-1)$ が成り立つ．
 
-</div>
+</v-clicks>
 
 ---
 
 # 主結果
+
+<v-clicks>
 
 <div class="callout-strong">
 
@@ -302,12 +328,10 @@ $$
 
 </div>
 
-<div class="mt-5">
-
 - 比較対象：<a href="https://arxiv.org/abs/2004.04250" target="_blank" rel="noopener">&#91;Jiang et al. 2020&#93;</a> の切除平面法 **$A_2$** → $\widetilde{O}(m^3\mathrm{polylog}(1/\varepsilon))$
 - $\mathsf{OPT}\gtrsim 1/m^2$ では $A_1$ が優位，$\mathsf{OPT}$ が小さい領域では $A_2$ が優位となり得る
 
-</div>
+</v-clicks>
 
 ---
 layout: two-cols
@@ -352,6 +376,8 @@ layout: section
 
 # 変分的な見方
 
+<v-clicks>
+
 Absolute Algebraic Connectivity は次の鞍点問題として表される：
 
 $$
@@ -359,17 +385,17 @@ $$
 = \max_{\boldsymbol{w} \in \Delta_E} \min_{\boldsymbol{x}\in X} \boldsymbol{x}^\top L(\boldsymbol{w}) \boldsymbol{x}
 $$
 
-<div class="mt-4">
-
 - $\boldsymbol{x}^\top L(\boldsymbol{w})\boldsymbol{x} = \sum_{e=\{u,v\}} w_e (x_u-x_v)^2$
 - 各辺の利得は $(x_u-x_v)^2$ で評価される
 - この構造に合わせて **MWU** を適用する <a href="https://theoryofcomputing.org/articles/v008a006/" target="_blank" rel="noopener">&#91;Arora–Hazan–Kale 2012&#93;</a>
 
-</div>
+</v-clicks>
 
 ---
 
 # アルゴリズム $A_1$：近似Fiedlerオラクル付きMWU
+
+<v-clicks>
 
 <div class="callout">
 
@@ -384,9 +410,13 @@ $$
 
 </div>
 
+</v-clicks>
+
 ---
 
 # 解析：local norm technique による改善
+
+<v-clicks>
 
 通常のMWUのリグレット解析では，必要な反復回数は $O(1/\mathsf{OPT}^2)$ である．
 
@@ -414,9 +444,13 @@ $$
 
 </div>
 
+</v-clicks>
+
 ---
 
 # 近似保証
+
+<v-clicks>
 
 <div class="callout">
 
@@ -434,8 +468,6 @@ $$
 
 </div>
 
-<div class="mt-5 text-sm">
-
 パラメータ例（下界 $\gamma\le\mathsf{OPT}$ が既知）：
 
 $$
@@ -445,11 +477,13 @@ T=\Bigl\lceil\frac{64\log m}{\varepsilon^2\gamma}\Bigr\rceil
 \lambda_2(L(\bar{w}))\ge (1-\varepsilon)\mathsf{OPT}.
 $$
 
-</div>
+</v-clicks>
 
 ---
 
 # 未知の $\mathsf{OPT}$：Doubling Trick
+
+<v-clicks>
 
 学習率と反復回数は未知の $\mathsf{OPT}$ に依存する．
 そこで **Doubling Trick** により，下界 $\gamma$ を段階的に推定する．
@@ -465,20 +499,22 @@ $$
 
 </div>
 
-<div class="mt-4 text-sm">
-
 - 成功する最小の推定値は $\Theta(\mathsf{OPT})$．失敗試行のコストは等比級数に収まる
 - 全体の計算量は $\widetilde{O}(m/(\varepsilon^3\mathsf{OPT}))$（定数 $\varepsilon$ では $\widetilde{O}(m/\mathsf{OPT})$）
 
-</div>
+</v-clicks>
 
 ---
 
 # まとめ
 
+<v-clicks>
+
 - absolute algebraic connectivity に対し，汎用SDPを用いず，組合せ的な近似アルゴリズムを与えた．
 - MWU・近似Fiedlerオラクル・local norm technique を組み合わせ，定数 $\varepsilon$ のもとで $\widetilde{O}(m/\mathsf{OPT})$ を達成した．
 - $\mathsf{OPT}$ が比較的大きい場合（例：直径 $O(1)$ の密グラフ）には，$A_2$ より有利になり得る．
+
+</v-clicks>
 
 ---
 layout: center
