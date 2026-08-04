@@ -4,278 +4,217 @@ import { useSlideContext } from '@slidev/client'
 
 const BLUE = '#1c3177'
 const SUB = '#7f96c2'
+const SOFT = '#cfdbed'
 
 const { $clicks } = useSlideContext()
-/** 0: 座標 → 1: 両領域 → 2: パス例（A₂） → 3: 密／直径例（A₁） */
+/** 0: 座標 → 1: 両領域 → 2: パス（A₂） → 3: 密（A₁） */
 const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 3))
 </script>
 
 <template>
   <div class="cr" :data-step="step">
     <div class="cr__legend">
-      <span class="cr__chip cr__chip--a2">A₂ が速い</span>
-      <span class="cr__chip cr__chip--a1">A₁ が速い</span>
+      <span class="cr__chip cr__chip--a2"><i />A₂ が速い</span>
+      <span class="cr__chip cr__chip--a1"><i />A₁ が速い</span>
     </div>
 
-    <div class="cr__plot">
-      <svg viewBox="0 0 320 270" class="cr__svg" aria-hidden="true">
-        <defs>
-          <pattern id="crHatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
-            <line x1="0" y1="0" x2="0" y2="8" :stroke="BLUE" stroke-width="2.2" />
-          </pattern>
-          <marker id="crX" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-            <path d="M0,0 L5,3 L0,6 Z" :fill="BLUE" />
-          </marker>
-          <marker id="crY" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-            <path d="M0,0 L5,3 L0,6 Z" :fill="BLUE" />
-          </marker>
-        </defs>
+    <svg viewBox="0 0 300 240" class="cr__svg" aria-hidden="true">
+      <defs>
+        <marker id="crX" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+          <path d="M0,0 L5,3 L0,6 Z" :fill="BLUE" />
+        </marker>
+        <marker id="crY" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+          <path d="M0,0 L5,3 L0,6 Z" :fill="BLUE" />
+        </marker>
+      </defs>
 
-        <!-- A1: soft base + hatch, A2: solid sub-blue -->
-        <polygon class="cr__a1-base" points="70,45 280,45 280,230 165,230 70,140" fill="#e8eef8" />
-        <polygon class="cr__a1" points="70,45 280,45 280,230 165,230 70,140" fill="url(#crHatch)" />
-        <polygon class="cr__a2" points="70,230 165,230 70,140" :fill="SUB" />
+      <!-- regions: solid colors only -->
+      <polygon class="cr__a1" points="56,36 270,36 270,200 148,200 56,118" :fill="SOFT" />
+      <polygon class="cr__a2" points="56,200 148,200 56,118" :fill="BLUE" />
 
-        <line x1="70" y1="230" x2="290" y2="230" :stroke="BLUE" stroke-width="1.8" marker-end="url(#crX)" />
-        <line x1="70" y1="230" x2="70" y2="30" :stroke="BLUE" stroke-width="1.8" marker-end="url(#crY)" />
-        <line class="cr__boundary" x1="70" y1="140" x2="165" y2="230" :stroke="BLUE" stroke-width="2.6" />
+      <!-- axes -->
+      <line x1="56" y1="200" x2="278" y2="200" :stroke="BLUE" stroke-width="1.8" marker-end="url(#crX)" />
+      <line x1="56" y1="200" x2="56" y2="24" :stroke="BLUE" stroke-width="1.8" marker-end="url(#crY)" />
+      <line class="cr__boundary" x1="56" y1="118" x2="148" y2="200" stroke="#fff" stroke-width="3.5" />
+      <line class="cr__boundary" x1="56" y1="118" x2="148" y2="200" :stroke="BLUE" stroke-width="2" />
 
-        <!-- example points -->
-        <g class="cr__pt cr__pt--path">
-          <circle cx="95" cy="205" r="7" fill="#fff" :stroke="BLUE" stroke-width="2.2" />
-          <circle cx="95" cy="205" r="3.2" :fill="BLUE" />
-        </g>
-        <g class="cr__pt cr__pt--dense">
-          <circle cx="250" cy="95" r="7" fill="#fff" :stroke="BLUE" stroke-width="2.2" />
-          <circle cx="250" cy="95" r="3.2" :fill="BLUE" />
-        </g>
+      <!-- ticks -->
+      <text x="56" y="216" text-anchor="middle" class="cr__t">1</text>
+      <text x="148" y="216" text-anchor="middle" class="cr__t">3/2</text>
+      <text x="270" y="216" text-anchor="middle" class="cr__t">2</text>
+      <text x="46" y="204" text-anchor="end" class="cr__t">-3</text>
+      <text x="46" y="122" text-anchor="end" class="cr__t">-2</text>
+      <text x="46" y="40" text-anchor="end" class="cr__t">-1</text>
+      <text x="278" y="216" text-anchor="end" class="cr__ax">x=logₙm</text>
+      <text x="8" y="18" class="cr__ax">y=logₙOPT</text>
+
+      <!-- region labels -->
+      <text class="cr__lab cr__lab--a1" x="190" y="110" text-anchor="middle">A₁</text>
+      <text class="cr__lab cr__lab--a2" x="90" y="175" text-anchor="middle">A₂</text>
+
+      <!-- example points (one at a time) -->
+      <g class="cr__pt cr__pt--path">
+        <circle cx="82" cy="178" r="8" fill="#fff" :stroke="BLUE" stroke-width="2" />
+        <circle cx="82" cy="178" r="3.5" fill="#b42318" />
+      </g>
+      <g class="cr__pt cr__pt--dense">
+        <circle cx="230" cy="78" r="8" fill="#fff" :stroke="BLUE" stroke-width="2" />
+        <circle cx="230" cy="78" r="3.5" fill="#b42318" />
+      </g>
+    </svg>
+
+    <!-- single example panel: only active one shown -->
+    <div class="cr__panel cr__panel--path">
+      <div class="cr__panel-head">具体例：パス Pₙ</div>
+      <svg viewBox="0 0 180 40" class="cr__mini" aria-hidden="true">
+        <line x1="16" y1="20" x2="164" y2="20" :stroke="SUB" stroke-width="3" stroke-linecap="round" />
+        <circle cx="16" cy="20" r="7" fill="#fff" :stroke="BLUE" stroke-width="1.8" />
+        <circle cx="64" cy="20" r="7" fill="#fff" :stroke="BLUE" stroke-width="1.8" />
+        <circle cx="112" cy="20" r="7" fill="#fff" :stroke="BLUE" stroke-width="1.8" />
+        <circle cx="160" cy="20" r="7" fill="#fff" :stroke="BLUE" stroke-width="1.8" />
       </svg>
-
-      <div class="cr__overlay">
-        <span class="cr__tick cr__tick--x1">1</span>
-        <span class="cr__tick cr__tick--x15">3/2</span>
-        <span class="cr__tick cr__tick--x2">2</span>
-        <span class="cr__tick cr__tick--ym3">-3</span>
-        <span class="cr__tick cr__tick--ym2">-2</span>
-        <span class="cr__tick cr__tick--ym1">-1</span>
-        <span class="cr__axis cr__axis--x">x = logₙ m</span>
-        <span class="cr__axis cr__axis--y">y = logₙ OPT</span>
-        <span class="cr__eq">境界 y = -2x</span>
-        <span class="cr__lab cr__lab--a1">A₁</span>
-        <span class="cr__lab cr__lab--a2">A₂</span>
-        <span class="cr__ptlab cr__ptlab--path">パス</span>
-        <span class="cr__ptlab cr__ptlab--dense">密</span>
-        <span class="cr__focus cr__focus--a2" />
-        <span class="cr__focus cr__focus--a1" />
-      </div>
+      <div class="cr__panel-meta">m≈n，OPT≈n⁻³ → 図の赤点は A₂ 側</div>
     </div>
 
-    <!-- concrete example miniatures -->
-    <div class="cr__examples">
-      <div class="cr__ex cr__ex--path">
-        <div class="cr__ex-title">例：パス Pₙ</div>
-        <svg viewBox="0 0 160 48" class="cr__ex-svg" aria-hidden="true">
-          <line x1="18" y1="24" x2="142" y2="24" :stroke="SUB" stroke-width="2.5" stroke-linecap="round" />
-          <circle cx="18" cy="24" r="7" fill="#fff" :stroke="BLUE" stroke-width="1.6" />
-          <circle cx="56" cy="24" r="7" fill="#fff" :stroke="BLUE" stroke-width="1.6" />
-          <circle cx="94" cy="24" r="7" fill="#fff" :stroke="BLUE" stroke-width="1.6" />
-          <circle cx="132" cy="24" r="7" fill="#fff" :stroke="BLUE" stroke-width="1.6" />
-        </svg>
-        <div class="cr__ex-meta">m≈n，OPT≈n⁻³ → A₂</div>
-      </div>
-
-      <div class="cr__ex cr__ex--dense">
-        <div class="cr__ex-title">例：密／直径 O(1)</div>
-        <svg viewBox="0 0 160 56" class="cr__ex-svg" aria-hidden="true">
-          <line x1="40" y1="16" x2="120" y2="16" :stroke="BLUE" stroke-width="2" />
-          <line x1="40" y1="16" x2="40" y2="44" :stroke="BLUE" stroke-width="2" />
-          <line x1="120" y1="16" x2="120" y2="44" :stroke="BLUE" stroke-width="2" />
-          <line x1="40" y1="44" x2="120" y2="44" :stroke="BLUE" stroke-width="2" />
-          <line x1="40" y1="16" x2="120" y2="44" :stroke="SUB" stroke-width="1.6" />
-          <line x1="120" y1="16" x2="40" y2="44" :stroke="SUB" stroke-width="1.6" />
-          <line x1="80" y1="8" x2="40" y2="16" :stroke="SUB" stroke-width="1.6" />
-          <line x1="80" y1="8" x2="120" y2="16" :stroke="SUB" stroke-width="1.6" />
-          <circle cx="40" cy="16" r="6" fill="#fff" :stroke="BLUE" stroke-width="1.6" />
-          <circle cx="120" cy="16" r="6" fill="#fff" :stroke="BLUE" stroke-width="1.6" />
-          <circle cx="40" cy="44" r="6" fill="#fff" :stroke="BLUE" stroke-width="1.6" />
-          <circle cx="120" cy="44" r="6" fill="#fff" :stroke="BLUE" stroke-width="1.6" />
-          <circle cx="80" cy="8" r="6" fill="#fff" :stroke="BLUE" stroke-width="1.6" />
-        </svg>
-        <div class="cr__ex-meta">OPT≳n⁻²，密なら A₁</div>
-      </div>
+    <div class="cr__panel cr__panel--dense">
+      <div class="cr__panel-head">具体例：密／直径 O(1)</div>
+      <svg viewBox="0 0 180 52" class="cr__mini" aria-hidden="true">
+        <line x1="50" y1="14" x2="130" y2="14" :stroke="BLUE" stroke-width="2.2" />
+        <line x1="50" y1="14" x2="50" y2="40" :stroke="BLUE" stroke-width="2.2" />
+        <line x1="130" y1="14" x2="130" y2="40" :stroke="BLUE" stroke-width="2.2" />
+        <line x1="50" y1="40" x2="130" y2="40" :stroke="BLUE" stroke-width="2.2" />
+        <line x1="50" y1="14" x2="130" y2="40" :stroke="SUB" stroke-width="1.6" />
+        <line x1="130" y1="14" x2="50" y2="40" :stroke="SUB" stroke-width="1.6" />
+        <line x1="90" y1="6" x2="50" y2="14" :stroke="SUB" stroke-width="1.6" />
+        <line x1="90" y1="6" x2="130" y2="14" :stroke="SUB" stroke-width="1.6" />
+        <circle cx="50" cy="14" r="6" fill="#fff" :stroke="BLUE" stroke-width="1.6" />
+        <circle cx="130" cy="14" r="6" fill="#fff" :stroke="BLUE" stroke-width="1.6" />
+        <circle cx="50" cy="40" r="6" fill="#fff" :stroke="BLUE" stroke-width="1.6" />
+        <circle cx="130" cy="40" r="6" fill="#fff" :stroke="BLUE" stroke-width="1.6" />
+        <circle cx="90" cy="6" r="6" fill="#fff" :stroke="BLUE" stroke-width="1.6" />
+      </svg>
+      <div class="cr__panel-meta">OPT≳n⁻²，密なら → 図の赤点は A₁ 側</div>
     </div>
-
-    <div class="cr__hint">クリックで左側の説明と一緒に進みます</div>
   </div>
 </template>
 
 <style scoped>
 .cr {
   width: 100%;
-  max-width: 19rem;
+  max-width: 18rem;
   margin: 0 auto;
   color: #1c3177;
 }
 .cr__legend {
   display: flex;
   justify-content: center;
-  gap: 0.45rem;
-  margin-bottom: 0.3rem;
+  gap: 0.55rem;
+  margin-bottom: 0.35rem;
 }
 .cr__chip {
-  font-size: 0.68rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  padding: 0.12rem 0.5rem;
-  border-radius: 999px;
-  border: 1.5px solid #1c3177;
   color: #1c3177;
-  transition: background 0.35s ease, color 0.35s ease, opacity 0.35s ease;
 }
-.cr__chip--a2 { background: #7f96c2; color: #fff; border-color: #7f96c2; }
-.cr__chip--a1 {
-  background: #f9fbff;
-  background-image: repeating-linear-gradient(
-    -55deg,
-    #f9fbff 0 3px,
-    #1c3177 3px 5px
-  );
+.cr__chip i {
+  display: inline-block;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 0.15rem;
+  border: 1px solid #1c3177;
 }
-.cr__plot { position: relative; }
-.cr__svg { width: 100%; height: auto; display: block; }
-.cr__overlay { position: absolute; inset: 0; pointer-events: none; }
-.cr__tick { position: absolute; font-size: 0.7rem; font-weight: 600; color: #1c3177; }
-.cr__tick--x1 { left: 20%; bottom: 7%; transform: translateX(-50%); }
-.cr__tick--x15 { left: 48%; bottom: 7%; transform: translateX(-50%); }
-.cr__tick--x2 { left: 82%; bottom: 7%; transform: translateX(-50%); }
-.cr__tick--ym3 { left: 12%; bottom: 15%; transform: translateX(-100%); }
-.cr__tick--ym2 { left: 12%; top: 48%; transform: translate(-100%, -50%); }
-.cr__tick--ym1 { left: 12%; top: 16%; transform: translate(-100%, -50%); }
-.cr__axis { position: absolute; font-size: 0.68rem; font-weight: 600; color: #1c3177; }
-.cr__axis--x { right: 2%; bottom: 1%; }
-.cr__axis--y { left: 1%; top: 1%; }
-.cr__eq {
-  position: absolute;
-  left: 48%;
-  top: 58%;
-  font-size: 0.68rem;
-  color: #1c3177;
-  font-weight: 700;
+.cr__chip--a2 i { background: #1c3177; }
+.cr__chip--a1 i { background: #cfdbed; }
+
+.cr__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.cr__t {
+  font-size: 11px;
+  fill: #1c3177;
+  font-family: system-ui, sans-serif;
+  font-weight: 600;
+}
+.cr__ax {
+  font-size: 10px;
+  fill: #1c3177;
+  font-family: system-ui, sans-serif;
+  font-weight: 600;
 }
 .cr__lab {
-  position: absolute;
+  font-size: 22px;
   font-weight: 800;
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  font-family: system-ui, sans-serif;
+  transition: opacity 0.3s ease;
 }
-.cr__lab--a1 { left: 62%; top: 34%; font-size: 1.15rem; color: #1c3177; }
-.cr__lab--a2 { left: 26%; top: 72%; font-size: 1.05rem; color: #1c3177; }
-.cr__ptlab {
-  position: absolute;
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: #1c3177;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-.cr__ptlab--path { left: 22%; top: 78%; }
-.cr__ptlab--dense { left: 78%; top: 26%; }
-.cr__pt { opacity: 0; transition: opacity 0.35s ease; }
-.cr__focus {
-  position: absolute;
-  border: 2.5px solid #1c3177;
-  border-radius: 0.4rem;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-.cr__focus--a2 { left: 18%; top: 48%; width: 28%; height: 36%; }
-.cr__focus--a1 { left: 28%; top: 12%; width: 58%; height: 70%; }
+.cr__lab--a1 { fill: #1c3177; }
+.cr__lab--a2 { fill: #fff; }
 .cr__a1,
-.cr__a1-base,
 .cr__a2,
-.cr__boundary {
-  transition: opacity 0.35s ease;
+.cr__pt,
+.cr__panel {
+  transition: opacity 0.3s ease;
 }
-.cr__a1 { opacity: 0; }
-.cr__a1-base { opacity: 0; }
-.cr__a2 { opacity: 0; }
-
-.cr__examples {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.4rem;
-  margin-top: 0.4rem;
+.cr__a1,
+.cr__a2 {
+  opacity: 0;
 }
-.cr__ex {
-  border: 1.5px solid #cfdbed;
-  border-radius: 0.45rem;
-  padding: 0.3rem 0.35rem 0.35rem;
+.cr__pt {
+  opacity: 0;
+}
+.cr__panel {
+  display: none;
+  margin-top: 0.55rem;
+  padding: 0.45rem 0.55rem;
+  border: 2px solid #1c3177;
+  border-radius: 0.5rem;
   background: #f9fbff;
-  opacity: 0.35;
-  transition: opacity 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
 }
-.cr__ex-title {
-  font-size: 0.65rem;
+.cr__panel-head {
+  font-size: 0.75rem;
   font-weight: 700;
   color: #1c3177;
   text-align: center;
 }
-.cr__ex-svg { width: 100%; height: auto; display: block; margin-top: 0.1rem; }
-.cr__ex-meta {
-  margin-top: 0.1rem;
-  font-size: 0.6rem;
+.cr__mini {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 0.2rem;
+}
+.cr__panel-meta {
+  margin-top: 0.2rem;
+  font-size: 0.68rem;
   font-weight: 600;
   color: #1c3177;
   text-align: center;
-  line-height: 1.25;
-}
-.cr__hint {
-  text-align: center;
-  margin-top: 0.3rem;
-  font-size: 0.62rem;
-  color: #7f96c2;
 }
 
 /* step 0: axes only */
-.cr[data-step="0"] .cr__chip { opacity: 0.45; }
+.cr[data-step="0"] .cr__lab { opacity: 0; }
 
 /* step 1: both regions */
-.cr[data-step="1"] .cr__a1-base { opacity: 1; }
-.cr[data-step="1"] .cr__a1 { opacity: 0.55; }
+.cr[data-step="1"] .cr__a1,
 .cr[data-step="1"] .cr__a2 { opacity: 1; }
-.cr[data-step="1"] .cr__chip { opacity: 1; }
 
-/* step 2: path / A2 */
-.cr[data-step="2"] .cr__a1-base { opacity: 0.35; }
-.cr[data-step="2"] .cr__a1 { opacity: 0.2; }
+/* step 2: emphasize A2 + path example */
+.cr[data-step="2"] .cr__a1 { opacity: 0.25; }
 .cr[data-step="2"] .cr__a2 { opacity: 1; }
-.cr[data-step="2"] .cr__lab--a2 { transform: scale(1.12); }
-.cr[data-step="2"] .cr__lab--a1 { opacity: 0.4; }
+.cr[data-step="2"] .cr__lab--a1 { opacity: 0.3; }
+.cr[data-step="2"] .cr__pt--path { opacity: 1; }
+.cr[data-step="2"] .cr__panel--path { display: block; }
 .cr[data-step="2"] .cr__chip--a1 { opacity: 0.4; }
-.cr[data-step="2"] .cr__chip--a2 { opacity: 1; box-shadow: 0 0 0 2px #1c3177; }
-.cr[data-step="2"] .cr__pt--path,
-.cr[data-step="2"] .cr__ptlab--path,
-.cr[data-step="2"] .cr__focus--a2 { opacity: 1; }
-.cr[data-step="2"] .cr__ex--path {
-  opacity: 1;
-  border-color: #1c3177;
-  box-shadow: 0 0 0 1px #1c3177 inset;
-}
-.cr[data-step="2"] .cr__ex--dense { opacity: 0.35; }
 
-/* step 3: dense / A1 */
-.cr[data-step="3"] .cr__a1-base { opacity: 1; }
-.cr[data-step="3"] .cr__a1 { opacity: 0.75; }
-.cr[data-step="3"] .cr__a2 { opacity: 0.35; }
-.cr[data-step="3"] .cr__lab--a1 { transform: scale(1.12); }
-.cr[data-step="3"] .cr__lab--a2 { opacity: 0.4; }
+/* step 3: emphasize A1 + dense example */
+.cr[data-step="3"] .cr__a1 { opacity: 1; }
+.cr[data-step="3"] .cr__a2 { opacity: 0.25; }
+.cr[data-step="3"] .cr__lab--a2 { opacity: 0.35; }
+.cr[data-step="3"] .cr__pt--dense { opacity: 1; }
+.cr[data-step="3"] .cr__panel--dense { display: block; }
 .cr[data-step="3"] .cr__chip--a2 { opacity: 0.4; }
-.cr[data-step="3"] .cr__chip--a1 { opacity: 1; box-shadow: 0 0 0 2px #1c3177; }
-.cr[data-step="3"] .cr__pt--dense,
-.cr[data-step="3"] .cr__ptlab--dense,
-.cr[data-step="3"] .cr__focus--a1 { opacity: 1; }
-.cr[data-step="3"] .cr__ex--dense {
-  opacity: 1;
-  border-color: #1c3177;
-  box-shadow: 0 0 0 1px #1c3177 inset;
-}
-.cr[data-step="3"] .cr__ex--path { opacity: 0.35; }
 </style>
