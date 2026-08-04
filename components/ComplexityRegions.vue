@@ -5,8 +5,8 @@ import { useSlideContext } from '@slidev/client'
 const BLUE = '#1c3177'
 const A2 = '#c2410c'
 const A1 = '#0f766e'
-const A1_SOFT = '#ccfbf1'
-const A2_SOFT = '#ffedd5'
+const A1_FILL = '#0f766e'
+const A2_FILL = '#c2410c'
 
 const { $clicks } = useSlideContext()
 /** 0: 座標 → 1: 両領域 → 2: パス（A₂） → 3: 密（A₁） */
@@ -30,8 +30,8 @@ const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 3)
         </marker>
       </defs>
 
-      <polygon class="cr__a1" points="56,36 270,36 270,200 148,200 56,118" :fill="A1_SOFT" />
-      <polygon class="cr__a2" points="56,200 148,200 56,118" :fill="A2" />
+      <polygon class="cr__a1" points="56,36 270,36 270,200 148,200 56,118" :fill="A1_FILL" />
+      <polygon class="cr__a2" points="56,200 148,200 56,118" :fill="A2_FILL" />
 
       <line x1="56" y1="200" x2="278" y2="200" :stroke="BLUE" stroke-width="1.8" marker-end="url(#crX)" />
       <line x1="56" y1="200" x2="56" y2="24" :stroke="BLUE" stroke-width="1.8" marker-end="url(#crY)" />
@@ -123,7 +123,7 @@ const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 3)
   border: 1px solid transparent;
 }
 .cr__chip--a2 i { background: #c2410c; }
-.cr__chip--a1 i { background: #ccfbf1; border-color: #0f766e; }
+.cr__chip--a1 i { background: #0f766e; }
 
 .cr__svg { width: 100%; height: auto; display: block; }
 .cr__t,
@@ -140,7 +140,7 @@ const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 3)
   font-family: system-ui, sans-serif;
   transition: opacity 0.3s ease;
 }
-.cr__lab--a1 { fill: #0f766e; }
+.cr__lab--a1 { fill: #fff; }
 .cr__lab--a2 { fill: #fff; }
 .cr__a1,
 .cr__a2,
