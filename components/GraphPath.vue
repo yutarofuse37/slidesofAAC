@@ -12,8 +12,14 @@ const WEAK = '#b42318'
       <svg viewBox="0 0 300 95" class="gp__svg" aria-hidden="true">
         <text x="40" y="18" class="gp__dir" fill="#7f96c2">左へ</text>
         <text x="240" y="18" class="gp__dir" fill="#7f96c2">右へ</text>
-        <path class="gp__arrow-l" d="M70 28 H24" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#pAL)" />
-        <path class="gp__arrow-r" d="M230 28 H276" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#pAR)" />
+        <g class="gp__arrow-l">
+          <line x1="62" y1="28" x2="30" y2="28" :stroke="BLUE" stroke-width="2.2" stroke-linecap="round" />
+          <polygon points="18,28 32,21 32,35" :fill="BLUE" />
+        </g>
+        <g class="gp__arrow-r">
+          <line x1="238" y1="28" x2="270" y2="28" :stroke="BLUE" stroke-width="2.2" stroke-linecap="round" />
+          <polygon points="282,28 268,21 268,35" :fill="BLUE" />
+        </g>
 
         <g class="gp__half gp__half--l">
           <line x1="52" y1="58" x2="98" y2="58" :stroke="BLUE" stroke-width="5" stroke-linecap="round" />
@@ -32,11 +38,6 @@ const WEAK = '#b42318'
           <text x="190" y="62" text-anchor="middle" class="gp__num">3</text>
           <text x="260" y="62" text-anchor="middle" class="gp__num">4</text>
         </g>
-
-        <defs>
-          <marker id="pAL" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" :fill="BLUE" /></marker>
-          <marker id="pAR" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" :fill="BLUE" /></marker>
-        </defs>
       </svg>
       <div class="gp__meta">w₁₂=w₃₄=0.45，w₂₃=0.10</div>
       <div class="gp__result gp__result--bad">C = w₂₃ = 0.10</div>
@@ -48,8 +49,14 @@ const WEAK = '#b42318'
       <svg viewBox="0 0 300 95" class="gp__svg" aria-hidden="true">
         <text x="40" y="18" class="gp__dir" fill="#7f96c2">左へ</text>
         <text x="240" y="18" class="gp__dir" fill="#7f96c2">右へ</text>
-        <path class="gp__arrow-l" d="M70 28 H24" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#pBL)" />
-        <path class="gp__arrow-r" d="M230 28 H276" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#pBR)" />
+        <g class="gp__arrow-l">
+          <line x1="62" y1="28" x2="30" y2="28" :stroke="BLUE" stroke-width="2.2" stroke-linecap="round" />
+          <polygon points="18,28 32,21 32,35" :fill="BLUE" />
+        </g>
+        <g class="gp__arrow-r">
+          <line x1="238" y1="28" x2="270" y2="28" :stroke="BLUE" stroke-width="2.2" stroke-linecap="round" />
+          <polygon points="282,28 268,21 268,35" :fill="BLUE" />
+        </g>
 
         <g class="gp__half gp__half--l gp__half--hold">
           <line x1="52" y1="58" x2="98" y2="58" :stroke="SUB" stroke-width="1.5" stroke-linecap="round" />
@@ -68,11 +75,6 @@ const WEAK = '#b42318'
           <text x="190" y="62" text-anchor="middle" class="gp__num">3</text>
           <text x="260" y="62" text-anchor="middle" class="gp__num">4</text>
         </g>
-
-        <defs>
-          <marker id="pBL" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" :fill="BLUE" /></marker>
-          <marker id="pBR" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" :fill="BLUE" /></marker>
-        </defs>
       </svg>
       <div class="gp__meta">w₁₂=w₃₄=0.05，w₂₃=0.90</div>
       <div class="gp__result gp__result--good">C = w₂₃ = 0.90</div>

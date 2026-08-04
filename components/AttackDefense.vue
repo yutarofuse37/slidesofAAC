@@ -15,8 +15,15 @@ const WEAK = '#b42318'
       </div>
 
       <svg viewBox="0 0 320 150" class="ad__svg" aria-hidden="true">
-        <path class="ad__pull ad__pull--l" d="M48 75 H16" :stroke="BLUE" stroke-width="2.4" fill="none" marker-end="url(#adL)" />
-        <path class="ad__pull ad__pull--r" d="M272 75 H304" :stroke="BLUE" stroke-width="2.4" fill="none" marker-end="url(#adR)" />
+        <!-- ← pull left, pull right → -->
+        <g class="ad__pull ad__pull--l">
+          <line x1="52" y1="75" x2="28" y2="75" :stroke="BLUE" stroke-width="2.4" stroke-linecap="round" />
+          <polygon points="16,75 30,67 30,83" :fill="BLUE" />
+        </g>
+        <g class="ad__pull ad__pull--r">
+          <line x1="268" y1="75" x2="292" y2="75" :stroke="BLUE" stroke-width="2.4" stroke-linecap="round" />
+          <polygon points="304,75 290,67 290,83" :fill="BLUE" />
+        </g>
 
         <!-- left cluster + half bridges -->
         <g class="ad__side ad__side--l">
@@ -46,15 +53,6 @@ const WEAK = '#b42318'
           <line x1="150" y1="38" x2="168" y2="56" :stroke="WEAK" stroke-width="2.4" />
           <line x1="150" y1="56" x2="168" y2="38" :stroke="WEAK" stroke-width="2.4" />
         </g>
-
-        <defs>
-          <marker id="adL" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-            <path d="M0,0 L7,3.5 L0,7 Z" :fill="BLUE" />
-          </marker>
-          <marker id="adR" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-            <path d="M0,0 L7,3.5 L0,7 Z" :fill="BLUE" />
-          </marker>
-        </defs>
       </svg>
 
       <div class="ad__role">

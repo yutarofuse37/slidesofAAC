@@ -12,8 +12,15 @@ const WEAK = '#b42318'
       <div class="gw__panel">
         <div class="gw__phase">① 細い橋が切れる</div>
         <svg viewBox="0 0 240 130" class="gw__svg" aria-hidden="true">
-          <path class="gw__pull gw__pull--l" d="M42 66 H16" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gwAL)" />
-          <path class="gw__pull gw__pull--r" d="M198 66 H224" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gwAR)" />
+          <!-- pull ← left, right → (outward, no marker) -->
+          <g class="gw__pull gw__pull--l">
+            <line x1="40" y1="66" x2="22" y2="66" :stroke="BLUE" stroke-width="2.4" stroke-linecap="round" />
+            <polygon points="12,66 24,59 24,73" :fill="BLUE" />
+          </g>
+          <g class="gw__pull gw__pull--r">
+            <line x1="200" y1="66" x2="218" y2="66" :stroke="BLUE" stroke-width="2.4" stroke-linecap="round" />
+            <polygon points="228,66 216,59 216,73" :fill="BLUE" />
+          </g>
 
           <!-- left cluster + half bridge move together -->
           <g class="gw__side gw__side--l">
@@ -41,15 +48,6 @@ const WEAK = '#b42318'
             <line x1="110" y1="56" x2="130" y2="76" :stroke="WEAK" stroke-width="2.6" />
             <line x1="110" y1="76" x2="130" y2="56" :stroke="WEAK" stroke-width="2.6" />
           </g>
-
-          <defs>
-            <marker id="gwAL" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-              <path d="M0,0 L7,3.5 L0,7 Z" :fill="BLUE" />
-            </marker>
-            <marker id="gwAR" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-              <path d="M0,0 L7,3.5 L0,7 Z" :fill="BLUE" />
-            </marker>
-          </defs>
         </svg>
         <div class="gw__label">悪い配分</div>
         <div class="gw__hint">クラスタ内に厚く → 橋が細い → 分断</div>
@@ -59,8 +57,15 @@ const WEAK = '#b42318'
       <div class="gw__panel">
         <div class="gw__phase">② 太い橋が耐える</div>
         <svg viewBox="0 0 240 130" class="gw__svg" aria-hidden="true">
-          <path class="gw__pull gw__pull--l" d="M42 66 H16" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gwBL)" />
-          <path class="gw__pull gw__pull--r" d="M198 66 H224" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gwBR)" />
+          <!-- pull ← left, right → -->
+          <g class="gw__pull gw__pull--l">
+            <line x1="40" y1="66" x2="22" y2="66" :stroke="BLUE" stroke-width="2.4" stroke-linecap="round" />
+            <polygon points="12,66 24,59 24,73" :fill="BLUE" />
+          </g>
+          <g class="gw__pull gw__pull--r">
+            <line x1="200" y1="66" x2="218" y2="66" :stroke="BLUE" stroke-width="2.4" stroke-linecap="round" />
+            <polygon points="228,66 216,59 216,73" :fill="BLUE" />
+          </g>
 
           <g class="gw__side gw__side--l-hold">
             <line x1="38" y1="56" x2="66" y2="26" :stroke="SUB" stroke-width="2" stroke-linecap="round" />
@@ -79,15 +84,6 @@ const WEAK = '#b42318'
             <circle cx="202" cy="76" r="6.5" :fill="BLUE" />
           </g>
           <line class="gw__bridge gw__bridge--good" x1="76" y1="76" x2="164" y2="56" :stroke="BLUE" stroke-linecap="round" />
-
-          <defs>
-            <marker id="gwBL" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-              <path d="M0,0 L7,3.5 L0,7 Z" :fill="BLUE" />
-            </marker>
-            <marker id="gwBR" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-              <path d="M0,0 L7,3.5 L0,7 Z" :fill="BLUE" />
-            </marker>
-          </defs>
         </svg>
         <div class="gw__label">良い配分</div>
         <div class="gw__hint">橋に厚く → 同じ引っ張りでも耐える</div>

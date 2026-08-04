@@ -9,8 +9,14 @@ const WEAK = '#b42318'
     <div class="gb__panel">
       <div class="gb__phase">細い接続</div>
       <svg viewBox="0 0 240 120" class="gb__svg" aria-hidden="true">
-        <path class="gb__pull-l" d="M40 60 H14" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gL)" />
-        <path class="gb__pull-r" d="M200 60 H226" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gR)" />
+        <g class="gb__pull-l">
+          <line x1="36" y1="60" x2="22" y2="60" :stroke="BLUE" stroke-width="2.2" stroke-linecap="round" />
+          <polygon points="12,60 24,54 24,66" :fill="BLUE" />
+        </g>
+        <g class="gb__pull-r">
+          <line x1="204" y1="60" x2="218" y2="60" :stroke="BLUE" stroke-width="2.2" stroke-linecap="round" />
+          <polygon points="228,60 216,54 216,66" :fill="BLUE" />
+        </g>
         <g class="gb__side gb__side--l">
           <line x1="40" y1="50" x2="68" y2="22" :stroke="SUB" stroke-width="2" />
           <line x1="68" y1="22" x2="80" y2="72" :stroke="SUB" stroke-width="2" />
@@ -33,10 +39,6 @@ const WEAK = '#b42318'
           <line x1="108" y1="50" x2="126" y2="68" :stroke="WEAK" stroke-width="2.4" />
           <line x1="108" y1="68" x2="126" y2="50" :stroke="WEAK" stroke-width="2.4" />
         </g>
-        <defs>
-          <marker id="gL" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" :fill="BLUE" /></marker>
-          <marker id="gR" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" :fill="BLUE" /></marker>
-        </defs>
       </svg>
       <div class="gb__label">攻撃側に有利</div>
       <div class="gb__hint">引っ張ると橋が伸びて切れる</div>
@@ -45,8 +47,14 @@ const WEAK = '#b42318'
     <div class="gb__panel">
       <div class="gb__phase">太い接続</div>
       <svg viewBox="0 0 240 120" class="gb__svg" aria-hidden="true">
-        <path class="gb__pull-l" d="M40 60 H14" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gL2)" />
-        <path class="gb__pull-r" d="M200 60 H226" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gR2)" />
+        <g class="gb__pull-l">
+          <line x1="36" y1="60" x2="22" y2="60" :stroke="BLUE" stroke-width="2.2" stroke-linecap="round" />
+          <polygon points="12,60 24,54 24,66" :fill="BLUE" />
+        </g>
+        <g class="gb__pull-r">
+          <line x1="204" y1="60" x2="218" y2="60" :stroke="BLUE" stroke-width="2.2" stroke-linecap="round" />
+          <polygon points="228,60 216,54 216,66" :fill="BLUE" />
+        </g>
         <g class="gb__side gb__side--l-hold">
           <line x1="40" y1="50" x2="68" y2="22" :stroke="SUB" stroke-width="2" />
           <line x1="68" y1="22" x2="80" y2="72" :stroke="SUB" stroke-width="2" />
@@ -64,10 +72,6 @@ const WEAK = '#b42318'
           <circle cx="188" cy="22" r="6.5" :fill="BLUE" />
           <circle cx="200" cy="72" r="6.5" :fill="BLUE" />
         </g>
-        <defs>
-          <marker id="gL2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" :fill="BLUE" /></marker>
-          <marker id="gR2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" :fill="BLUE" /></marker>
-        </defs>
       </svg>
       <div class="gb__label">守備側に有利</div>
       <div class="gb__hint">同じ引っ張りでも橋が耐える</div>
