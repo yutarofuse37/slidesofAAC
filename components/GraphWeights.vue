@@ -12,14 +12,14 @@ const WEAK = '#b42318'
       <div class="gw__panel">
         <div class="gw__phase">① 細い橋が切れる</div>
         <svg viewBox="0 0 240 130" class="gw__svg" aria-hidden="true">
-          <!-- pull ← left, right → (outward, no marker) -->
+          <!-- ← left / right → : pull apart (same as path figure) -->
           <g class="gw__pull gw__pull--l">
-            <line x1="40" y1="66" x2="22" y2="66" :stroke="BLUE" stroke-width="2.4" stroke-linecap="round" />
-            <polygon points="12,66 24,59 24,73" :fill="BLUE" />
+            <line x1="36" y1="66" x2="20" y2="66" :stroke="BLUE" stroke-width="2.4" stroke-linecap="round" />
+            <polygon points="10,66 22,59 22,73" :fill="BLUE" />
           </g>
           <g class="gw__pull gw__pull--r">
-            <line x1="200" y1="66" x2="218" y2="66" :stroke="BLUE" stroke-width="2.4" stroke-linecap="round" />
-            <polygon points="228,66 216,59 216,73" :fill="BLUE" />
+            <line x1="204" y1="66" x2="220" y2="66" :stroke="BLUE" stroke-width="2.4" stroke-linecap="round" />
+            <polygon points="230,66 218,59 218,73" :fill="BLUE" />
           </g>
 
           <!-- left cluster + half bridge move together -->
@@ -57,14 +57,14 @@ const WEAK = '#b42318'
       <div class="gw__panel">
         <div class="gw__phase">② 太い橋が耐える</div>
         <svg viewBox="0 0 240 130" class="gw__svg" aria-hidden="true">
-          <!-- pull ← left, right → -->
+          <!-- ← left / right → : pull apart -->
           <g class="gw__pull gw__pull--l">
-            <line x1="40" y1="66" x2="22" y2="66" :stroke="BLUE" stroke-width="2.4" stroke-linecap="round" />
-            <polygon points="12,66 24,59 24,73" :fill="BLUE" />
+            <line x1="36" y1="66" x2="20" y2="66" :stroke="BLUE" stroke-width="2.4" stroke-linecap="round" />
+            <polygon points="10,66 22,59 22,73" :fill="BLUE" />
           </g>
           <g class="gw__pull gw__pull--r">
-            <line x1="200" y1="66" x2="218" y2="66" :stroke="BLUE" stroke-width="2.4" stroke-linecap="round" />
-            <polygon points="228,66 216,59 216,73" :fill="BLUE" />
+            <line x1="204" y1="66" x2="220" y2="66" :stroke="BLUE" stroke-width="2.4" stroke-linecap="round" />
+            <polygon points="230,66 218,59 218,73" :fill="BLUE" />
           </g>
 
           <g class="gw__side gw__side--l-hold">

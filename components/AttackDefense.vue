@@ -15,13 +15,13 @@ const WEAK = '#b42318'
       </div>
 
       <svg viewBox="0 0 320 150" class="ad__svg" aria-hidden="true">
-        <!-- ← pull left, pull right → -->
+        <!-- ← / → pull apart -->
         <g class="ad__pull ad__pull--l">
-          <line x1="52" y1="75" x2="28" y2="75" :stroke="BLUE" stroke-width="2.4" stroke-linecap="round" />
+          <line x1="48" y1="75" x2="28" y2="75" :stroke="BLUE" stroke-width="2.4" stroke-linecap="round" />
           <polygon points="16,75 30,67 30,83" :fill="BLUE" />
         </g>
         <g class="ad__pull ad__pull--r">
-          <line x1="268" y1="75" x2="292" y2="75" :stroke="BLUE" stroke-width="2.4" stroke-linecap="round" />
+          <line x1="272" y1="75" x2="292" y2="75" :stroke="BLUE" stroke-width="2.4" stroke-linecap="round" />
           <polygon points="304,75 290,67 290,83" :fill="BLUE" />
         </g>
 
