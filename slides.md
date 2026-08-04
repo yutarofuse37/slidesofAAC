@@ -83,56 +83,8 @@ layout: section
 
 構造が同じグラフでも，重み配分により「分断されにくさ」は大きく変化する．
 
-<div class="grid grid-cols-2 gap-8 mt-4 items-end">
-  <div class="text-center">
-    <svg viewBox="0 0 220 145" class="w-full max-w-sm mx-auto">
-      <!-- left cluster -->
-      <circle cx="40" cy="58" r="6" fill="#111"/>
-      <circle cx="68" cy="28" r="6" fill="#111"/>
-      <circle cx="78" cy="78" r="6" fill="#111"/>
-      <line x1="40" y1="58" x2="68" y2="28" stroke="#ccc" stroke-width="2"/>
-      <line x1="68" y1="28" x2="78" y2="78" stroke="#ccc" stroke-width="2"/>
-      <line x1="78" y1="78" x2="40" y2="58" stroke="#ccc" stroke-width="2"/>
-      <line x1="40" y1="58" x2="68" y2="28" stroke="#111" stroke-width="6"/>
-      <!-- right cluster -->
-      <circle cx="150" cy="58" r="6" fill="#111"/>
-      <circle cx="178" cy="28" r="6" fill="#111"/>
-      <circle cx="188" cy="78" r="6" fill="#111"/>
-      <line x1="150" y1="58" x2="178" y2="28" stroke="#ccc" stroke-width="2"/>
-      <line x1="178" y1="28" x2="188" y2="78" stroke="#ccc" stroke-width="2"/>
-      <line x1="188" y1="78" x2="150" y2="58" stroke="#ccc" stroke-width="2"/>
-      <line x1="150" y1="58" x2="178" y2="28" stroke="#111" stroke-width="6"/>
-      <!-- thin bridge + cut -->
-      <line x1="78" y1="78" x2="150" y2="58" stroke="#111" stroke-width="1.2"/>
-      <line x1="105" y1="58" x2="123" y2="76" stroke="#E60012" stroke-width="2.5"/>
-      <line x1="105" y1="76" x2="123" y2="58" stroke="#E60012" stroke-width="2.5"/>
-      <text x="110" y="130" text-anchor="middle" font-size="16" fill="#333">悪い配分</text>
-    </svg>
-  </div>
-  <div class="text-center">
-    <svg viewBox="0 0 220 145" class="w-full max-w-sm mx-auto">
-      <circle cx="40" cy="58" r="6" fill="#111"/>
-      <circle cx="68" cy="28" r="6" fill="#111"/>
-      <circle cx="78" cy="78" r="6" fill="#111"/>
-      <line x1="40" y1="58" x2="68" y2="28" stroke="#ccc" stroke-width="2"/>
-      <line x1="68" y1="28" x2="78" y2="78" stroke="#ccc" stroke-width="2"/>
-      <line x1="78" y1="78" x2="40" y2="58" stroke="#ccc" stroke-width="2"/>
-      <circle cx="150" cy="58" r="6" fill="#111"/>
-      <circle cx="178" cy="28" r="6" fill="#111"/>
-      <circle cx="188" cy="78" r="6" fill="#111"/>
-      <line x1="150" y1="58" x2="178" y2="28" stroke="#ccc" stroke-width="2"/>
-      <line x1="178" y1="28" x2="188" y2="78" stroke="#ccc" stroke-width="2"/>
-      <line x1="188" y1="78" x2="150" y2="58" stroke="#ccc" stroke-width="2"/>
-      <!-- thick bridge -->
-      <line x1="78" y1="78" x2="150" y2="58" stroke="#1C3177" stroke-width="7"/>
-      <text x="110" y="130" text-anchor="middle" font-size="16" fill="#333">良い配分</text>
-    </svg>
-  </div>
-</div>
-
-<div class="flex justify-center gap-10 text-sm opacity-70 mt-2">
-  <span><span class="inline-block w-8 border-t-4 border-black align-middle mr-1"></span>太線：配分大</span>
-  <span><span class="inline-block w-8 border-t border-black align-middle mr-1"></span>細線：配分小</span>
+<div class="mt-4 flex justify-center">
+  <img src="./graph_weights.png" alt="悪い配分と良い配分" class="w-full max-w-3xl object-contain" />
 </div>
 
 <div class="mt-4 text-center">
@@ -145,7 +97,7 @@ layout: section
 
 # 連結性指標 $\lambda_2$ とその解釈
 
-重み付きラプラシアン $L(w)$ の第二固有値（algebraic connectivity）[[Fiedler 1973]](https://dml.cz/handle/10338.dmlcz/101168)：
+重み付きラプラシアン $L(w)$ の第二固有値（algebraic connectivity）<a href="https://dml.cz/handle/10338.dmlcz/101168" target="_blank" rel="noopener">&#91;Fiedler 1973&#93;</a>：
 
 $$
 \lambda_2(L(w))
@@ -188,51 +140,8 @@ $$
 
 </div>
 
-<div class="grid grid-cols-2 gap-8 mt-3">
-  <div class="text-center text-sm">
-    <div class="font-bold mb-1">守備A：$\{2,3\}$ が細い</div>
-    <div class="opacity-70 text-xs mb-1">$w_{12}=w_{34}=0.45$，$w_{23}=0.10$</div>
-    <svg viewBox="0 0 280 80" class="w-full max-h-20 mx-auto">
-      <circle cx="30" cy="48" r="13" fill="#fff" stroke="#111" stroke-width="1.5"/>
-      <circle cx="100" cy="48" r="13" fill="#fff" stroke="#111" stroke-width="1.5"/>
-      <circle cx="170" cy="48" r="13" fill="#fff" stroke="#111" stroke-width="1.5"/>
-      <circle cx="240" cy="48" r="13" fill="#fff" stroke="#111" stroke-width="1.5"/>
-      <text x="30" y="53" text-anchor="middle" font-size="13">1</text>
-      <text x="100" y="53" text-anchor="middle" font-size="13">2</text>
-      <text x="170" y="53" text-anchor="middle" font-size="13">3</text>
-      <text x="240" y="53" text-anchor="middle" font-size="13">4</text>
-      <line x1="43" y1="48" x2="87" y2="48" stroke="#111" stroke-width="5"/>
-      <line x1="113" y1="48" x2="157" y2="48" stroke="#c0392b" stroke-width="1.2"/>
-      <line x1="183" y1="48" x2="227" y2="48" stroke="#111" stroke-width="5"/>
-      <path d="M55 18 L20 18" stroke="#2563eb" stroke-width="2" fill="none"/>
-      <path d="M215 18 L250 18" stroke="#dc2626" stroke-width="2" fill="none"/>
-      <text x="35" y="12" font-size="10" fill="#2563eb">左へ</text>
-      <text x="230" y="12" font-size="10" fill="#dc2626">右へ</text>
-    </svg>
-    <div class="mt-1 text-red-700 font-medium">$C=0.10$（攻撃側に有利）</div>
-  </div>
-  <div class="text-center text-sm">
-    <div class="font-bold mb-1">守備B：$\{2,3\}$ が太い</div>
-    <div class="opacity-70 text-xs mb-1">$w_{12}=w_{34}=0.05$，$w_{23}=0.90$</div>
-    <svg viewBox="0 0 280 80" class="w-full max-h-20 mx-auto">
-      <circle cx="30" cy="48" r="13" fill="#fff" stroke="#111" stroke-width="1.5"/>
-      <circle cx="100" cy="48" r="13" fill="#fff" stroke="#111" stroke-width="1.5"/>
-      <circle cx="170" cy="48" r="13" fill="#fff" stroke="#111" stroke-width="1.5"/>
-      <circle cx="240" cy="48" r="13" fill="#fff" stroke="#111" stroke-width="1.5"/>
-      <text x="30" y="53" text-anchor="middle" font-size="13">1</text>
-      <text x="100" y="53" text-anchor="middle" font-size="13">2</text>
-      <text x="170" y="53" text-anchor="middle" font-size="13">3</text>
-      <text x="240" y="53" text-anchor="middle" font-size="13">4</text>
-      <line x1="43" y1="48" x2="87" y2="48" stroke="#bbb" stroke-width="1.2"/>
-      <line x1="113" y1="48" x2="157" y2="48" stroke="#c0392b" stroke-width="6"/>
-      <line x1="183" y1="48" x2="227" y2="48" stroke="#bbb" stroke-width="1.2"/>
-      <path d="M55 18 L20 18" stroke="#2563eb" stroke-width="2" fill="none"/>
-      <path d="M215 18 L250 18" stroke="#dc2626" stroke-width="2" fill="none"/>
-      <text x="35" y="12" font-size="10" fill="#2563eb">左へ</text>
-      <text x="230" y="12" font-size="10" fill="#dc2626">右へ</text>
-    </svg>
-    <div class="mt-1 text-emerald-700 font-medium">$C=0.90$（守備側に有利）</div>
-  </div>
+<div class="mt-3 flex justify-center">
+  <img src="./graph_path.png" alt="パス上の攻撃と守備" class="w-full max-w-4xl object-contain" />
 </div>
 
 <div class="mt-4 text-sm">
@@ -254,49 +163,8 @@ $$
 \sum_{\{u,v\}} w_{\{u,v\}}(x_u-x_v)^2
 $$
 
-<div class="grid grid-cols-2 gap-8 mt-3">
-  <div class="text-center">
-    <svg viewBox="0 0 240 130" class="w-full max-w-xs mx-auto">
-      <!-- left -->
-      <circle cx="35" cy="55" r="7" fill="#111"/>
-      <circle cx="65" cy="25" r="7" fill="#111"/>
-      <circle cx="78" cy="75" r="7" fill="#111"/>
-      <line x1="35" y1="55" x2="65" y2="25" stroke="#bbb" stroke-width="2"/>
-      <line x1="65" y1="25" x2="78" y2="75" stroke="#bbb" stroke-width="2"/>
-      <line x1="78" y1="75" x2="35" y2="55" stroke="#bbb" stroke-width="2"/>
-      <!-- right -->
-      <circle cx="165" cy="55" r="7" fill="#111"/>
-      <circle cx="195" cy="25" r="7" fill="#111"/>
-      <circle cx="208" cy="75" r="7" fill="#111"/>
-      <line x1="165" y1="55" x2="195" y2="25" stroke="#bbb" stroke-width="2"/>
-      <line x1="195" y1="25" x2="208" y2="75" stroke="#bbb" stroke-width="2"/>
-      <line x1="208" y1="75" x2="165" y2="55" stroke="#bbb" stroke-width="2"/>
-      <!-- thin bridge -->
-      <line x1="78" y1="75" x2="165" y2="55" stroke="#E60012" stroke-width="1.5"/>
-      <text x="120" y="115" text-anchor="middle" font-size="14" fill="#555">細い辺で接続</text>
-      <text x="120" y="130" text-anchor="middle" font-size="13" fill="#E60012">攻撃側に有利</text>
-    </svg>
-  </div>
-  <div class="text-center">
-    <svg viewBox="0 0 240 130" class="w-full max-w-xs mx-auto">
-      <circle cx="35" cy="55" r="7" fill="#111"/>
-      <circle cx="65" cy="25" r="7" fill="#111"/>
-      <circle cx="78" cy="75" r="7" fill="#111"/>
-      <line x1="35" y1="55" x2="65" y2="25" stroke="#bbb" stroke-width="2"/>
-      <line x1="65" y1="25" x2="78" y2="75" stroke="#bbb" stroke-width="2"/>
-      <line x1="78" y1="75" x2="35" y2="55" stroke="#bbb" stroke-width="2"/>
-      <circle cx="165" cy="55" r="7" fill="#111"/>
-      <circle cx="195" cy="25" r="7" fill="#111"/>
-      <circle cx="208" cy="75" r="7" fill="#111"/>
-      <line x1="165" y1="55" x2="195" y2="25" stroke="#bbb" stroke-width="2"/>
-      <line x1="195" y1="25" x2="208" y2="75" stroke="#bbb" stroke-width="2"/>
-      <line x1="208" y1="75" x2="165" y2="55" stroke="#bbb" stroke-width="2"/>
-      <!-- thick bridge -->
-      <line x1="78" y1="75" x2="165" y2="55" stroke="#1C3177" stroke-width="8"/>
-      <text x="120" y="115" text-anchor="middle" font-size="14" fill="#555">太い辺で接続</text>
-      <text x="120" y="130" text-anchor="middle" font-size="13" fill="#1C3177">守備側に有利</text>
-    </svg>
-  </div>
+<div class="mt-3 flex justify-center">
+  <img src="./graph_bridge.png" alt="細い辺と太い辺" class="w-full max-w-3xl object-contain" />
 </div>
 
 <div class="mt-2 text-sm">
@@ -316,7 +184,7 @@ $$
 
 <div class="mt-4 p-4 rounded border border-primary/30 bg-primary/5 text-left text-sm">
 
-**定義**（Absolute Algebraic Connectivity [[Fiedler 1990]](https://doi.org/10.1080/03081089008817967)）
+**定義**（Absolute Algebraic Connectivity <a href="https://doi.org/10.1080/03081089008817967" target="_blank" rel="noopener">&#91;Fiedler 1990&#93;</a>）
 
 $$
 \begin{aligned}
@@ -386,7 +254,7 @@ $$
 
 <div class="mt-3 p-4 rounded border border-primary/30 bg-primary/5 text-sm">
 
-**定義**（近似Fiedlerベクトル [[Spielman–Teng 2014]](https://doi.org/10.1137/130915984)）
+**定義**（近似Fiedlerベクトル <a href="https://doi.org/10.1137/130915984" target="_blank" rel="noopener">&#91;Spielman–Teng 2014&#93;</a>）
 
 $x\in X$ が
 $x^\top L x \le (1+\alpha)\lambda_2(L)$
@@ -396,7 +264,7 @@ $x^\top L x \le (1+\alpha)\lambda_2(L)$
 
 <div class="mt-4 p-4 rounded border border-amber-500/30 bg-amber-500/5 text-sm">
 
-**補題**（高速オラクル [[Spielman–Teng 2014]](https://doi.org/10.1137/130915984)）
+**補題**（高速オラクル <a href="https://doi.org/10.1137/130915984" target="_blank" rel="noopener">&#91;Spielman–Teng 2014&#93;</a>）
 
 任意の $\alpha>0$ に対し，確率 $1-\frac{1}{m^{10}}$ 以上で $\alpha$-近似Fiedlerベクトルを出力する
 ランダム化アルゴリズムが存在し，計算時間は $\widetilde{O}\!\left(\frac{m}{\alpha}\right)$．
@@ -447,7 +315,7 @@ $$
 
 <div class="mt-5">
 
-- 比較対象：[[Jiang et al. 2020]](https://arxiv.org/abs/2004.04250) の切除平面法 **$A_2$** → $\widetilde{O}(m^3\mathrm{polylog}(1/\varepsilon))$
+- 比較対象：<a href="https://arxiv.org/abs/2004.04250" target="_blank" rel="noopener">&#91;Jiang et al. 2020&#93;</a> の切除平面法 **$A_2$** → $\widetilde{O}(m^3\mathrm{polylog}(1/\varepsilon))$
 - $\mathsf{OPT}\gtrsim 1/m^2$ では $A_1$ が優位，$\mathsf{OPT}$ が小さい領域では $A_2$ が優位となり得る
 
 </div>
@@ -519,7 +387,7 @@ $$
 
 - $\boldsymbol{x}^\top L(\boldsymbol{w})\boldsymbol{x} = \sum_{e=\{u,v\}} w_e (x_u-x_v)^2$
 - 各辺の利得は $(x_u-x_v)^2$ で評価される
-- この構造に合わせて **MWU** を適用する [[Arora–Hazan–Kale 2012]](https://theoryofcomputing.org/articles/v008a006/)
+- この構造に合わせて **MWU** を適用する <a href="https://theoryofcomputing.org/articles/v008a006/" target="_blank" rel="noopener">&#91;Arora–Hazan–Kale 2012&#93;</a>
 
 </div>
 
@@ -548,7 +416,7 @@ $$
 
 <div class="mt-4 p-4 rounded border-2 border-red-500/40 bg-red-500/5">
 
-**local norm technique** [[Shalev-Shwartz 2012]](https://doi.org/10.1561/2200000018)
+**local norm technique** <a href="https://doi.org/10.1561/2200000018" target="_blank" rel="noopener">&#91;Shalev-Shwartz 2012&#93;</a>
 
 反復回数を $O(1/\mathsf{OPT})$ まで減らせる．
 定数 $\varepsilon$ のもとでは $\widetilde{O}(m/\mathsf{OPT})$ が得られる．
@@ -645,11 +513,11 @@ class: text-center
 
 <div class="text-left text-sm max-w-2xl mx-auto space-y-2 opacity-90">
 
-1. [[Fiedler 1973]](https://dml.cz/handle/10338.dmlcz/101168) M. Fiedler. Algebraic connectivity of graphs. *Czechoslovak Math. J.*, 1973.
-2. [[Fiedler 1990]](https://doi.org/10.1080/03081089008817967) M. Fiedler. Absolute algebraic connectivity of trees. *Linear Multilinear Algebra*, 1990.
-3. [[Spielman–Teng 2014]](https://doi.org/10.1137/130915984) D. A. Spielman and S.-H. Teng. Nearly linear time algorithms for preconditioning and solving symmetric, diagonally dominant linear systems. *SIAM J. Matrix Anal. Appl.*, 2014.
-4. [[Arora–Hazan–Kale 2012]](https://theoryofcomputing.org/articles/v008a006/) S. Arora, E. Hazan, and S. Kale. The multiplicative weights update method: a meta-algorithm and applications. *Theory of Computing*, 2012.
-5. [[Jiang et al. 2020]](https://arxiv.org/abs/2004.04250) H. Jiang, Y. T. Lee, Z. Song, and S. C.-W. Wong. An improved cutting plane method for convex optimization, convex-concave games, and its applications. *STOC*, 2020.
-6. [[Shalev-Shwartz 2012]](https://doi.org/10.1561/2200000018) S. Shalev-Shwartz. Online learning and online convex optimization. *Found. Trends Mach. Learn.*, 2012.
+1. <a href="https://dml.cz/handle/10338.dmlcz/101168" target="_blank" rel="noopener">&#91;Fiedler 1973&#93;</a> M. Fiedler. Algebraic connectivity of graphs. *Czechoslovak Math. J.*, 1973.
+2. <a href="https://doi.org/10.1080/03081089008817967" target="_blank" rel="noopener">&#91;Fiedler 1990&#93;</a> M. Fiedler. Absolute algebraic connectivity of trees. *Linear Multilinear Algebra*, 1990.
+3. <a href="https://doi.org/10.1137/130915984" target="_blank" rel="noopener">&#91;Spielman–Teng 2014&#93;</a> D. A. Spielman and S.-H. Teng. Nearly linear time algorithms for preconditioning and solving symmetric, diagonally dominant linear systems. *SIAM J. Matrix Anal. Appl.*, 2014.
+4. <a href="https://theoryofcomputing.org/articles/v008a006/" target="_blank" rel="noopener">&#91;Arora–Hazan–Kale 2012&#93;</a> S. Arora, E. Hazan, and S. Kale. The multiplicative weights update method: a meta-algorithm and applications. *Theory of Computing*, 2012.
+5. <a href="https://arxiv.org/abs/2004.04250" target="_blank" rel="noopener">&#91;Jiang et al. 2020&#93;</a> H. Jiang, Y. T. Lee, Z. Song, and S. C.-W. Wong. An improved cutting plane method for convex optimization, convex-concave games, and its applications. *STOC*, 2020.
+6. <a href="https://doi.org/10.1561/2200000018" target="_blank" rel="noopener">&#91;Shalev-Shwartz 2012&#93;</a> S. Shalev-Shwartz. Online learning and online convex optimization. *Found. Trends Mach. Learn.*, 2012.
 
 </div>
