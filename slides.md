@@ -46,6 +46,8 @@ layout: section
 # 背景と動機
 
 ---
+class: roomy
+---
 
 # ネットワーク設計
 
@@ -68,6 +70,8 @@ layout: section
 </v-clicks>
 
 ---
+class: roomy
+---
 
 # 問題の直感
 
@@ -81,7 +85,7 @@ layout: section
   <GraphWeights />
 </div>
 
-<div class="mt-3 text-center">
+<div class="mt-4 text-center text-lg">
 <v-click>
 
 「分断されにくさ」を測り，その値を重み配分によって**最大化**するか．
@@ -127,6 +131,8 @@ $$
 </div>
 
 ---
+class: roomy
+---
 
 # 具体例：パス上の攻撃と守備
 
@@ -143,7 +149,7 @@ $x=\bigl(-\tfrac12,-\tfrac12,\tfrac12,\tfrac12\bigr)$
   <GraphPath />
 </div>
 
-<div class="mt-3 text-sm">
+<div class="mt-3">
 <v-clicks>
 
 - 同じ引っ張り方でも，$w_{23}$ の大きさでコストが大きく変わる．
@@ -152,6 +158,8 @@ $x=\bigl(-\tfrac12,-\tfrac12,\tfrac12,\tfrac12\bigr)$
 </v-clicks>
 </div>
 
+---
+class: roomy
 ---
 
 # 守備側の最適化
@@ -172,7 +180,7 @@ $$
   <GraphBridge />
 </div>
 
-<div class="mt-2 text-sm">
+<div class="mt-2">
 <v-clicks>
 
 - 戦略：攻撃されやすい辺の強度を高め，どの引っ張りでもコストが同程度になるようにする．
@@ -181,6 +189,8 @@ $$
 </v-clicks>
 </div>
 
+---
+class: roomy
 ---
 
 # 今回扱う問題
@@ -247,6 +257,8 @@ layout: section
 # 問題設定
 
 ---
+class: roomy
+---
 
 # グラフラプラシアンとFiedlerベクトル
 
@@ -305,6 +317,8 @@ $$
 
 </v-clicks>
 
+---
+class: roomy
 ---
 
 # 問題の定式化
@@ -400,6 +414,8 @@ layout: section
 
 # アルゴリズム：MWU
 
+---
+class: roomy
 ---
 
 # FiedlerベクトルとMWU更新
@@ -638,6 +654,8 @@ layout: section
 # 補足：$\mathsf{OPT}$ の上下界
 
 ---
+class: roomy
+---
 
 # $\mathsf{OPT}$ の上下界
 
@@ -661,6 +679,8 @@ $$
 
 </v-clicks>
 
+---
+class: roomy
 ---
 
 # 上界：$\mathsf{OPT}\le 2/(n-1)$

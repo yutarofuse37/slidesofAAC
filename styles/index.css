@@ -13,6 +13,35 @@
   background: #fff;
 }
 
+/* Sparse slides: fill leftover whitespace with larger type */
+.slidev-layout.roomy {
+  font-size: 1.14rem;
+  line-height: 1.55;
+}
+
+.slidev-layout.roomy li + li {
+  margin-top: 0.4em;
+}
+
+.slidev-layout.roomy .callout,
+.slidev-layout.roomy .callout-strong,
+.slidev-layout.roomy .callout-alert,
+.slidev-layout.roomy .callout-bar {
+  font-size: 1.02rem;
+  line-height: 1.45;
+  padding: 0.55rem 0.85rem;
+  margin-top: 0.65rem;
+  margin-bottom: 0.5rem;
+}
+
+.slidev-layout.roomy .katex-display {
+  margin: 0.55em 0 !important;
+}
+
+.slidev-layout.roomy .diagram-wrap {
+  margin-top: 1rem;
+}
+
 .slidev-layout h1 {
   color: var(--st-blue) !important;
 }
