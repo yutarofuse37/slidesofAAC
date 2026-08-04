@@ -4,7 +4,7 @@
   --st-blue-soft: #cfdbed;
   --st-blue-bg: #f9fbff;
   --st-alert: #c0392b;
-  --st-ink: #0f172a;
+  --st-ink: #1c3177;
   --slidev-theme-primary: #1c3177;
 }
 
@@ -101,7 +101,7 @@ div[class*='page-number'] {
 .diagram-caption {
   margin-top: 0.35rem;
   font-size: 0.75rem;
-  color: #334155;
+  color: var(--st-blue-sub);
   text-align: center;
   line-height: 1.4;
 }

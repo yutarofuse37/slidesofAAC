@@ -113,13 +113,13 @@ const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 4)
   text-align: center;
   font-size: 0.72rem;
   font-weight: 600;
-  color: #334155;
+  color: #1c3177;
   margin-bottom: 0.1rem;
 }
 .ad__hint {
   text-align: center;
   font-size: 0.62rem;
-  color: #475569;
+  color: #7f96c2;
   margin-top: 0.15rem;
 }
 .ad__svg {
@@ -148,7 +148,7 @@ const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 4)
 }
 .ad__name-sub {
   font-size: 8px;
-  fill: #475569;
+  fill: #7f96c2;
   font-family: system-ui, sans-serif;
 }
 .ad__cost-text,

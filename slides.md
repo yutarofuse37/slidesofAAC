@@ -496,7 +496,7 @@ class: text-center
 
 # 参考文献
 
-<div class="text-left text-sm max-w-2xl mx-auto space-y-2 opacity-90">
+<div class="text-left text-sm max-w-2xl mx-auto space-y-2">
 
 1. <a href="https://dml.cz/handle/10338.dmlcz/101168" target="_blank" rel="noopener">&#91;Fiedler 1973&#93;</a> M. Fiedler. Algebraic connectivity of graphs. *Czechoslovak Math. J.*, 1973.
 2. <a href="https://doi.org/10.1080/03081089008817967" target="_blank" rel="noopener">&#91;Fiedler 1990&#93;</a> M. Fiedler. Absolute algebraic connectivity of trees. *Linear Multilinear Algebra*, 1990.

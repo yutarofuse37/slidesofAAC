@@ -95,7 +95,7 @@ const WEAK = '#b42318'
 .gb__phase {
   font-size: 0.78rem;
   font-weight: 700;
-  color: #475569;
+  color: #7f96c2;
 }
 .gb__svg {
   width: 100%;
@@ -110,7 +110,7 @@ const WEAK = '#b42318'
 }
 .gb__hint {
   font-size: 0.78rem;
-  color: #475569;
+  color: #7f96c2;
   margin-top: 0.1rem;
 }
 .gb__pull-l { animation: pl 2.8s ease-in-out infinite; }

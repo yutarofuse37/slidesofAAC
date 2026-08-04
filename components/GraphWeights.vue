@@ -115,7 +115,7 @@ const WEAK = '#b42318'
 .gw__phase {
   font-size: 0.78rem;
   font-weight: 700;
-  color: #475569;
+  color: #7f96c2;
   margin-bottom: 0.2rem;
 }
 .gw__svg {
@@ -133,7 +133,7 @@ const WEAK = '#b42318'
 .gw__hint {
   margin-top: 0.15rem;
   font-size: 0.78rem;
-  color: #475569;
+  color: #7f96c2;
 }
 .gw__legend {
   display: flex;
@@ -142,7 +142,7 @@ const WEAK = '#b42318'
   gap: 1.1rem;
   margin-top: 0.65rem;
   font-size: 0.8rem;
-  color: #475569;
+  color: #1c3177;
 }
 .gw__legend span {
   display: inline-flex;
