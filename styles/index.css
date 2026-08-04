@@ -89,6 +89,7 @@
 
 .slidev-layout:not(.cover):not(.section):not(.intro):not(.end) {
   overflow: hidden;
+  padding-bottom: 2.5rem !important;
 }
 
 /* Seriph theme sets h1 + p to opacity-50 — keep lead lines fully readable */
@@ -232,10 +233,6 @@ div[class*='page-number'] {
   color: var(--st-muted);
   text-align: center;
   line-height: 1.4;
-}
-
-.slidev-layout:not(.cover):not(.section):not(.intro):not(.end) {
-  padding-bottom: 2.5rem !important;
 }
 
 .slidev-layout.section {
