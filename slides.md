@@ -1,662 +1,677 @@
 ---
-# try also 'default' to start simple
 theme: seriph
-# random image from a curated Unsplash collection by Anthony
-# like them? see https://unsplash.com/collections/94734566/slidev
-background: https://cover.sli.dev
-# some information about your slides (markdown enabled)
-title: Welcome to Slidev
+title: Multiplicative Weights Update for Absolute Algebraic Connectivity
 info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
+  ## Multiplicative Weights Update for Absolute Algebraic Connectivity
 
-  Learn more at [Sli.dev](https://sli.dev)
-# apply UnoCSS classes to the current slide
-class: text-center
-# https://sli.dev/features/drawing
+  布施 祐大郎, 清水 伸高（東京科学大学）
+  夏のLAシンポジウム2026
 drawings:
   persist: false
-# slide transition: https://sli.dev/guide/animations.html#slide-transitions
 transition: slide-left
-# enable Comark Syntax: https://comark.dev/syntax/markdown
 comark: true
-# duration of the presentation
 duration: 35min
+colorSchema: light
 ---
 
-# Welcome to Slidev
-
-Presentation slides for developers
-
-<div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="white op-10">
-  Press Space for next page <carbon:arrow-right />
-</div>
-
-<div class="abs-br m-6 text-xl">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="slidev-icon-btn">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" class="slidev-icon-btn">
-    <carbon:logo-github />
-  </a>
-</div>
-
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
-
 ---
-transition: fade-out
+layout: cover
+background: /bg_title.png
+class: text-left
 ---
 
-# What is Slidev?
-
-Slidev is a slides maker and presenter designed for developers, consist of the following features
-
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - themes can be shared and re-used as npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embed Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export to PDF, PPTX, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - virtually anything that's possible on a webpage is possible in Slidev
-<br>
-<br>
-
-Read more about [Why Slidev?](https://sli.dev/guide/why)
-
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/features/slide-scope-style
--->
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
-<!--
-Here is another comment.
--->
-
----
-transition: slide-up
-level: 2
----
-
-# Navigation
-
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/ui#navigation-bar)
-
-## Keyboard Shortcuts
-
-|                                                     |                             |
-| --------------------------------------------------- | --------------------------- |
-| <kbd>right</kbd> / <kbd>space</kbd>                 | next animation or slide     |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd>                                       | previous slide              |
-| <kbd>down</kbd>                                     | next slide                  |
-
-<!-- https://sli.dev/guide/animations.html#click-animation -->
 <img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-  alt=""
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
-
----
-layout: two-cols
-layoutClass: gap-16
----
-
-# Table of contents
-
-You can use the `Toc` component to generate a table of contents for your slides:
-
-```html
-<Toc minDepth="1" maxDepth="1" />
-```
-
-The title will be inferred from your slide content, or you can override it with `title` and `level` in your frontmatter.
-
-::right::
-
-<Toc text-sm minDepth="1" maxDepth="2" />
-
----
-layout: image-right
-image: https://cover.sli.dev
----
-
-# Code
-
-Use code snippets and get the highlighting directly, and even types hover!
-
-```ts [filename-example.ts] {all|4|6|6-7|9|all} twoslash
-// TwoSlash enables TypeScript hover information
-// and errors in markdown code blocks
-// More at https://shiki.style/packages/twoslash
-import { computed, ref } from 'vue'
-
-const count = ref(0)
-const doubled = computed(() => count.value * 2)
-
-doubled.value = 2
-```
-
-<arrow v-click="[4, 5]" x1="350" y1="310" x2="195" y2="342" color="#953" width="2" arrowSize="1" />
-
-<!-- This allow you to embed external code blocks -->
-<<< @/snippets/external.ts#snippet
-
-<!-- Footer -->
-
-[Learn more](https://sli.dev/features/line-highlighting)
-
-<!-- Inline style -->
-<style>
-.footnotes-sep {
-  @apply mt-5 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
-
-<!--
-Notes can also sync with clicks
-
-[click] This will be highlighted after the first click
-
-[click] Highlighted with `count = ref(0)`
-
-[click:3] Last click (skip two clicks)
--->
-
----
-level: 2
----
-
-# Shiki Magic Move
-
-Powered by [shiki-magic-move](https://shiki-magic-move.netlify.app/), Slidev supports animations across multiple code snippets.
-
-Add multiple code blocks and wrap them with <code>````md magic-move</code> (four backticks) to enable the magic move. For example:
-
-````md magic-move {lines: true}
-```ts {*|2|*}
-// step 1
-const author = reactive({
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-})
-```
-
-```ts {*|1-2|3-4|3-4,8}
-// step 2
-export default {
-  data() {
-    return {
-      author: {
-        name: 'John Doe',
-        books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
-        ]
-      }
-    }
-  }
-}
-```
-
-```ts
-// step 3
-export default {
-  data: () => ({
-    author: {
-      name: 'John Doe',
-      books: [
-        'Vue 2 - Advanced Guide',
-        'Vue 3 - Basic Guide',
-        'Vue 4 - The Mystery'
-      ]
-    }
-  })
-}
-```
-
-Non-code blocks are ignored.
-
-```vue
-<!-- step 4 -->
-<script setup>
-const author = {
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-}
-</script>
-```
-````
-
----
-
-# Components
-
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>`, `<BlueSky/>`, and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
-
-<!--
-Presenter note with **bold**, *italic*, and ~~striked~~ text.
-
-Also, HTML elements are valid:
-<div class="flex w-full">
-  <span style="flex-grow: 1;">Left content</span>
-  <span>Right content</span>
-</div>
--->
-
----
-class: px-20
----
-
-# Themes
-
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/guide/theme-addon#use-theme) and
-check out the [Awesome Themes Gallery](https://sli.dev/resources/theme-gallery).
-
----
-
-# Clicks Animations
-
-You can add `v-click` to elements to add a click animation.
-
-<div v-click>
-
-This shows up when you press <kbd>space</kbd> or <kbd>right</kbd>, or click outside the slide on the right.
-
-```html
-<div v-click>This shows up when you trigger a click animation.</div>
-```
-
-</div>
-
-<p v-click>
-You can also add modifiers to change the animation:
-</p>
-
-<div class="grid gap-3 mt-4 text-sm" style="grid-template-columns: repeat(3, 1fr) 1.5fr 1fr">
-  <div v-after.up class="p-3 rounded border border-primary/20 bg-primary/10">
-    <div class="font-mono text-xs opacity-60 mb-1">v-click.up</div>
-    <div>Slide from bottom</div>
-  </div>
-  <div v-click.fade-in class="p-3 rounded border border-primary/30 bg-primary/15">
-    <div class="font-mono text-xs opacity-60 mb-1">v-click.fade-in</div>
-    <div>Fade in</div>
-  </div>
-  <div v-click.fade class="p-3 rounded border border-primary/40 bg-primary/20">
-    <div class="font-mono text-xs opacity-60 mb-1">v-click.fade</div>
-    <div>Dim (0.5 opacity)</div>
-  </div>
-  <div v-click.fade.right.scale class="p-3 rounded border border-primary/50 bg-primary/25">
-    <div class="font-mono text-xs opacity-60 mb-1">v-click.fade.right.scale</div>
-    <div>Composed</div>
-  </div>
-  <div v-click.none class="p-3 rounded border border-primary/60 bg-primary/30">
-    <div class="font-mono text-xs opacity-60 mb-1">v-click.none</div>
-    <div>No transition</div>
-  </div>
-</div>
-
-<v-click>
-
-The <span v-mark.red="7"><code>v-mark</code> directive</span>
-also allows you to add
-<span v-mark.circle.orange="8">inline marks</span>
-, powered by [Rough Notation](https://roughnotation.com/):
-
-```html
-<span v-mark.underline.orange>inline markers</span>
-```
-
-</v-click>
-
-<div v-click mt-12>
-
-[Learn more](https://sli.dev/guide/animations#click-animation)
-
-</div>
-
----
-
-# Motions
-
-Motion animations are powered by [@vueuse/motion](https://motion.vueuse.org/), triggered by `v-motion` directive.
-
-```html
-<div
+  src="./logo.png"
+  alt="Institute of Science Tokyo"
+  class="absolute top-6 left-8 h-9"
   v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }"
-  :click-3="{ x: 80 }"
-  :leave="{ x: 1000 }"
->
-  Slidev
-</div>
-```
+  :initial="{ opacity: 0, y: -12 }"
+  :enter="{ opacity: 1, y: 0, transition: { duration: 600 } }"
+/>
 
-<div class="w-60 relative">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-square.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-circle.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-triangle.png"
-      alt=""
-    />
-  </div>
+<div class="absolute inset-0 flex flex-col justify-center pl-12 pr-40 -mt-4">
+  <h1
+    class="!text-3.5xl !leading-snug !text-left"
+    v-motion
+    :initial="{ opacity: 0, x: -24 }"
+    :enter="{ opacity: 1, x: 0, transition: { delay: 200, duration: 700 } }"
+  >
+    Multiplicative Weights Update<br>
+    for Absolute Algebraic Connectivity
+  </h1>
 
   <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
+    class="pt-6 text-xl opacity-80"
     v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
+    :initial="{ opacity: 0 }"
+    :enter="{ opacity: 1, transition: { delay: 500, duration: 600 } }"
+  >
+    布施 祐大郎, 清水 伸高
+  </div>
+  <div
+    class="pt-1 opacity-60"
+    v-motion
+    :initial="{ opacity: 0 }"
+    :enter="{ opacity: 1, transition: { delay: 650, duration: 600 } }"
+  >
+    東京科学大学
+  </div>
+  <div
+    class="pt-8 text-sm opacity-50"
+    v-motion
+    :initial="{ opacity: 0 }"
+    :enter="{ opacity: 1, transition: { delay: 800, duration: 600 } }"
+  >
+    夏のLAシンポジウム2026
   </div>
 </div>
 
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
+---
+layout: section
+---
 
-<div
-  v-motion
-  :initial="{ x:35, y: 30, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
+# 背景と動機
 
-[Learn more](https://sli.dev/guide/animations.html#motion)
+---
+
+# ネットワーク設計
+
+現実の多くのシステムは，ネットワークとして表現できる．
+
+<div class="mt-4" />
+
+- <span v-mark.circle.orange="1">通信網</span>：障害が起きても通信を維持したい．
+- <span v-mark.circle.orange="2">交通網・物流網</span>：一部の経路が止まっても全体機能を保ちたい．
+- <span v-mark.circle.orange="3">分散システム</span>：情報共有や合意形成を安定かつ高速に行いたい．
+
+<div v-click class="mt-6 p-4 rounded bg-primary/8 border-l-4 border-primary">
+
+この共通課題は，「ネットワークをどれだけ頑健に設計できるか」である．
+
+</div>
+
+<div v-click class="mt-4">
+
+本研究ではあるグラフが与えられたときに，各辺に重みを配分し，その重み付きグラフの連結性を最大化する問題を考える．
 
 </div>
 
 ---
 
-# $\LaTeX$
+# 問題の直感
 
-$\LaTeX$ is supported out-of-box. Powered by [$\KaTeX$](https://katex.org/).
+構造が同じグラフでも，重み配分により「分断されにくさ」は大きく変化する．
 
-<div h-3 />
+<div class="grid grid-cols-2 gap-8 mt-4 items-end">
+  <div class="text-center">
+    <svg viewBox="0 0 220 145" class="w-full max-w-sm mx-auto">
+      <!-- left cluster -->
+      <circle cx="40" cy="58" r="6" fill="#111"/>
+      <circle cx="68" cy="28" r="6" fill="#111"/>
+      <circle cx="78" cy="78" r="6" fill="#111"/>
+      <line x1="40" y1="58" x2="68" y2="28" stroke="#ccc" stroke-width="2"/>
+      <line x1="68" y1="28" x2="78" y2="78" stroke="#ccc" stroke-width="2"/>
+      <line x1="78" y1="78" x2="40" y2="58" stroke="#ccc" stroke-width="2"/>
+      <line x1="40" y1="58" x2="68" y2="28" stroke="#111" stroke-width="6"/>
+      <!-- right cluster -->
+      <circle cx="150" cy="58" r="6" fill="#111"/>
+      <circle cx="178" cy="28" r="6" fill="#111"/>
+      <circle cx="188" cy="78" r="6" fill="#111"/>
+      <line x1="150" y1="58" x2="178" y2="28" stroke="#ccc" stroke-width="2"/>
+      <line x1="178" y1="28" x2="188" y2="78" stroke="#ccc" stroke-width="2"/>
+      <line x1="188" y1="78" x2="150" y2="58" stroke="#ccc" stroke-width="2"/>
+      <line x1="150" y1="58" x2="178" y2="28" stroke="#111" stroke-width="6"/>
+      <!-- thin bridge + cut -->
+      <line x1="78" y1="78" x2="150" y2="58" stroke="#111" stroke-width="1.2"/>
+      <line x1="105" y1="58" x2="123" y2="76" stroke="#E60012" stroke-width="2.5"/>
+      <line x1="105" y1="76" x2="123" y2="58" stroke="#E60012" stroke-width="2.5"/>
+      <text x="110" y="130" text-anchor="middle" font-size="16" fill="#333">悪い配分</text>
+    </svg>
+  </div>
+  <div class="text-center">
+    <svg viewBox="0 0 220 145" class="w-full max-w-sm mx-auto">
+      <circle cx="40" cy="58" r="6" fill="#111"/>
+      <circle cx="68" cy="28" r="6" fill="#111"/>
+      <circle cx="78" cy="78" r="6" fill="#111"/>
+      <line x1="40" y1="58" x2="68" y2="28" stroke="#ccc" stroke-width="2"/>
+      <line x1="68" y1="28" x2="78" y2="78" stroke="#ccc" stroke-width="2"/>
+      <line x1="78" y1="78" x2="40" y2="58" stroke="#ccc" stroke-width="2"/>
+      <circle cx="150" cy="58" r="6" fill="#111"/>
+      <circle cx="178" cy="28" r="6" fill="#111"/>
+      <circle cx="188" cy="78" r="6" fill="#111"/>
+      <line x1="150" y1="58" x2="178" y2="28" stroke="#ccc" stroke-width="2"/>
+      <line x1="178" y1="28" x2="188" y2="78" stroke="#ccc" stroke-width="2"/>
+      <line x1="188" y1="78" x2="150" y2="58" stroke="#ccc" stroke-width="2"/>
+      <!-- thick bridge -->
+      <line x1="78" y1="78" x2="150" y2="58" stroke="#1C3177" stroke-width="7"/>
+      <text x="110" y="130" text-anchor="middle" font-size="16" fill="#333">良い配分</text>
+    </svg>
+  </div>
+</div>
 
-Inline $\sqrt{3x-1}+(1+x)^2$
+<div class="flex justify-center gap-10 text-sm opacity-70 mt-2">
+  <span><span class="inline-block w-8 border-t-4 border-black align-middle mr-1"></span>太線：配分大</span>
+  <span><span class="inline-block w-8 border-t border-black align-middle mr-1"></span>細線：配分小</span>
+</div>
 
-Block
-$$ {1|3|all}
+<div v-click class="mt-4 text-center">
+
+「分断されにくさ」を測り，その値を重み配分によって**最大化**できるか．
+
+</div>
+
+---
+
+# 連結性指標 $\lambda_2$ とその解釈
+
+重み付きラプラシアン $L(w)$ の第二固有値（algebraic connectivity）[Fiedler 1973]：
+
+$$
+\lambda_2(L(w))
+= \min_{\substack{x^\top\mathbf{1}=0\\ \|x\|_2=1}}
+\sum_{\{u,v\}\in E} w_{\{u,v\}}(x_u-x_v)^2
+$$
+
+<div class="grid grid-cols-[1.15fr_0.85fr] gap-6 items-center mt-2">
+  <div class="text-sm leading-relaxed">
+
+  **ゲームとしてみる：**
+
+  - **守備側**：総量1の強度を辺へ配分（$w\in\Delta_E$）
+  - **攻撃側**：頂点の引っ張り $x$ を選ぶ<br>
+    （$x^\top\mathbf{1}=0$，$\|x\|_2=1$）
+  - 利得 $C(x;w)=\sum w_e(x_u-x_v)^2$（弾性エネルギー）
+  - 攻撃側は $C$ を最小化し，$\lambda_2(L(w))=\min_x C(x;w)$
+
+  </div>
+  <div class="text-center">
+    <img
+      src="./breaker_tug.png"
+      alt="攻撃と守備のイメージ"
+      class="w-full max-h-56 object-contain mx-auto"
+    />
+    <div class="text-xs opacity-60 mt-1 leading-snug">
+      攻撃＝頂点の引っ張り，守備＝辺強度の配分
+    </div>
+  </div>
+</div>
+
+---
+
+# 具体例：パス上の攻撃と守備
+
+<div class="text-sm">
+
+パス $1$--$2$--$3$--$4$．攻撃：$x=\bigl(-\tfrac12,-\tfrac12,\tfrac12,\tfrac12\bigr)$．
+伸びるのは辺 $\{2,3\}$ のみで，$C(x;w)=w_{23}$．
+
+</div>
+
+<div class="grid grid-cols-2 gap-8 mt-3">
+  <div v-click class="text-center text-sm">
+    <div class="font-bold mb-1">守備A：$\{2,3\}$ が細い</div>
+    <div class="opacity-70 text-xs mb-1">$w_{12}=w_{34}=0.45$，$w_{23}=0.10$</div>
+    <svg viewBox="0 0 280 80" class="w-full max-h-20 mx-auto">
+      <circle cx="30" cy="48" r="13" fill="#fff" stroke="#111" stroke-width="1.5"/>
+      <circle cx="100" cy="48" r="13" fill="#fff" stroke="#111" stroke-width="1.5"/>
+      <circle cx="170" cy="48" r="13" fill="#fff" stroke="#111" stroke-width="1.5"/>
+      <circle cx="240" cy="48" r="13" fill="#fff" stroke="#111" stroke-width="1.5"/>
+      <text x="30" y="53" text-anchor="middle" font-size="13">1</text>
+      <text x="100" y="53" text-anchor="middle" font-size="13">2</text>
+      <text x="170" y="53" text-anchor="middle" font-size="13">3</text>
+      <text x="240" y="53" text-anchor="middle" font-size="13">4</text>
+      <line x1="43" y1="48" x2="87" y2="48" stroke="#111" stroke-width="5"/>
+      <line x1="113" y1="48" x2="157" y2="48" stroke="#c0392b" stroke-width="1.2"/>
+      <line x1="183" y1="48" x2="227" y2="48" stroke="#111" stroke-width="5"/>
+      <path d="M55 18 L20 18" stroke="#2563eb" stroke-width="2" fill="none"/>
+      <path d="M215 18 L250 18" stroke="#dc2626" stroke-width="2" fill="none"/>
+      <text x="35" y="12" font-size="10" fill="#2563eb">左へ</text>
+      <text x="230" y="12" font-size="10" fill="#dc2626">右へ</text>
+    </svg>
+    <div class="mt-1 text-red-700 font-medium">$C=0.10$（攻撃側に有利）</div>
+  </div>
+  <div v-click class="text-center text-sm">
+    <div class="font-bold mb-1">守備B：$\{2,3\}$ が太い</div>
+    <div class="opacity-70 text-xs mb-1">$w_{12}=w_{34}=0.05$，$w_{23}=0.90$</div>
+    <svg viewBox="0 0 280 80" class="w-full max-h-20 mx-auto">
+      <circle cx="30" cy="48" r="13" fill="#fff" stroke="#111" stroke-width="1.5"/>
+      <circle cx="100" cy="48" r="13" fill="#fff" stroke="#111" stroke-width="1.5"/>
+      <circle cx="170" cy="48" r="13" fill="#fff" stroke="#111" stroke-width="1.5"/>
+      <circle cx="240" cy="48" r="13" fill="#fff" stroke="#111" stroke-width="1.5"/>
+      <text x="30" y="53" text-anchor="middle" font-size="13">1</text>
+      <text x="100" y="53" text-anchor="middle" font-size="13">2</text>
+      <text x="170" y="53" text-anchor="middle" font-size="13">3</text>
+      <text x="240" y="53" text-anchor="middle" font-size="13">4</text>
+      <line x1="43" y1="48" x2="87" y2="48" stroke="#bbb" stroke-width="1.2"/>
+      <line x1="113" y1="48" x2="157" y2="48" stroke="#c0392b" stroke-width="6"/>
+      <line x1="183" y1="48" x2="227" y2="48" stroke="#bbb" stroke-width="1.2"/>
+      <path d="M55 18 L20 18" stroke="#2563eb" stroke-width="2" fill="none"/>
+      <path d="M215 18 L250 18" stroke="#dc2626" stroke-width="2" fill="none"/>
+      <text x="35" y="12" font-size="10" fill="#2563eb">左へ</text>
+      <text x="230" y="12" font-size="10" fill="#dc2626">右へ</text>
+    </svg>
+    <div class="mt-1 text-emerald-700 font-medium">$C=0.90$（守備側に有利）</div>
+  </div>
+</div>
+
+<div v-click class="mt-4 text-sm">
+
+- 同じ引っ張りでも，$w_{23}$ の大きさでコストが大きく変わる．
+- 守備側は，あらゆる攻撃に対してコストが高くなるよう $w$ を配分したい．
+
+</div>
+
+---
+
+# 守備側の最適化
+
+守備側は，攻撃側の最善（$\min_x$）を見越して $w$ を選ぶ：
+
+$$
+\max_{w\in\Delta_E}\ \lambda_2(L(w))
+=\max_{w\in\Delta_E} \min_{\substack{x^\top\mathbf{1}=0\\ \|x\|_2=1}}
+\sum_{\{u,v\}} w_{\{u,v\}}(x_u-x_v)^2
+$$
+
+<div class="grid grid-cols-2 gap-8 mt-3">
+  <div class="text-center">
+    <svg viewBox="0 0 240 130" class="w-full max-w-xs mx-auto">
+      <!-- left -->
+      <circle cx="35" cy="55" r="7" fill="#111"/>
+      <circle cx="65" cy="25" r="7" fill="#111"/>
+      <circle cx="78" cy="75" r="7" fill="#111"/>
+      <line x1="35" y1="55" x2="65" y2="25" stroke="#bbb" stroke-width="2"/>
+      <line x1="65" y1="25" x2="78" y2="75" stroke="#bbb" stroke-width="2"/>
+      <line x1="78" y1="75" x2="35" y2="55" stroke="#bbb" stroke-width="2"/>
+      <!-- right -->
+      <circle cx="165" cy="55" r="7" fill="#111"/>
+      <circle cx="195" cy="25" r="7" fill="#111"/>
+      <circle cx="208" cy="75" r="7" fill="#111"/>
+      <line x1="165" y1="55" x2="195" y2="25" stroke="#bbb" stroke-width="2"/>
+      <line x1="195" y1="25" x2="208" y2="75" stroke="#bbb" stroke-width="2"/>
+      <line x1="208" y1="75" x2="165" y2="55" stroke="#bbb" stroke-width="2"/>
+      <!-- thin bridge -->
+      <line x1="78" y1="75" x2="165" y2="55" stroke="#E60012" stroke-width="1.5"/>
+      <text x="120" y="115" text-anchor="middle" font-size="14" fill="#555">細い辺で接続</text>
+      <text x="120" y="130" text-anchor="middle" font-size="13" fill="#E60012">攻撃側に有利</text>
+    </svg>
+  </div>
+  <div class="text-center">
+    <svg viewBox="0 0 240 130" class="w-full max-w-xs mx-auto">
+      <circle cx="35" cy="55" r="7" fill="#111"/>
+      <circle cx="65" cy="25" r="7" fill="#111"/>
+      <circle cx="78" cy="75" r="7" fill="#111"/>
+      <line x1="35" y1="55" x2="65" y2="25" stroke="#bbb" stroke-width="2"/>
+      <line x1="65" y1="25" x2="78" y2="75" stroke="#bbb" stroke-width="2"/>
+      <line x1="78" y1="75" x2="35" y2="55" stroke="#bbb" stroke-width="2"/>
+      <circle cx="165" cy="55" r="7" fill="#111"/>
+      <circle cx="195" cy="25" r="7" fill="#111"/>
+      <circle cx="208" cy="75" r="7" fill="#111"/>
+      <line x1="165" y1="55" x2="195" y2="25" stroke="#bbb" stroke-width="2"/>
+      <line x1="195" y1="25" x2="208" y2="75" stroke="#bbb" stroke-width="2"/>
+      <line x1="208" y1="75" x2="165" y2="55" stroke="#bbb" stroke-width="2"/>
+      <!-- thick bridge -->
+      <line x1="78" y1="75" x2="165" y2="55" stroke="#1C3177" stroke-width="8"/>
+      <text x="120" y="115" text-anchor="middle" font-size="14" fill="#555">太い辺で接続</text>
+      <text x="120" y="130" text-anchor="middle" font-size="13" fill="#1C3177">守備側に有利</text>
+    </svg>
+  </div>
+</div>
+
+<div v-click class="mt-2 text-sm">
+
+- 戦略：攻撃されやすい辺の強度を高め，どの引っ張りでもコストが同程度になるようにする．
+- これが algebraic connectivity の最大化問題である．
+
+</div>
+
+---
+
+# 今回扱う問題
+
+- <span v-click>グラフ構造は固定し，辺重みを変数として最適化する．</span>
+- <span v-click>制約は「非負」かつ「総和1」：$w\in\Delta_E$．</span>
+- <span v-click>目的は $\lambda_2(L(w))$ の最大化である．</span>
+
+<div v-click class="mt-4 p-4 rounded border border-primary/30 bg-primary/5 text-left text-sm">
+
+**定義**（Absolute Algebraic Connectivity [Fiedler 1990]）
+
+$$
 \begin{aligned}
-\nabla \cdot \vec{E} &= \frac{\rho}{\varepsilon_0} \\
-\nabla \cdot \vec{B} &= 0 \\
-\nabla \times \vec{E} &= -\frac{\partial\vec{B}}{\partial t} \\
-\nabla \times \vec{B} &= \mu_0\vec{J} + \mu_0\varepsilon_0\frac{\partial\vec{E}}{\partial t}
+\text{maximize}\quad & \lambda_2(L(\boldsymbol{w})) \\
+\text{subject to}\quad
+& \boldsymbol{w} \in \Delta_E := \left\{\boldsymbol{x}\in\mathbb{R}_{\ge 0}^{E} \;\middle|\; \sum_{e\in E}x_e=1\right\}.
 \end{aligned}
 $$
 
-[Learn more](https://sli.dev/features/latex)
-
----
-
-# Diagrams
-
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
-
-<div class="grid grid-cols-4 gap-5 pt-4 -mb-6">
-
-```mermaid {scale: 0.5, alt: 'A simple sequence diagram'}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
-
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-```mermaid
-mindmap
-  root((mindmap))
-    Origins
-      Long history
-      ::icon(fa fa-book)
-      Popularisation
-        British popular psychology author Tony Buzan
-    Research
-      On effectiveness<br/>and features
-      On Automatic creation
-        Uses
-            Creative techniques
-            Strategic planning
-            Argument mapping
-    Tools
-      Pen and paper
-      Mermaid
-```
-
-```plantuml {scale: 0.7}
-@startuml
-
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
-}
-
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
-
-cloud {
-  [Example 1]
-}
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
-```
+この最適値を **absolute algebraic connectivity** という．
 
 </div>
 
-Learn more: [Mermaid Diagrams](https://sli.dev/features/mermaid) and [PlantUML Diagrams](https://sli.dev/features/plantuml)
-
----
-foo: bar
-dragPos:
-  square: 691,32,167,_,-16
 ---
 
-# Draggable Elements
+# この問題の難しさ
 
-Double-click on the draggable elements to edit their positions.
+- <span v-click>目的関数は固有値に基づく非平滑関数であり，解析・計算の両面で取り扱いが難しい．</span>
+- <span v-click>SDP定式化は可能であるが，実装負荷および計算負荷が高くなりやすい．</span>
+- <span v-click>汎用ブラックボックス解法ではなく，グラフ構造を直接活用する解法が望まれる．</span>
 
-<br>
+<div v-click class="mt-8 p-5 rounded border-2 border-red-500/50 bg-red-500/5">
 
-###### Directive Usage
+**本研究の目標**
 
-```md
-<img v-drag="'square'" src="https://sli.dev/logo.png">
-```
+一般グラフに対して，理論保証を伴う簡潔な組合せ的アルゴリズムを構築する．
 
-<br>
+</div>
 
-###### Component Usage
+---
+layout: section
+---
 
-```md
-<v-drag text-3xl>
-  <div class="i-carbon:arrow-up" />
-  Use the `v-drag` component to have a draggable container!
-</v-drag>
-```
+# 問題設定
 
-<v-drag pos="663,206,261,_,-15">
-  <div text-center text-3xl border border-main rounded>
-    Double-click me!
+---
+
+# 準備：ラプラシアンとFiedlerベクトル
+
+無向グラフ $G=(V,E)$ に対し，辺 $e=\{u,v\}$ の辺ラプラシアンを
+$L_e := (\chi_u - \chi_v)(\chi_u - \chi_v)^\top$ と定める．
+
+重み $w\in\Delta_E$ に対するラプラシアンは $L(w)=\sum_{e\in E} w_eL_e$ である．
+
+<div v-click class="mt-4">
+
+- $L(w)$ の最小固有値は常に $0$（対応固有ベクトルは $\mathbf{1}$）．
+- $X := \left\{x \in \mathbb{R}^n \mid x^\top \mathbf{1} = 0, \; \|x\|_2 = 1\right\}$ とおくと：
+
+$$
+\lambda_2(L(w)) = \min_{x\in X} x^\top L(w) x.
+$$
+
+</div>
+
+<div v-click>
+
+この最小値を与える $x$ は $L(w)$ の第二固有ベクトルであり，**Fiedlerベクトル**と呼ばれる．
+
+</div>
+
+---
+
+# 近似Fiedlerベクトル
+
+正確なFiedlerベクトルの計算は難しいので，**近似Fiedlerベクトル**を用いる．
+
+<div v-click class="mt-3 p-4 rounded border border-primary/30 bg-primary/5 text-sm">
+
+**定義**（近似Fiedlerベクトル [Spielman–Teng 2014]）
+
+$x\in X$ が
+$x^\top L x \le (1+\alpha)\lambda_2(L)$
+を満たすとき，$x$ を $\alpha$-近似Fiedlerベクトルという．
+
+</div>
+
+<div v-click class="mt-4 p-4 rounded border border-amber-500/30 bg-amber-500/5 text-sm">
+
+**補題**（高速オラクル [Spielman–Teng 2014]）
+
+任意の $\alpha>0$ に対し，確率 $1-\frac{1}{m^{10}}$ 以上で $\alpha$-近似Fiedlerベクトルを出力する
+ランダム化アルゴリズムが存在し，計算時間は $\widetilde{O}\!\left(\frac{m}{\alpha}\right)$．
+
+</div>
+
+---
+
+# 問題の定式化
+
+本研究では，汎用SDPソルバーの代替として，MWUに基づく組合せ的アルゴリズムを提案する．
+
+<div v-click class="mt-4 p-4 rounded border border-emerald-600/30 bg-emerald-600/5 text-sm">
+
+- **入力**：連結無向グラフ $G=(V,E)$（$n$ 頂点，$m$ 辺）と $\varepsilon>0$
+- **出力**：次を満たす $\boldsymbol{w}\in\Delta_E$
+
+$$
+\lambda_2(L(\boldsymbol{w})) \ge (1-\varepsilon)\cdot \mathsf{OPT}
+$$
+
+（確率 $2/3$）．ただし $\mathsf{OPT}=\max_{w\in\Delta_E}\lambda_2(L(w))$．
+
+</div>
+
+<div v-click class="mt-4">
+
+また，$1/n^3\le \mathsf{OPT}\le 2/(n-1)$ が成り立つ．
+
+</div>
+
+---
+
+# 主結果
+
+<div v-click class="p-4 rounded border border-primary/30 bg-primary/5">
+
+**定理**（主定理）
+
+任意の $\varepsilon>0$ に対し，$(1-\varepsilon)$-近似解を確率 $2/3$ で出力するアルゴリズム $A_1$ が存在する：
+
+$$
+\widetilde{O}\!\left(\frac{m}{\varepsilon^3\mathsf{OPT}}\right)
+\quad\bigl(\varepsilon\text{ が定数なら }\widetilde{O}(m/\mathsf{OPT})\bigr).
+$$
+
+</div>
+
+<div v-click class="mt-5">
+
+- 比較対象：Jiangら [2020] の切除平面法 **$A_2$** → $\widetilde{O}(m^3\mathrm{polylog}(1/\varepsilon))$
+- $\mathsf{OPT}\gtrsim 1/m^2$ では $A_1$ が優位，$\mathsf{OPT}$ が小さい領域では $A_2$ が優位となり得る
+
+</div>
+
+---
+layout: two-cols
+layoutClass: gap-4
+---
+
+# 計算量の比較
+
+<div class="text-sm leading-relaxed pr-2">
+
+- $(x,y)=(\log_n m,\log_n\mathsf{OPT})$ に応じて最速アルゴリズムが変化する．
+
+<div v-click class="mt-3">
+
+**例：**
+
+- **パス** $P_n$：
+  $m=\Theta(n)$，$\mathsf{OPT}=\Theta(n^{-3})$
+  → $A_2$ が高速
+  （$\widetilde{O}(n^3)$ vs. $\widetilde{O}(n^4)$）
+
+</div>
+
+<div v-click class="mt-3">
+
+- **直径 $O(1)$**：
+  $\mathsf{OPT}=\Omega(n^{-2})$ より
+  $A_1$ は $\widetilde{O}(mn^2)$．
+  密グラフ（$m=\Theta(n^2)$）では $A_1$ が優位．
+
+</div>
+
+</div>
+
+::right::
+
+<div class="flex flex-col items-center justify-center h-full">
+  <img
+    src="./complexity_regions.png"
+    alt="A1 と A2 の優位領域"
+    class="w-full max-h-80 object-contain"
+    v-click
+    v-motion
+    :initial="{ opacity: 0, x: 20 }"
+    :enter="{ opacity: 1, x: 0, transition: { duration: 500 } }"
+  />
+  <div v-click class="text-xs opacity-60 mt-2 text-center">
+    $A_1$（ピンク）と $A_2$（シアン）の優位領域
   </div>
-</v-drag>
-
-<img v-drag="'square'" src="https://sli.dev/logo.png">
-
-###### Draggable Arrow
-
-```md
-<v-drag-arrow two-way />
-```
-
-<v-drag-arrow pos="67,452,253,46" two-way op70 />
+</div>
 
 ---
-src: ./pages/imported-slides.md
-hide: false
+layout: section
 ---
+
+# アルゴリズム：MWU
 
 ---
 
-# Monaco Editor
+# 変分的な見方
 
-Slidev provides built-in Monaco Editor support.
+Absolute Algebraic Connectivity は次の鞍点問題として表される：
 
-Add `{monaco}` to the code block to turn it into an editor:
+$$
+\mathsf{OPT}
+= \max_{\boldsymbol{w} \in \Delta_E} \min_{\boldsymbol{x}\in X} \boldsymbol{x}^\top L(\boldsymbol{w}) \boldsymbol{x}
+$$
 
-```ts {monaco}
-import { ref } from 'vue'
-import { emptyArray } from './external'
+<div v-click class="mt-4">
 
-const arr = ref(emptyArray(10))
-```
+- $\boldsymbol{x}^\top L(\boldsymbol{w})\boldsymbol{x} = \sum_{e=\{u,v\}} w_e (x_u-x_v)^2$
+- 各辺の利得は $(x_u-x_v)^2$ で評価される
+- この構造に合わせて **MWU** を適用する [Arora–Hazan–Kale 2012]
 
-Use `{monaco-run}` to create an editor that can execute the code directly in the slide:
+</div>
 
-```ts {monaco-run}
-import { version } from 'vue'
-import { emptyArray, sayHello } from './external'
+---
 
-sayHello()
-console.log(`vue ${version}`)
-console.log(emptyArray<number>(10).reduce(fib => [...fib, fib.at(-1)! + fib.at(-2)!], [1, 1]))
-```
+# アルゴリズム $A_1$：近似Fiedlerオラクル付きMWU
+
+<div class="p-4 rounded border border-primary/30 bg-primary/5 text-sm leading-relaxed">
+
+**更新則**
+
+1. <span v-click>初期化：$w_e^{(0)}=1/m$（一様），学習率 $\eta$，近似度 $\alpha$，反復回数 $T$．</span>
+2. <span v-click>各時刻 $t=0,\dots,T-1$ について：</span>
+   1. <span v-click>$L(w^{(t)})$ の $\alpha$-近似Fiedlerベクトル $x^{(t)}$ を求める．</span>
+   2. <span v-click>損失 $\ell_t(e):=(x_u^{(t)}-x_v^{(t)})^2/4$（$0\le\ell_t(e)\le1$）．</span>
+   3. <span v-click>乗法的更新：$w_e^{(t+1)} \propto w_e^{(t)}\exp\bigl(\eta\,\ell_t(e)\bigr)$．</span>
+3. <span v-click>出力は平均 $\bar{w} = \frac{1}{T}\sum_{t=0}^{T-1}w^{(t)}$．</span>
+
+</div>
+
+---
+
+# 解析：local norm technique による改善
+
+通常のMWUのリグレット解析では，必要な反復回数は $O(1/\mathsf{OPT}^2)$ である．
+
+<div v-click class="mt-4 p-4 rounded border-2 border-red-500/40 bg-red-500/5">
+
+**local norm technique** [SS2011]
+
+反復回数を $O(1/\mathsf{OPT})$ まで減らせる．
+定数 $\varepsilon$ のもとでは $\widetilde{O}(m/\mathsf{OPT})$ が得られる．
+
+</div>
+
+<div v-click class="mt-4 p-4 rounded border border-amber-500/30 bg-amber-500/5 text-sm">
+
+**補題**（リグレットバウンド・概略）
+
+$0<\eta\le1/2$ のとき，任意の $u\in\Delta_E$ に対して
+
+$$
+\sum_{t=0}^{T-1}\langle w^{(t)},\ell_t\rangle
+\ge (1-\eta)\sum_{t=0}^{T-1}\langle u,\ell_t\rangle - \tfrac{\log m}{\eta}.
+$$
+
+とくに $u=w^\star$ とおくと，$\langle w^\star,\ell_t\rangle\ge\mathsf{OPT}/4$．
+
+</div>
+
+---
+
+# 近似保証
+
+<div v-click class="p-4 rounded border border-amber-500/30 bg-amber-500/5 text-sm">
+
+**補題**
+
+出力 $\bar{w}$ は確率 $1-T/m^{10}$ 以上で
+
+$$
+\lambda_2(L(\bar{w}))
+\ge
+\frac{(1-\eta)\mathsf{OPT}-4\log m/(\eta T)}{1+\alpha}
+$$
+
+を満たす．1反復あたり $\widetilde{O}(m/\alpha)$．
+
+</div>
+
+<div v-click class="mt-5 text-sm">
+
+パラメータ例（下界 $\gamma\le\mathsf{OPT}$ が既知）：
+
+$$
+\alpha=\eta=\varepsilon/4,\qquad
+T=\Bigl\lceil\frac{64\log m}{\varepsilon^2\gamma}\Bigr\rceil
+\;\Longrightarrow\;
+\lambda_2(L(\bar{w}))\ge (1-\varepsilon)\mathsf{OPT}.
+$$
+
+</div>
+
+---
+
+# 未知の $\mathsf{OPT}$：Doubling Trick
+
+学習率と反復回数は未知の $\mathsf{OPT}$ に依存する．
+そこで **Doubling Trick** により，下界 $\gamma$ を段階的に推定する．
+
+<div v-click class="mt-3 p-4 rounded border border-primary/30 bg-primary/5 text-sm">
+
+**手順**
+
+- 既知の範囲：$1/n^3\le \mathsf{OPT}\le 2/(n-1)$
+- $\gamma_0=2/(n-1)$ から始め，
+  $\gamma\in\bigl\{\gamma_0,(1+\varepsilon/2)^{-1}\gamma_0,\ldots\bigr\}$
+  を順に試し，条件を満たした最初の出力を返す
+
+</div>
+
+<div v-click class="mt-4 text-sm">
+
+- 成功する最小の推定値は $\Theta(\mathsf{OPT})$．失敗試行のコストは等比級数に収まる
+- 全体の計算量は $\widetilde{O}(m/(\varepsilon^3\mathsf{OPT}))$（定数 $\varepsilon$ では $\widetilde{O}(m/\mathsf{OPT})$）
+
+</div>
+
+---
+
+# まとめ
+
+- <span v-click>absolute algebraic connectivity に対し，汎用SDPを用いず，組合せ的な近似アルゴリズムを与えた．</span>
+- <span v-click>MWU・近似Fiedlerオラクル・local norm technique を組み合わせ，定数 $\varepsilon$ のもとで $\widetilde{O}(m/\mathsf{OPT})$ を達成した．</span>
+- <span v-click>$\mathsf{OPT}$ が比較的大きい場合（例：直径 $O(1)$ の密グラフ）には，$A_2$ より有利になり得る．</span>
 
 ---
 layout: center
 class: text-center
 ---
 
-# Learn More
+# 参考文献
 
-[Documentation](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/resources/showcases)
+<div class="text-left text-sm max-w-2xl mx-auto space-y-2 opacity-90">
 
-<PoweredBySlidev mt-10 />
+1. M. Fiedler. Algebraic connectivity of graphs. *Czechoslovak Math. J.*, 1973.
+2. M. Fiedler. Absolute algebraic connectivity of trees. *Linear Multilinear Algebra*, 1990.
+3. D. A. Spielman and S.-H. Teng. Nearly linear time algorithms for preconditioning and solving symmetric, diagonally dominant linear systems. *SIAM J. Matrix Anal. Appl.*, 2014.
+4. S. Arora, E. Hazan, and S. Kale. The multiplicative weights update method: a meta-algorithm and applications. *Theory of Computing*, 2012.
+5. H. Jiang, Y. T. Lee, Z. Song, and S. C.-W. Wong. An improved cutting plane method for convex optimization, convex-concave games, and its applications. *STOC*, 2020.
+
+</div>
