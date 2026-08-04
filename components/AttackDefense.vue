@@ -116,7 +116,7 @@ const step = computed(() => {
 <style scoped>
 .ad {
   width: 100%;
-  max-width: 23rem;
+  max-width: 20rem;
   margin: 0 auto;
   color: #1a1a1a;
 }

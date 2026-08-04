@@ -94,6 +94,8 @@ class: roomy
 </div>
 
 ---
+class: dense
+---
 
 # 連結性指標 $\lambda_2$ とその解釈
 
@@ -130,8 +132,6 @@ $$
   </div>
 </div>
 
----
-class: roomy
 ---
 
 # 具体例：パス上の攻撃と守備
@@ -190,8 +190,6 @@ $$
 </div>
 
 ---
-class: roomy
----
 
 # 今回扱う問題
 
@@ -225,6 +223,8 @@ $\bar{w}\in\Delta_E$ が $\lambda_2(L(\bar{w}))\ge(1-\varepsilon)\mathsf{OPT}$ �
 
 </v-clicks>
 
+---
+class: dense
 ---
 
 # 関連研究
@@ -281,6 +281,8 @@ $$
 </v-clicks>
 
 ---
+class: dense
+---
 
 # 近似Fiedlerベクトル
 
@@ -292,14 +294,7 @@ $$
 
 **定義**（近似Fiedlerベクトル <a href="https://doi.org/10.1137/130915984" target="_blank" rel="noopener">&#91;Spielman–Teng 2014&#93;</a>）
 
-許容誤差 $\alpha\ge 0$ に対し，$x\in X$ が
-
-$$
-x^\top L x \le (1+\alpha)\min_{y\in X} y^\top L y
-\quad\bigl(\text{すなわち}\quad x^\top L x \le (1+\alpha)\lambda_2(L)\bigr)
-$$
-
-を満たすとき，$x$ を $\alpha$-近似Fiedlerベクトルという．
+$x\in X$ が $x^\top L x \le (1+\alpha)\lambda_2(L)$ を満たすとき，$x$ を $\alpha$-近似Fiedlerベクトルという．
 
 </div>
 
@@ -307,13 +302,11 @@ $$
 
 **補題**（高速オラクル <a href="https://doi.org/10.1137/130915984" target="_blank" rel="noopener">&#91;Spielman–Teng 2014&#93;</a>）
 
-任意の $\alpha>0$ に対し，確率 $1-\frac{1}{m^{10}}$ 以上で $\alpha$-近似Fiedlerベクトルを出力する
-乱択アルゴリズムが存在し，計算時間は $\widetilde{O}\!\left(\frac{m}{\alpha}\right)$．
+確率 $1-\frac{1}{m^{10}}$ 以上で $\alpha$-近似Fiedlerを出力する乱択アルゴリズムが存在し，計算量は $\widetilde{O}(m/\alpha)$．
 
 </div>
 
-- 乱択部分はこのオラクルのみであり，各呼び出しの失敗確率は高々 $1/m^{10}$．
-- 以降の保証は，すべての呼び出しが成功したという条件のもとで示す．
+- 乱択部分はこのオラクルのみ（失敗確率 $\le 1/m^{10}$）．以降は全呼び出し成功を仮定する．
 
 </v-clicks>
 
@@ -344,6 +337,8 @@ $$
 
 </v-clicks>
 
+---
+class: dense
 ---
 
 # 主結果
@@ -448,6 +443,8 @@ $$
 </div>
 
 ---
+class: dense
+---
 
 # アルゴリズム $A_1$
 
@@ -460,28 +457,22 @@ $\max_{w\in\Delta_E}\min_{x\in X}x^\top L(w)x$
 
 **アルゴリズム $A_1$**
 
-**入力：** 連結グラフ $G=(V,E)$，パラメータ $\alpha>0$，$0<\eta\le 1/2$，$T\in\mathbb{N}$
+**入力：** $G=(V,E)$，$\alpha>0$，$0<\eta\le 1/2$，$T\in\mathbb{N}$　
+**出力：** $\bar{w}\in\Delta_E$
 
-**出力：** 辺重み $\bar{w}\in\Delta_E$
-
-1. 各 $e\in E$ に対し $w_e^{(0)}\leftarrow 1/|E|$ とおく．
-2. $t=0,1,\dots,T-1$ について：
-   1. $L(w^{(t)})$ の $\alpha$-近似Fiedlerベクトル $x^{(t)}\in X$ を求める．
-   2. 各辺 $e=\{u,v\}$ に対し $\ell_t(e)\leftarrow (x_u^{(t)}-x_v^{(t)})^2/4$ とおく．
-   3. 各 $e\in E$ に対し
-   $$
-   w_e^{(t+1)}
-   \leftarrow
-   \frac{w_e^{(t)}\exp\bigl(\eta\,\ell_t(e)\bigr)}
-   {\sum_{a\in E}w_a^{(t)}\exp\bigl(\eta\,\ell_t(a)\bigr)}
-   $$
-   と更新する．
+1. $w_e^{(0)}\leftarrow 1/|E|$（一様）．
+2. $t=0,\dots,T-1$ について：
+   1. $L(w^{(t)})$ の $\alpha$-近似Fiedler $x^{(t)}$ を求める．
+   2. $\ell_t(e)\leftarrow (x_u^{(t)}-x_v^{(t)})^2/4$．
+   3. $w_e^{(t+1)}\propto w_e^{(t)}\exp\bigl(\eta\,\ell_t(e)\bigr)$（正規化して更新）．
 3. $\bar{w}\leftarrow\dfrac{1}{T}\sum_{t=0}^{T-1}w^{(t)}$ を返す．
 
 </div>
 
 </v-clicks>
 
+---
+class: dense
 ---
 
 # 解析：local norm technique による改善
@@ -517,6 +508,8 @@ $$
 </v-clicks>
 
 ---
+class: dense
+---
 
 # 近似保証
 
@@ -526,58 +519,45 @@ $$
 
 **補題**
 
-任意の $\alpha>0$，$0<\eta\le1/2$，$T\in\mathbb{N}$ に対し，出力 $\bar{w}$ は確率 $1-T/m^{10}$ 以上で
-
-$$
-\lambda_2(L(\bar{w}))
+出力 $\bar{w}$ は確率 $1-T/m^{10}$ 以上で
+$\displaystyle\lambda_2(L(\bar{w}))
 \ge
-\frac{(1-\eta)\mathsf{OPT}-4\log m/(\eta T)}{1+\alpha}
-$$
-
-を満たす．また，1反復あたりの計算時間は $\widetilde{O}(m/\alpha)$ である．
+\frac{(1-\eta)\mathsf{OPT}-4\log m/(\eta T)}{1+\alpha}$．
+1反復あたり $\widetilde{O}(m/\alpha)$．
 
 </div>
 
-- オラクルを $T$ 回呼び出すため，いずれかが失敗する確率は高々 $T\cdot(1/m^{10})$．
-- 主定理の確率 $2/3$：アルゴリズム全体の成功を「定数確率で成功する」と述べたもの．必要なら独立反復で $1-\delta$ まで上げられ，計算量は $O(\log(1/\delta))$ 倍で済む．
+- オラクル $T$ 回の失敗確率は高々 $T/m^{10}$．必要なら独立反復で成功率 $1-\delta$ まで上げられる（$O(\log(1/\delta))$ 倍）．
 
-下界 $\gamma\le\mathsf{OPT}$ が既知の場合：
-
-$$
-\alpha=\eta=\varepsilon/4,\qquad
-T=\Bigl\lceil\frac{64\log m}{\varepsilon^2\gamma}\Bigr\rceil
-\;\Longrightarrow\;
-\lambda_2(L(\bar{w}))\ge (1-\varepsilon)\mathsf{OPT}.
-$$
+下界 $\gamma\le\mathsf{OPT}$ が既知なら
+$\alpha=\eta=\varepsilon/4$，$T=\bigl\lceil 64\log m/(\varepsilon^2\gamma)\bigr\rceil$
+で $(1-\varepsilon)$-近似．
 
 </v-clicks>
 
+---
+class: dense
 ---
 
 # 未知の $\mathsf{OPT}$：Doubling Trick
 
 <v-clicks>
 
-前スライドの設定は，下界 $\gamma\le \mathsf{OPT}$ が既知であることを仮定していた：
-
-$$
-\alpha=\eta=\varepsilon/4,\qquad
-T=\left\lceil\frac{64\log m}{\varepsilon^2\gamma}\right\rceil .
-$$
+下界 $\gamma\le\mathsf{OPT}$ 既知のとき：
+$\alpha=\eta=\varepsilon/4$，$T=\bigl\lceil 64\log m/(\varepsilon^2\gamma)\bigr\rceil$．
 
 <div class="callout">
 
 **Doubling Trick**
 
-1. 既知の範囲 $1/n^3\le \mathsf{OPT}\le 2/(n-1)$ を用いる．
-2. $\gamma_0=2/(n-1)$ から始め，$\gamma$ を $\gamma\leftarrow \gamma/(1+\varepsilon/2)$ と順に小さくする．
-3. 各 $\gamma$ に対して上のパラメータでアルゴリズムを実行し，
-   $\lambda_2(L(\bar{w}))\ge(1-\varepsilon)\gamma$ が確認できた最初の出力を返す．
+1. 範囲 $1/n^3\le \mathsf{OPT}\le 2/(n-1)$ を用いる．
+2. $\gamma_0=2/(n-1)$ から $\gamma\leftarrow \gamma/(1+\varepsilon/2)$ と順に小さくする．
+3. 各 $\gamma$ で実行し，$\lambda_2(L(\bar{w}))\ge(1-\varepsilon)\gamma$ を満たす最初の出力を返す．
 
 </div>
 
-- 繰り返しのある時点で $\gamma\le\mathsf{OPT}\le(1+\varepsilon/2)\gamma$ となるため，その時点で $\gamma=\Theta(\mathsf{OPT})$ である．
-- よって全体の計算量は $\widetilde{O}(m/(\varepsilon^3\mathsf{OPT}))$ である．
+- ある時点で $\gamma\le\mathsf{OPT}\le(1+\varepsilon/2)\gamma$ となり $\gamma=\Theta(\mathsf{OPT})$．
+- 全体計算量は $\widetilde{O}(m/(\varepsilon^3\mathsf{OPT}))$．
 
 </v-clicks>
 
@@ -626,7 +606,7 @@ $\mathsf{OPT}=\Omega(1/m^2)$ のとき本手法が高速である．
 
 ---
 layout: center
-class: text-center
+class: text-center dense
 ---
 
 # 参考文献
@@ -718,6 +698,8 @@ $$
 </v-clicks>
 
 ---
+class: dense
+---
 
 # 下界：直径による評価
 
@@ -727,28 +709,13 @@ $$
 
 **命題**（下界）
 
-直径 $D=\mathrm{diam}(G)$（$1\le D\le n-1$）の $n$ 頂点グラフに対し，
+直径 $D$ の $n$ 頂点グラフに対し
 $\displaystyle\mathsf{OPT}\ge\frac{2}{n(n-1)D}=\Omega\!\left(\frac{1}{n^2 D}\right)$．
 
 </div>
 
-根 $r$ に関する BFS木 $T=(V,E_T)$ をとり，木辺へ一様重みを配分する：
-
-$$
-w^T_e
-:=
-\begin{cases}
-1/(n-1) & (e\in E_T),\\
-0 & (e\notin E_T)
-\end{cases}
-\qquad
-\bigl(w^T\in\Delta_E\bigr),\qquad
-L(w^T)=\tfrac{1}{n-1}L(T).
-$$
-
-三角不等式より $\mathrm{diam}(T)\le 2D$．さらに
-$\lambda_2(L(T))\ge 4/(n\,\mathrm{diam}(T))$ <a href="https://doi.org/10.1007/BF01787694" target="_blank" rel="noopener">&#91;Mohar 1991&#93;</a>
-より
+BFS木 $T$ の木辺へ一様重み $w^T_e=1/(n-1)$（$e\in E_T$）を配分する．
+$\mathrm{diam}(T)\le 2D$ と $\lambda_2(L(T))\ge 4/(n\,\mathrm{diam}(T))$ <a href="https://doi.org/10.1007/BF01787694" target="_blank" rel="noopener">&#91;Mohar 1991&#93;</a> より
 
 $$
 \lambda_2(L(w^T))
@@ -758,7 +725,6 @@ $$
 \frac{2}{n(n-1)D}.
 $$
 
-よって $\mathsf{OPT}\ge\lambda_2(L(w^T))$．
-とくに $D\le n-1$ より $\mathsf{OPT}=\Omega(1/n^3)$ であり，Doubling Trick では $1/n^3$ を用いる．
+よって $\mathsf{OPT}\ge\lambda_2(L(w^T))$．とくに $D\le n-1$ より $\mathsf{OPT}=\Omega(1/n^3)$．
 
 </v-clicks>

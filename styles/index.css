@@ -12,48 +12,83 @@
 .slidev-layout {
   color: var(--st-ink);
   background: #fff;
-  font-size: 1.18rem;
-  line-height: 1.5;
+  font-size: 1.12rem;
+  line-height: 1.45;
 }
 
 .slidev-layout h1 {
   color: var(--st-blue) !important;
-  font-size: 1.85rem !important;
+  font-size: 1.7rem !important;
   line-height: 1.25 !important;
+  margin-bottom: 0.45rem !important;
 }
 
 .slidev-layout li {
-  margin-top: 0.2em;
-  margin-bottom: 0.2em;
+  margin-top: 0.12em;
+  margin-bottom: 0.12em;
 }
 
 /* Sparse slides: fill leftover whitespace with larger type */
 .slidev-layout.roomy {
-  font-size: 1.28rem;
-  line-height: 1.55;
+  font-size: 1.22rem;
+  line-height: 1.52;
 }
 
 .slidev-layout.roomy li + li {
-  margin-top: 0.4em;
+  margin-top: 0.35em;
 }
 
 .slidev-layout.roomy .callout,
 .slidev-layout.roomy .callout-strong,
 .slidev-layout.roomy .callout-alert,
 .slidev-layout.roomy .callout-bar {
-  font-size: 1.12rem;
-  line-height: 1.45;
-  padding: 0.55rem 0.85rem;
-  margin-top: 0.65rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.08rem;
+  line-height: 1.42;
+  padding: 0.5rem 0.8rem;
+  margin-top: 0.55rem;
+  margin-bottom: 0.4rem;
 }
 
 .slidev-layout.roomy .katex-display {
-  margin: 0.55em 0 !important;
+  margin: 0.45em 0 !important;
 }
 
 .slidev-layout.roomy .diagram-wrap {
-  margin-top: 1rem;
+  margin-top: 0.85rem;
+}
+
+/* Dense slides: keep content inside the frame */
+.slidev-layout.dense {
+  font-size: 1rem;
+  line-height: 1.38;
+}
+
+.slidev-layout.dense h1 {
+  font-size: 1.5rem !important;
+  margin-bottom: 0.3rem !important;
+}
+
+.slidev-layout.dense .callout,
+.slidev-layout.dense .callout-strong,
+.slidev-layout.dense .callout-alert,
+.slidev-layout.dense .callout-bar {
+  font-size: 0.92rem;
+  line-height: 1.35;
+  padding: 0.28rem 0.55rem;
+  margin-top: 0.28rem;
+  margin-bottom: 0.22rem;
+}
+
+.slidev-layout.dense .katex-display {
+  margin: 0.22em 0 !important;
+}
+
+.slidev-layout.dense li + li {
+  margin-top: 0.15em;
+}
+
+.slidev-layout:not(.cover):not(.section):not(.intro):not(.end) {
+  overflow: hidden;
 }
 
 /* Seriph theme sets h1 + p to opacity-50 — keep lead lines fully readable */
@@ -114,8 +149,8 @@ div[class*='page-number'] {
   padding: 0.4rem 0.7rem;
   border-radius: 0.4rem;
   text-align: left;
-  font-size: 1.02rem;
-  line-height: 1.42;
+  font-size: 0.95rem;
+  line-height: 1.38;
   color: var(--st-ink);
 }
 
