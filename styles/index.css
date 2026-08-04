@@ -46,43 +46,68 @@ div[class*='page-number'] {
   display: none !important;
 }
 
+.callout,
+.callout-strong,
+.callout-alert,
+.callout-bar {
+  margin-top: 0.45rem;
+  margin-bottom: 0.35rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 0.4rem;
+  text-align: left;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.callout > :first-child,
+.callout-strong > :first-child,
+.callout-alert > :first-child,
+.callout-bar > :first-child {
+  margin-top: 0 !important;
+}
+
+.callout > :last-child,
+.callout-strong > :last-child,
+.callout-alert > :last-child,
+.callout-bar > :last-child {
+  margin-bottom: 0 !important;
+}
+
+.callout p,
+.callout-strong p,
+.callout-alert p,
+.callout-bar p,
+.callout ul,
+.callout-strong ul,
+.callout-alert ul,
+.callout-bar ul {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.callout .katex-display,
+.callout-strong .katex-display,
+.callout-alert .katex-display,
+.callout-bar .katex-display {
+  margin: 0.35em 0 !important;
+}
+
 .callout {
-  margin-top: 1rem;
-  padding: 0.9rem 1rem;
-  border-radius: 0.5rem;
   border: 1px solid color-mix(in srgb, var(--st-blue) 28%, transparent);
   background: color-mix(in srgb, var(--st-blue) 6%, white);
-  text-align: left;
-  font-size: 0.925rem;
-  line-height: 1.55;
 }
 
 .callout-strong {
-  margin-top: 1.25rem;
-  padding: 1rem 1.1rem;
-  border-radius: 0.5rem;
   border: 2px solid color-mix(in srgb, var(--st-blue) 55%, transparent);
   background: color-mix(in srgb, var(--st-blue) 8%, white);
-  text-align: left;
-  font-size: 0.95rem;
-  line-height: 1.55;
 }
 
 .callout-alert {
-  margin-top: 1.25rem;
-  padding: 1rem 1.1rem;
-  border-radius: 0.5rem;
   border: 2px solid color-mix(in srgb, var(--st-alert) 45%, transparent);
   background: color-mix(in srgb, var(--st-alert) 6%, white);
-  text-align: left;
-  font-size: 0.95rem;
-  line-height: 1.55;
 }
 
 .callout-bar {
-  margin-top: 1.25rem;
-  padding: 0.9rem 1rem;
-  border-radius: 0.5rem;
   border-left: 4px solid var(--st-blue);
   background: color-mix(in srgb, var(--st-blue) 8%, white);
 }
