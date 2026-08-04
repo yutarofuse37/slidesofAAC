@@ -415,34 +415,37 @@ layout: section
 # アルゴリズム：MWU
 
 ---
-class: roomy
+layout: two-cols
+layoutClass: gap-4
 ---
 
 # FiedlerベクトルとMWU更新
 
+<div class="text-sm leading-relaxed pr-1">
+
+現在の重み $w^{(t)}$ に対する内側の最小化：
+
+$$
+\min_{x\in X} x^\top L(w^{(t)})x
+$$
+
 <v-clicks>
 
-現在の重み $w^{(t)}$ に対する内側の最小化問題を考える：
-
-$$
-\min_{x\in X} x^\top L(w^{(t)})x.
-$$
-
-- この最小値を与えるベクトルは $L(w^{(t)})$ のFiedlerベクトルであり，本アルゴリズムではその $\alpha$-近似 $x^{(t)}\in X$ を用いる．
-- $x^{(t)}$ を固定すると，目的値は辺重みに関して線形である：
-
-$$
-(x^{(t)})^\top L(w)x^{(t)}
-=
-\sum_{e=\{u,v\}\in E} w_e (x_u^{(t)}-x_v^{(t)})^2 .
-$$
-
-- したがって，各辺の係数
-$\ell_t(e):=(x_u^{(t)}-x_v^{(t)})^2/4$
-をMWUの利得として用いる（$0\le \ell_t(e)\le1$）．
-- 乗法更新は，この利得が大きい辺により大きな重みを与える．
+- 近似Fiedler $x^{(t)}$：弱点を探す引っ張り方．
+- 利得 $\ell_t(e):=(x_u^{(t)}-x_v^{(t)})^2/4$
+  （伸びた辺ほど大きい，$0\le\ell_t\le1$）．
+- 乗法更新 $w_e\leftarrow w_e\exp(\eta\,\ell_t(e))$ で利得大の辺を厚くする．
+- 最後に平均 $\bar{w}=\frac1T\sum_t w^{(t)}$ を返す．
 
 </v-clicks>
+
+</div>
+
+::right::
+
+<div class="flex flex-col items-center justify-center h-full">
+  <MwuIntuition />
+</div>
 
 ---
 
