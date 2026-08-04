@@ -587,8 +587,6 @@ layoutClass: gap-4
 
 <div class="text-sm leading-relaxed pr-2">
 
-<v-clicks>
-
 <div class="callout-alert">
 
 **主結果**
@@ -611,14 +609,12 @@ $$
 $\mathsf{OPT}=\Omega(1/m^2)$ のとき本手法が高速である．
 直径 $O(1)$ の密グラフでは本手法が優位．
 
-</v-clicks>
-
 </div>
 
 ::right::
 
 <div class="flex flex-col items-center justify-center h-full">
-  <ComplexityRegions />
+  <ComplexityRegions :step="1" />
   <div class="caption mt-2 text-center">
     <Katex expr="A_1" />（ティール）と <Katex expr="A_2" />（オレンジ）の優位領域<br>
     <Katex expr="(x,y)=(\log_n m,\log_n\mathsf{OPT})" />

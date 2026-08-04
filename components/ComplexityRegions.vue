@@ -2,6 +2,11 @@
 import { computed } from 'vue'
 import { useSlideContext } from '@slidev/client'
 
+const props = withDefaults(defineProps<{
+  /** Fix step; omit to sync with slide clicks */
+  step?: number
+}>(), {})
+
 const BLUE = '#1c3177'
 const A2 = '#c2410c'
 const A1 = '#0f766e'
@@ -10,7 +15,11 @@ const A2_FILL = '#c2410c'
 
 const { $clicks } = useSlideContext()
 /** 0: 座標 → 1: 両領域 → 2: パス（A₂） → 3: 密（A₁） */
-const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 3))
+const step = computed(() => {
+  if (props.step != null)
+    return Math.min(Math.max(props.step, 0), 3)
+  return Math.min(Math.max(Number($clicks.value ?? 0), 0), 3)
+})
 </script>
 
 <template>
