@@ -12,9 +12,6 @@ transition: slide-left
 comark: true
 duration: 35min
 colorSchema: light
----
-
----
 layout: cover
 background: /bg_title.png
 class: text-left
@@ -23,15 +20,15 @@ class: text-left
 <img
   src="./logo.png"
   alt="Institute of Science Tokyo"
-  class="absolute top-6 left-8 h-9"
+  class="absolute bottom-6 left-8 h-9"
   v-motion
-  :initial="{ opacity: 0, y: -12 }"
+  :initial="{ opacity: 0, y: 12 }"
   :enter="{ opacity: 1, y: 0, transition: { duration: 600 } }"
 />
 
-<div class="absolute inset-0 flex flex-col justify-center pl-12 pr-40 -mt-4">
+<div class="absolute inset-0 flex flex-col justify-center pl-12 pr-40 -mt-4 text-black">
   <h1
-    class="!text-3.5xl !leading-snug !text-left"
+    class="!text-2xl !leading-snug !text-left !text-black !font-normal"
     v-motion
     :initial="{ opacity: 0, x: -24 }"
     :enter="{ opacity: 1, x: 0, transition: { delay: 200, duration: 700 } }"
@@ -41,7 +38,7 @@ class: text-left
   </h1>
 
   <div
-    class="pt-6 text-xl opacity-80"
+    class="pt-6 text-lg text-black"
     v-motion
     :initial="{ opacity: 0 }"
     :enter="{ opacity: 1, transition: { delay: 500, duration: 600 } }"
@@ -49,7 +46,7 @@ class: text-left
     布施 祐大郎, 清水 伸高
   </div>
   <div
-    class="pt-1 opacity-60"
+    class="pt-1 text-black"
     v-motion
     :initial="{ opacity: 0 }"
     :enter="{ opacity: 1, transition: { delay: 650, duration: 600 } }"
@@ -57,7 +54,7 @@ class: text-left
     東京科学大学
   </div>
   <div
-    class="pt-8 text-sm opacity-50"
+    class="pt-8 text-sm text-black"
     v-motion
     :initial="{ opacity: 0 }"
     :enter="{ opacity: 1, transition: { delay: 800, duration: 600 } }"
