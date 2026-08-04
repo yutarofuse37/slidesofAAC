@@ -40,7 +40,7 @@ const WEAK = '#b42318'
           <line x1="108" y1="68" x2="126" y2="50" :stroke="WEAK" stroke-width="2.4" />
         </g>
       </svg>
-      <div class="gb__label">攻撃側に有利</div>
+      <div class="gb__label gb__label--atk">攻撃側に有利</div>
       <div class="gb__hint">引っ張ると橋が伸びて切れる</div>
     </div>
 
@@ -73,7 +73,7 @@ const WEAK = '#b42318'
           <circle cx="200" cy="72" r="6.5" :fill="BLUE" />
         </g>
       </svg>
-      <div class="gb__label">守備側に有利</div>
+      <div class="gb__label gb__label--def">守備側に有利</div>
       <div class="gb__hint">同じ引っ張りでも橋が耐える</div>
     </div>
   </div>
@@ -87,7 +87,7 @@ const WEAK = '#b42318'
   width: 100%;
   max-width: 42rem;
   margin: 0 auto;
-  color: #1c3177;
+  color: #1a1a1a;
   font-size: 0.85rem;
   line-height: 1.35;
 }
@@ -95,7 +95,7 @@ const WEAK = '#b42318'
 .gb__phase {
   font-size: 0.78rem;
   font-weight: 700;
-  color: #7f96c2;
+  color: #555555;
 }
 .gb__svg {
   width: 100%;
@@ -107,12 +107,15 @@ const WEAK = '#b42318'
   margin-top: 0.2rem;
   font-size: 0.95rem;
   font-weight: 700;
+  color: #1a1a1a;
 }
 .gb__hint {
   font-size: 0.78rem;
-  color: #7f96c2;
+  color: #444444;
   margin-top: 0.1rem;
 }
+.gb__label--atk { color: #b42318; }
+.gb__label--def { color: #1c3177; }
 .gb__pull-l { animation: pl 2.8s ease-in-out infinite; }
 .gb__pull-r { animation: pr 2.8s ease-in-out infinite; }
 .gb__side--l { animation: side-l 2.8s ease-in-out infinite; }

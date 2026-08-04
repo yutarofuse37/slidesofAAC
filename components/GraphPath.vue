@@ -7,7 +7,7 @@ const WEAK = '#b42318'
 <template>
   <div class="gp">
     <div class="gp__panel">
-      <div class="gp__title">守備A：橋 {2,3} が細い</div>
+      <div class="gp__title">守備A：橋 <Katex expr="\{2,3\}" /> が細い</div>
       <div class="gp__badge gp__badge--bad">同じ引っ張り → コスト小（攻撃有利）</div>
       <svg viewBox="0 0 300 95" class="gp__svg" aria-hidden="true">
         <text x="40" y="18" class="gp__dir" fill="#7f96c2">左へ</text>
@@ -39,12 +39,12 @@ const WEAK = '#b42318'
           <text x="260" y="62" text-anchor="middle" class="gp__num">4</text>
         </g>
       </svg>
-      <div class="gp__meta">w₁₂=w₃₄=0.45，w₂₃=0.10</div>
-      <div class="gp__result gp__result--bad">C = w₂₃ = 0.10</div>
+      <div class="gp__meta"><Katex expr="w_{12}=w_{34}=0.45,\ w_{23}=0.10" /></div>
+      <div class="gp__result gp__result--bad"><Katex expr="C=w_{23}=0.10" /></div>
     </div>
 
     <div class="gp__panel">
-      <div class="gp__title">守備B：橋 {2,3} が太い</div>
+      <div class="gp__title">守備B：橋 <Katex expr="\{2,3\}" /> が太い</div>
       <div class="gp__badge gp__badge--good">同じ引っ張り → コスト大（守備有利）</div>
       <svg viewBox="0 0 300 95" class="gp__svg" aria-hidden="true">
         <text x="40" y="18" class="gp__dir" fill="#7f96c2">左へ</text>
@@ -76,8 +76,8 @@ const WEAK = '#b42318'
           <text x="260" y="62" text-anchor="middle" class="gp__num">4</text>
         </g>
       </svg>
-      <div class="gp__meta">w₁₂=w₃₄=0.05，w₂₃=0.90</div>
-      <div class="gp__result gp__result--good">C = w₂₃ = 0.90</div>
+      <div class="gp__meta"><Katex expr="w_{12}=w_{34}=0.05,\ w_{23}=0.90" /></div>
+      <div class="gp__result gp__result--good"><Katex expr="C=w_{23}=0.90" /></div>
     </div>
   </div>
 </template>
@@ -90,7 +90,7 @@ const WEAK = '#b42318'
   width: 100%;
   max-width: 48rem;
   margin: 0 auto;
-  color: #1c3177;
+  color: #1a1a1a;
   font-size: 0.85rem;
   line-height: 1.35;
 }
@@ -98,7 +98,7 @@ const WEAK = '#b42318'
 .gp__title {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #1c3177;
+  color: #1a1a1a;
 }
 .gp__badge {
   display: inline-block;
@@ -109,7 +109,7 @@ const WEAK = '#b42318'
   font-weight: 600;
   border: 1px solid #cfdbed;
   background: #f9fbff;
-  color: #1c3177;
+  color: #1a1a1a;
 }
 .gp__badge--bad { border-color: #f3c1bc; background: #fff5f4; color: #b42318; }
 .gp__badge--good { border-color: #cfdbed; background: #e4ebf6; color: #1c3177; }
@@ -125,13 +125,13 @@ const WEAK = '#b42318'
 }
 .gp__num {
   font-size: 12px;
-  fill: #1c3177;
+  fill: #1a1a1a;
   font-family: system-ui, sans-serif;
 }
 .gp__meta {
   margin-top: 0.25rem;
   font-size: 0.8rem;
-  color: #7f96c2;
+  color: #444444;
 }
 .gp__result {
   margin-top: 0.15rem;

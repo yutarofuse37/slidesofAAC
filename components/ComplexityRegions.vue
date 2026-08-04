@@ -20,7 +20,7 @@ const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 3)
       <span class="cr__chip cr__chip--a1"><i />A₁ が速い</span>
     </div>
 
-    <svg viewBox="0 0 300 240" class="cr__svg" aria-hidden="true">
+    <svg viewBox="0 0 300 245" class="cr__svg" aria-hidden="true">
       <defs>
         <marker id="crX" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
           <path d="M0,0 L5,3 L0,6 Z" :fill="BLUE" />
@@ -44,8 +44,17 @@ const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 3)
       <text x="46" y="204" text-anchor="end" class="cr__t">-3</text>
       <text x="46" y="122" text-anchor="end" class="cr__t">-2</text>
       <text x="46" y="40" text-anchor="end" class="cr__t">-1</text>
-      <text x="278" y="216" text-anchor="end" class="cr__ax">x=logₙm</text>
-      <text x="8" y="18" class="cr__ax">y=logₙOPT</text>
+
+      <foreignObject x="200" y="218" width="90" height="20">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="cr__ax-html">
+          <Katex expr="x=\log_n m" />
+        </div>
+      </foreignObject>
+      <foreignObject x="2" y="2" width="90" height="20">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="cr__ax-html">
+          <Katex expr="y=\log_n\mathsf{OPT}" />
+        </div>
+      </foreignObject>
 
       <text class="cr__lab cr__lab--a1" x="190" y="110" text-anchor="middle">A₁</text>
       <text class="cr__lab cr__lab--a2" x="90" y="175" text-anchor="middle">A₂</text>
@@ -61,7 +70,7 @@ const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 3)
     </svg>
 
     <div class="cr__panel cr__panel--path">
-      <div class="cr__panel-head">具体例：パス Pₙ</div>
+      <div class="cr__panel-head">具体例：パス <Katex expr="P_n" /></div>
       <svg viewBox="0 0 180 40" class="cr__mini" aria-hidden="true">
         <line x1="16" y1="20" x2="164" y2="20" :stroke="A2" stroke-width="3" stroke-linecap="round" />
         <circle cx="16" cy="20" r="7" fill="#fff" :stroke="BLUE" stroke-width="1.8" />
@@ -69,11 +78,13 @@ const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 3)
         <circle cx="112" cy="20" r="7" fill="#fff" :stroke="BLUE" stroke-width="1.8" />
         <circle cx="160" cy="20" r="7" fill="#fff" :stroke="BLUE" stroke-width="1.8" />
       </svg>
-      <div class="cr__panel-meta">m≈n，OPT≈n⁻³ → 点は A₂ 側</div>
+      <div class="cr__panel-meta">
+        <Katex expr="m\approx n,\ \mathsf{OPT}\approx n^{-3}" /> → 点は A₂ 側
+      </div>
     </div>
 
     <div class="cr__panel cr__panel--dense">
-      <div class="cr__panel-head">具体例：密／直径 O(1)</div>
+      <div class="cr__panel-head">具体例：密／直径 <Katex expr="O(1)" /></div>
       <svg viewBox="0 0 180 52" class="cr__mini" aria-hidden="true">
         <line x1="50" y1="14" x2="130" y2="14" :stroke="A1" stroke-width="2.2" />
         <line x1="50" y1="14" x2="50" y2="40" :stroke="A1" stroke-width="2.2" />
@@ -89,7 +100,9 @@ const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 3)
         <circle cx="130" cy="40" r="6" fill="#fff" :stroke="BLUE" stroke-width="1.6" />
         <circle cx="90" cy="6" r="6" fill="#fff" :stroke="BLUE" stroke-width="1.6" />
       </svg>
-      <div class="cr__panel-meta">OPT≳n⁻²，密なら → 点は A₁ 側</div>
+      <div class="cr__panel-meta">
+        <Katex expr="\mathsf{OPT}\gtrsim n^{-2}" />，密なら → 点は A₁ 側
+      </div>
     </div>
   </div>
 </template>
@@ -99,7 +112,7 @@ const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 3)
   width: 100%;
   max-width: 18rem;
   margin: 0 auto;
-  color: #1c3177;
+  color: #1a1a1a;
 }
 .cr__legend {
   display: flex;
@@ -113,7 +126,7 @@ const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 3)
   gap: 0.3rem;
   font-size: 0.7rem;
   font-weight: 700;
-  color: #1c3177;
+  color: #1a1a1a;
 }
 .cr__chip i {
   display: inline-block;
@@ -126,14 +139,17 @@ const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 3)
 .cr__chip--a1 i { background: #0f766e; }
 
 .cr__svg { width: 100%; height: auto; display: block; }
-.cr__t,
-.cr__ax {
+.cr__t {
   font-size: 11px;
-  fill: #1c3177;
+  fill: #1a1a1a;
   font-family: system-ui, sans-serif;
   font-weight: 600;
 }
-.cr__ax { font-size: 10px; }
+.cr__ax-html {
+  font-size: 10px;
+  color: #1a1a1a;
+  line-height: 1.1;
+}
 .cr__lab {
   font-size: 22px;
   font-weight: 800;
@@ -157,7 +173,7 @@ const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 3)
 .cr__panel-head {
   font-size: 0.75rem;
   font-weight: 700;
-  color: #1c3177;
+  color: #1a1a1a;
   text-align: center;
 }
 .cr__mini { width: 100%; height: auto; display: block; margin-top: 0.2rem; }
@@ -165,7 +181,7 @@ const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 3)
   margin-top: 0.2rem;
   font-size: 0.68rem;
   font-weight: 600;
-  color: #1c3177;
+  color: #1a1a1a;
   text-align: center;
 }
 

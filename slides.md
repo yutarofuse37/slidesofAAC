@@ -116,11 +116,11 @@ $$
 
   <v-clicks>
 
-  - **守備側**：総量1の強度（ばね定数）を辺へ配分する（$w\in\Delta_E$）．
-  - **攻撃側**：各頂点への引っ張り $x_u$ を選ぶ．符号は向き，$|x_u|$ は力の大きさ．<br>
+  - <span class="role-def">守備側</span>：総量1の強度（ばね定数）を辺へ配分する（$w\in\Delta_E$）．
+  - <span class="role-atk">攻撃側</span>：各頂点への引っ張り $x_u$ を選ぶ．符号は向き，$|x_u|$ は力の大きさ．<br>
     （ただし $x^\top\mathbf{1}=0$，$\|x\|_2=1$）
   - $C(x;w)=\sum w_{\{u,v\}}(x_u-x_v)^2$：その引っ張りに対するコスト（弾性エネルギー）
-  - **攻撃側**はコスト $C$ を最小化：$\lambda_2(L(w))=\min_x C(x;w)$
+  - <span class="role-atk">攻撃側</span>はコスト $C$ を最小化：$\lambda_2(L(w))=\min_x C(x;w)$
 
   </v-clicks>
 
@@ -138,7 +138,7 @@ class: roomy
 
 <v-click>
 
-パス $1$--$2$--$3$--$4$．攻撃側は中央で左右に引っ張る：
+パス $1$--$2$--$3$--$4$．<span class="role-atk">攻撃側</span>は中央で左右に引っ張る：
 $x=\bigl(-\tfrac12,-\tfrac12,\tfrac12,\tfrac12\bigr)$
 （$x^\top\mathbf{1}=0$，$\|x\|_2=1$）．
 伸びるのは辺 $\{2,3\}$ のみで，$C(x;w)=w_{23}$．
@@ -153,7 +153,7 @@ $x=\bigl(-\tfrac12,-\tfrac12,\tfrac12,\tfrac12\bigr)$
 <v-clicks>
 
 - 同じ引っ張り方でも，$w_{23}$ の大きさでコストが大きく変わる．
-- **守備側**は，あらゆる攻撃に対してコストが高くなるよう $w$ を配分したい．
+- <span class="role-def">守備側</span>は，あらゆる攻撃に対してコストが高くなるよう $w$ を配分したい．
 
 </v-clicks>
 </div>
@@ -166,7 +166,7 @@ class: roomy
 
 <v-click>
 
-守備側は，攻撃側の最善（$\min_x$）を見越して $w$ を選ぶ：
+<span class="role-def">守備側</span>は，<span class="role-atk">攻撃側</span>の最善（$\min_x$）を見越して $w$ を選ぶ：
 
 </v-click>
 
@@ -402,10 +402,10 @@ layoutClass: gap-4
 
 <div class="flex flex-col items-center justify-center h-full">
   <ComplexityRegions />
-  <p class="caption mt-2 text-center">
-    $A_1$（ティール）と $A_2$（オレンジ）の優位領域<br>
-    $(x,y)=(\log_n m,\log_n\mathsf{OPT})$
-  </p>
+  <div class="caption mt-2 text-center">
+    <Katex expr="A_1" />（ティール）と <Katex expr="A_2" />（オレンジ）の優位領域<br>
+    <Katex expr="(x,y)=(\log_n m,\log_n\mathsf{OPT})" />
+  </div>
 </div>
 
 ---
@@ -619,10 +619,10 @@ $\mathsf{OPT}=\Omega(1/m^2)$ のとき本手法が高速である．
 
 <div class="flex flex-col items-center justify-center h-full">
   <ComplexityRegions />
-  <p class="caption mt-2 text-center">
-    $A_1$（ティール）と $A_2$（オレンジ）の優位領域<br>
-    $(x,y)=(\log_n m,\log_n\mathsf{OPT})$
-  </p>
+  <div class="caption mt-2 text-center">
+    <Katex expr="A_1" />（ティール）と <Katex expr="A_2" />（オレンジ）の優位領域<br>
+    <Katex expr="(x,y)=(\log_n m,\log_n\mathsf{OPT})" />
+  </div>
 </div>
 
 ---

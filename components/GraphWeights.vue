@@ -102,7 +102,7 @@ const WEAK = '#b42318'
   width: 100%;
   max-width: 44rem;
   margin: 0 auto;
-  color: #1c3177;
+  color: #1a1a1a;
   font-size: 0.85rem;
   line-height: 1.35;
 }
@@ -115,7 +115,7 @@ const WEAK = '#b42318'
 .gw__phase {
   font-size: 0.78rem;
   font-weight: 700;
-  color: #7f96c2;
+  color: #555555;
   margin-bottom: 0.2rem;
 }
 .gw__svg {
@@ -128,12 +128,12 @@ const WEAK = '#b42318'
   margin-top: 0.25rem;
   font-size: 1rem;
   font-weight: 700;
-  color: #1c3177;
+  color: #1a1a1a;
 }
 .gw__hint {
   margin-top: 0.15rem;
   font-size: 0.78rem;
-  color: #7f96c2;
+  color: #444444;
 }
 .gw__legend {
   display: flex;
@@ -142,7 +142,7 @@ const WEAK = '#b42318'
   gap: 1.1rem;
   margin-top: 0.65rem;
   font-size: 0.8rem;
-  color: #1c3177;
+  color: #1a1a1a;
 }
 .gw__legend span {
   display: inline-flex;

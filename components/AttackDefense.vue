@@ -16,7 +16,9 @@ const step = computed(() => {
 
 <template>
   <div class="ad" :data-step="step">
-    <div class="ad__title">守備が全辺に w を配分 → 攻撃が引っ張り x を選ぶ</div>
+    <div class="ad__title">
+      守備が全辺に <Katex expr="w" /> を配分 → 攻撃が引っ張り <Katex expr="x" /> を選ぶ
+    </div>
 
     <svg viewBox="0 0 360 200" class="ad__svg" aria-hidden="true">
       <g class="ad__turn ad__turn--def">
@@ -38,8 +40,8 @@ const step = computed(() => {
         <circle cx="54" cy="116" r="2.4" fill="#f3c1bc" opacity="0.75" />
         <path d="M39 118 Q44 122 49 118" fill="none" :stroke="BLUE" stroke-width="1.4" stroke-linecap="round" />
         <path d="M54 140 Q72 136 92 118" fill="none" :stroke="SUB" stroke-width="3.2" stroke-linecap="round" />
-        <text x="44" y="188" text-anchor="middle" class="ad__name">守備</text>
-        <text x="44" y="198" text-anchor="middle" class="ad__name-sub">w を配分</text>
+        <text x="44" y="188" text-anchor="middle" class="ad__name ad__name--def">守備</text>
+        <text x="44" y="198" text-anchor="middle" class="ad__name-sub">配分</text>
       </g>
 
       <g class="ad__player ad__player--atk">
@@ -52,8 +54,8 @@ const step = computed(() => {
         <circle cx="326" cy="116" r="2.4" fill="#f3c1bc" opacity="0.75" />
         <path d="M311 118 Q316 122 321 118" fill="none" :stroke="BLUE" stroke-width="1.4" stroke-linecap="round" />
         <path d="M306 140 Q288 136 268 118" fill="none" :stroke="BLUE" stroke-width="3.2" stroke-linecap="round" />
-        <text x="316" y="188" text-anchor="middle" class="ad__name">攻撃</text>
-        <text x="316" y="198" text-anchor="middle" class="ad__name-sub">x を選ぶ</text>
+        <text x="316" y="188" text-anchor="middle" class="ad__name ad__name--atk">攻撃</text>
+        <text x="316" y="198" text-anchor="middle" class="ad__name-sub">選択</text>
       </g>
 
       <g class="ad__pull ad__pull--l">
@@ -92,16 +94,22 @@ const step = computed(() => {
       </g>
 
       <g class="ad__cost">
-        <rect x="112" y="136" width="136" height="22" rx="8" fill="#fff5f4" stroke="#f3c1bc" />
-        <text x="180" y="151" text-anchor="middle" class="ad__cost-text">C = ∑ wₑ (xᵤ−xᵥ)²</text>
+        <rect x="100" y="134" width="160" height="26" rx="8" fill="#fff5f4" stroke="#f3c1bc" />
+        <foreignObject x="100" y="134" width="160" height="26">
+          <div xmlns="http://www.w3.org/1999/xhtml" class="ad__fo ad__fo--atk">
+            <Katex expr="C=\sum w_e(x_u-x_v)^2" />
+          </div>
+        </foreignObject>
       </g>
       <g class="ad__min">
-        <rect x="112" y="136" width="136" height="22" rx="8" fill="#e4ebf6" stroke="#cfdbed" />
-        <text x="180" y="151" text-anchor="middle" class="ad__min-text">λ₂ = minₓ C(x; w)</text>
+        <rect x="100" y="134" width="160" height="26" rx="8" fill="#e4ebf6" stroke="#cfdbed" />
+        <foreignObject x="100" y="134" width="160" height="26">
+          <div xmlns="http://www.w3.org/1999/xhtml" class="ad__fo ad__fo--def">
+            <Katex expr="\lambda_2=\min_x C(x;w)" />
+          </div>
+        </foreignObject>
       </g>
     </svg>
-
-    <div class="ad__hint">クリックで左側の説明と一緒に進みます</div>
   </div>
 </template>
 
@@ -110,20 +118,14 @@ const step = computed(() => {
   width: 100%;
   max-width: 23rem;
   margin: 0 auto;
-  color: #1c3177;
+  color: #1a1a1a;
 }
 .ad__title {
   text-align: center;
   font-size: 0.72rem;
   font-weight: 600;
-  color: #1c3177;
+  color: #1a1a1a;
   margin-bottom: 0.1rem;
-}
-.ad__hint {
-  text-align: center;
-  font-size: 0.62rem;
-  color: #7f96c2;
-  margin-top: 0.15rem;
 }
 .ad__svg {
   width: 100%;
@@ -131,6 +133,17 @@ const step = computed(() => {
   display: block;
   overflow: visible;
 }
+.ad__fo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  line-height: 1;
+}
+.ad__fo--atk { color: #b42318; }
+.ad__fo--def { color: #1c3177; }
 .ad__turn-text {
   font-size: 10px;
   font-weight: 700;
@@ -146,22 +159,15 @@ const step = computed(() => {
 .ad__name {
   font-size: 11px;
   font-weight: 700;
-  fill: #1c3177;
   font-family: system-ui, sans-serif;
 }
+.ad__name--def { fill: #1c3177; }
+.ad__name--atk { fill: #b42318; }
 .ad__name-sub {
   font-size: 8px;
-  fill: #7f96c2;
+  fill: #555555;
   font-family: system-ui, sans-serif;
 }
-.ad__cost-text,
-.ad__min-text {
-  font-size: 10px;
-  font-weight: 700;
-  font-family: system-ui, sans-serif;
-}
-.ad__cost-text { fill: #b42318; }
-.ad__min-text { fill: #1c3177; }
 
 .ad__e {
   fill: none;
