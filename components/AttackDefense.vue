@@ -113,13 +113,13 @@ const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 4)
   text-align: center;
   font-size: 0.72rem;
   font-weight: 600;
-  color: #64748b;
+  color: #334155;
   margin-bottom: 0.1rem;
 }
 .ad__hint {
   text-align: center;
   font-size: 0.62rem;
-  color: #94a3b8;
+  color: #475569;
   margin-top: 0.15rem;
 }
 .ad__svg {
@@ -148,7 +148,7 @@ const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 4)
 }
 .ad__name-sub {
   font-size: 8px;
-  fill: #7f96c2;
+  fill: #475569;
   font-family: system-ui, sans-serif;
 }
 .ad__cost-text,
@@ -177,9 +177,9 @@ const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 4)
   transition: opacity 0.35s ease, transform 0.45s ease, filter 0.35s ease;
 }
 
-/* step 0: idle dashed */
-.ad[data-step="0"] .ad__turn { opacity: 0.25; }
-.ad[data-step="0"] .ad__player { opacity: 0.45; filter: grayscale(0.25); }
+/* step 0: idle dashed — keep labels readable */
+.ad[data-step="0"] .ad__turn { opacity: 0.55; }
+.ad[data-step="0"] .ad__player { opacity: 0.85; }
 .ad[data-step="0"] .ad__pull,
 .ad[data-step="0"] .ad__cut,
 .ad[data-step="0"] .ad__cost,
@@ -187,9 +187,9 @@ const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 4)
 
 /* step 1: defense allocates — all edges solid with thickness */
 .ad[data-step="1"] .ad__turn--def { opacity: 1; }
-.ad[data-step="1"] .ad__turn--atk { opacity: 0.2; }
-.ad[data-step="1"] .ad__player--def { opacity: 1; filter: none; }
-.ad[data-step="1"] .ad__player--atk { opacity: 0.35; filter: grayscale(0.35); }
+.ad[data-step="1"] .ad__turn--atk { opacity: 0.45; }
+.ad[data-step="1"] .ad__player--def { opacity: 1; }
+.ad[data-step="1"] .ad__player--atk { opacity: 0.7; }
 .ad[data-step="1"] .ad__pull,
 .ad[data-step="1"] .ad__cut,
 .ad[data-step="1"] .ad__cost,
@@ -213,16 +213,16 @@ const step = computed(() => Math.min(Math.max(Number($clicks.value ?? 0), 0), 4)
 /* step 2+: keep allocation; attacker pulls */
 .ad[data-step="2"] .ad__turn--def,
 .ad[data-step="3"] .ad__turn--def,
-.ad[data-step="4"] .ad__turn--def { opacity: 0.2; }
+.ad[data-step="4"] .ad__turn--def { opacity: 0.45; }
 .ad[data-step="2"] .ad__turn--atk,
 .ad[data-step="3"] .ad__turn--atk,
 .ad[data-step="4"] .ad__turn--atk { opacity: 1; }
 .ad[data-step="2"] .ad__player--def,
 .ad[data-step="3"] .ad__player--def,
-.ad[data-step="4"] .ad__player--def { opacity: 0.35; filter: grayscale(0.35); }
+.ad[data-step="4"] .ad__player--def { opacity: 0.7; }
 .ad[data-step="2"] .ad__player--atk,
 .ad[data-step="3"] .ad__player--atk,
-.ad[data-step="4"] .ad__player--atk { opacity: 1; filter: none; }
+.ad[data-step="4"] .ad__player--atk { opacity: 1; }
 
 .ad[data-step="2"] .ad__e--thin,
 .ad[data-step="3"] .ad__e--thin,

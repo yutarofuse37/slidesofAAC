@@ -101,7 +101,7 @@ div[class*='page-number'] {
 .diagram-caption {
   margin-top: 0.35rem;
   font-size: 0.75rem;
-  color: color-mix(in srgb, var(--st-ink) 55%, white);
+  color: #334155;
   text-align: center;
   line-height: 1.4;
 }

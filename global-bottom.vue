@@ -54,7 +54,8 @@
 
 .st-footer__center {
   text-align: center;
-  opacity: 0.85;
+  opacity: 1;
+  color: #1c3177;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -68,7 +69,8 @@
 }
 
 .st-footer__authors {
-  opacity: 0.85;
+  opacity: 1;
+  color: #1c3177;
 }
 
 .st-footer__page {

@@ -10,8 +10,8 @@ const WEAK = '#b42318'
       <div class="gp__title">守備A：橋 {2,3} が細い</div>
       <div class="gp__badge gp__badge--bad">同じ引っ張り → コスト小（攻撃有利）</div>
       <svg viewBox="0 0 300 95" class="gp__svg" aria-hidden="true">
-        <text x="40" y="18" class="gp__dir" fill="#7f96c2">左へ</text>
-        <text x="240" y="18" class="gp__dir" fill="#7f96c2">右へ</text>
+        <text x="40" y="18" class="gp__dir" fill="#475569">左へ</text>
+        <text x="240" y="18" class="gp__dir" fill="#475569">右へ</text>
         <g class="gp__arrow-l">
           <line x1="62" y1="28" x2="30" y2="28" :stroke="BLUE" stroke-width="2.2" stroke-linecap="round" />
           <polygon points="18,28 32,21 32,35" :fill="BLUE" />
@@ -47,8 +47,8 @@ const WEAK = '#b42318'
       <div class="gp__title">守備B：橋 {2,3} が太い</div>
       <div class="gp__badge gp__badge--good">同じ引っ張り → コスト大（守備有利）</div>
       <svg viewBox="0 0 300 95" class="gp__svg" aria-hidden="true">
-        <text x="40" y="18" class="gp__dir" fill="#7f96c2">左へ</text>
-        <text x="240" y="18" class="gp__dir" fill="#7f96c2">右へ</text>
+        <text x="40" y="18" class="gp__dir" fill="#475569">左へ</text>
+        <text x="240" y="18" class="gp__dir" fill="#475569">右へ</text>
         <g class="gp__arrow-l">
           <line x1="62" y1="28" x2="30" y2="28" :stroke="BLUE" stroke-width="2.2" stroke-linecap="round" />
           <polygon points="18,28 32,21 32,35" :fill="BLUE" />
@@ -131,7 +131,7 @@ const WEAK = '#b42318'
 .gp__meta {
   margin-top: 0.25rem;
   font-size: 0.8rem;
-  color: #64748b;
+  color: #475569;
 }
 .gp__result {
   margin-top: 0.15rem;

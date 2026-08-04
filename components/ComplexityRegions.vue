@@ -88,7 +88,7 @@ const SUB = '#7f96c2'
 .cr__tick--ym3 { left: 12%; bottom: 15%; transform: translateX(-100%); }
 .cr__tick--ym2 { left: 12%; top: 48%; transform: translate(-100%, -50%); }
 .cr__tick--ym1 { left: 12%; top: 16%; transform: translate(-100%, -50%); }
-.cr__axis { position: absolute; font-size: 0.68rem; color: #64748b; }
+.cr__axis { position: absolute; font-size: 0.68rem; color: #475569; }
 .cr__axis--x { right: 3%; bottom: 1%; }
 .cr__axis--y { left: 1%; top: 1%; }
 .cr__eq {
@@ -127,7 +127,7 @@ const SUB = '#7f96c2'
   text-align: center;
   margin-top: 0.4rem;
   font-size: 0.72rem;
-  color: #64748b;
+  color: #475569;
 }
 .cr__a1 { animation: fill-a1 4s ease-in-out infinite; }
 .cr__a2 { animation: fill-a2 4s ease-in-out infinite; }
