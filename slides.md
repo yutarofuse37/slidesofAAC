@@ -318,27 +318,21 @@ layoutClass: gap-4
 
 <div class="text-sm leading-relaxed pr-2">
 
+<v-clicks>
+
 - $(x,y)=(\log_n m,\log_n\mathsf{OPT})$ に応じて最速アルゴリズムが変化する．
 
-<div class="mt-3">
-
-**例：**
-
-- **パス** $P_n$：
+- **例：パス** $P_n$：
   $m=\Theta(n)$，$\mathsf{OPT}=\Theta(n^{-3})$
   → $A_2$ が高速
   （$\widetilde{O}(n^3)$ vs. $\widetilde{O}(n^4)$）
 
-</div>
-
-<div class="mt-3">
-
-- **直径 $O(1)$**：
+- **例：直径 $O(1)$／密グラフ**：
   $\mathsf{OPT}=\Omega(n^{-2})$ より
   $A_1$ は $\widetilde{O}(mn^2)$．
   密グラフ（$m=\Theta(n^2)$）では $A_1$ が優位．
 
-</div>
+</v-clicks>
 
 </div>
 
@@ -346,9 +340,6 @@ layoutClass: gap-4
 
 <div class="flex flex-col items-center justify-center h-full">
   <ComplexityRegions />
-  <div class="diagram-caption">
-    領域が切り替わる様子：A₂（OPT小）→ A₁（OPT大／密）
-  </div>
 </div>
 
 ---
