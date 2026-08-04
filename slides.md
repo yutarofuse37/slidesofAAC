@@ -223,6 +223,8 @@ $\bar{w}\in\Delta_E$ が $\lambda_2(L(\bar{w}))\ge(1-\varepsilon)\mathsf{OPT}$ �
 
 - Absolute Algebraic Connectivity は <a href="https://doi.org/10.1080/03081089008817967" target="_blank" rel="noopener">&#91;Fiedler 1990&#93;</a> により導入された．
 - <a href="https://web.stanford.edu/~boyd/papers/pdf/fastestmix.pdf" target="_blank" rel="noopener">&#91;Boyd–Diaconis–Xiao 2004&#93;</a> は，ランダムウォークの混合を速める辺重み設計を algebraic connectivity 最大化として定式化し，SDPに基づく多項式時間アルゴリズムを与えた．
+- 関連する組合せ問題として，指定本数の辺を追加して algebraic connectivity を最大化する問題は NP困難である
+  <a href="https://doi.org/10.1016/j.orl.2008.09.001" target="_blank" rel="noopener">&#91;Mosk-Aoyama 2008&#93;</a>．
 - 最適辺重みや双対解の構造，特定グラフクラスの陽な公式も研究されている
   （例：<a href="https://doi.org/10.1016/j.laa.2006.08.026" target="_blank" rel="noopener">&#91;de Abreu 2007&#93;</a>，
   <a href="https://doi.org/10.1109/cdc.2008.4738734" target="_blank" rel="noopener">&#91;Wan et al. 2008&#93;</a>）．
@@ -619,12 +621,13 @@ class: text-center
 1. <a href="https://dml.cz/handle/10338.dmlcz/101168" target="_blank" rel="noopener">&#91;Fiedler 1973&#93;</a> M. Fiedler. Algebraic connectivity of graphs. *Czechoslovak Math. J.*, 1973.
 2. <a href="https://doi.org/10.1080/03081089008817967" target="_blank" rel="noopener">&#91;Fiedler 1990&#93;</a> M. Fiedler. Absolute algebraic connectivity of trees. *Linear Multilinear Algebra*, 1990.
 3. <a href="https://web.stanford.edu/~boyd/papers/pdf/fastestmix.pdf" target="_blank" rel="noopener">&#91;Boyd–Diaconis–Xiao 2004&#93;</a> S. Boyd, P. Diaconis, and L. Xiao. Fastest mixing Markov chain on a graph. *SIAM Rev.*, 2004.
-4. <a href="https://doi.org/10.1016/j.laa.2006.08.026" target="_blank" rel="noopener">&#91;de Abreu 2007&#93;</a> N. M. M. de Abreu. Old and new results on algebraic connectivity of graphs. *Linear Algebra Appl.*, 2007.
-5. <a href="https://doi.org/10.1137/130915984" target="_blank" rel="noopener">&#91;Spielman–Teng 2014&#93;</a> D. A. Spielman and S.-H. Teng. Nearly linear time algorithms for preconditioning and solving symmetric, diagonally dominant linear systems. *SIAM J. Matrix Anal. Appl.*, 2014.
-6. <a href="https://theoryofcomputing.org/articles/v008a006/" target="_blank" rel="noopener">&#91;Arora–Hazan–Kale 2012&#93;</a> S. Arora, E. Hazan, and S. Kale. The multiplicative weights update method: a meta-algorithm and applications. *Theory of Computing*, 2012.
-7. <a href="https://arxiv.org/abs/2004.04250" target="_blank" rel="noopener">&#91;Jiang et al. 2020&#93;</a> H. Jiang, Y. T. Lee, Z. Song, and S. C.-W. Wong. An improved cutting plane method for convex optimization, convex-concave games, and its applications. *STOC*, 2020.
-8. <a href="https://doi.org/10.1561/2200000018" target="_blank" rel="noopener">&#91;Shalev-Shwartz 2012&#93;</a> S. Shalev-Shwartz. Online learning and online convex optimization. *Found. Trends Mach. Learn.*, 2012.
-9. <a href="https://doi.org/10.1007/BF01787694" target="_blank" rel="noopener">&#91;Mohar 1991&#93;</a> B. Mohar. Eigenvalues, diameter, and mean distance of graphs. *Graphs Combin.*, 1991.
+4. <a href="https://doi.org/10.1016/j.orl.2008.09.001" target="_blank" rel="noopener">&#91;Mosk-Aoyama 2008&#93;</a> D. Mosk-Aoyama. Maximum algebraic connectivity augmentation is NP-hard. *Oper. Res. Lett.*, 2008.
+5. <a href="https://doi.org/10.1016/j.laa.2006.08.026" target="_blank" rel="noopener">&#91;de Abreu 2007&#93;</a> N. M. M. de Abreu. Old and new results on algebraic connectivity of graphs. *Linear Algebra Appl.*, 2007.
+6. <a href="https://doi.org/10.1137/130915984" target="_blank" rel="noopener">&#91;Spielman–Teng 2014&#93;</a> D. A. Spielman and S.-H. Teng. Nearly linear time algorithms for preconditioning and solving symmetric, diagonally dominant linear systems. *SIAM J. Matrix Anal. Appl.*, 2014.
+7. <a href="https://theoryofcomputing.org/articles/v008a006/" target="_blank" rel="noopener">&#91;Arora–Hazan–Kale 2012&#93;</a> S. Arora, E. Hazan, and S. Kale. The multiplicative weights update method: a meta-algorithm and applications. *Theory of Computing*, 2012.
+8. <a href="https://arxiv.org/abs/2004.04250" target="_blank" rel="noopener">&#91;Jiang et al. 2020&#93;</a> H. Jiang, Y. T. Lee, Z. Song, and S. C.-W. Wong. An improved cutting plane method for convex optimization, convex-concave games, and its applications. *STOC*, 2020.
+9. <a href="https://doi.org/10.1561/2200000018" target="_blank" rel="noopener">&#91;Shalev-Shwartz 2012&#93;</a> S. Shalev-Shwartz. Online learning and online convex optimization. *Found. Trends Mach. Learn.*, 2012.
+10. <a href="https://doi.org/10.1007/BF01787694" target="_blank" rel="noopener">&#91;Mohar 1991&#93;</a> B. Mohar. Eigenvalues, diameter, and mean distance of graphs. *Graphs Combin.*, 1991.
 
 </div>
 
