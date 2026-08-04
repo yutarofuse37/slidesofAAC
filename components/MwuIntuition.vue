@@ -166,7 +166,7 @@ const captionParts = computed(() => {
   border-radius: 999px;
   border: 1px solid #cfdbed;
   background: #f9fbff;
-  font-size: 0.72rem;
+  font-size: 0.82rem;
   opacity: 0.4;
   transition: opacity 0.3s ease, border-color 0.3s ease, background 0.3s ease;
 }
@@ -231,7 +231,7 @@ const captionParts = computed(() => {
 .mi__caption {
   margin-top: 0.25rem;
   text-align: center;
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   color: #444;
   min-height: 1.6em;
 }

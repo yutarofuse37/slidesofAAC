@@ -91,12 +91,12 @@ const WEAK = '#b42318'
   max-width: 48rem;
   margin: 0 auto;
   color: #1a1a1a;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   line-height: 1.35;
 }
 .gp__panel { text-align: center; }
 .gp__title {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: #1a1a1a;
 }
@@ -105,7 +105,7 @@ const WEAK = '#b42318'
   margin: 0.3rem 0 0.2rem;
   padding: 0.15rem 0.55rem;
   border-radius: 999px;
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 600;
   border: 1px solid #cfdbed;
   background: #f9fbff;
@@ -130,12 +130,12 @@ const WEAK = '#b42318'
 }
 .gp__meta {
   margin-top: 0.25rem;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: #444444;
 }
 .gp__result {
   margin-top: 0.15rem;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 700;
 }
 .gp__result--bad { color: #b42318; }

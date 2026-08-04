@@ -12,11 +12,24 @@
 .slidev-layout {
   color: var(--st-ink);
   background: #fff;
+  font-size: 1.18rem;
+  line-height: 1.5;
+}
+
+.slidev-layout h1 {
+  color: var(--st-blue) !important;
+  font-size: 1.85rem !important;
+  line-height: 1.25 !important;
+}
+
+.slidev-layout li {
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
 }
 
 /* Sparse slides: fill leftover whitespace with larger type */
 .slidev-layout.roomy {
-  font-size: 1.14rem;
+  font-size: 1.28rem;
   line-height: 1.55;
 }
 
@@ -28,7 +41,7 @@
 .slidev-layout.roomy .callout-strong,
 .slidev-layout.roomy .callout-alert,
 .slidev-layout.roomy .callout-bar {
-  font-size: 1.02rem;
+  font-size: 1.12rem;
   line-height: 1.45;
   padding: 0.55rem 0.85rem;
   margin-top: 0.65rem;
@@ -41,10 +54,6 @@
 
 .slidev-layout.roomy .diagram-wrap {
   margin-top: 1rem;
-}
-
-.slidev-layout h1 {
-  color: var(--st-blue) !important;
 }
 
 /* Seriph theme sets h1 + p to opacity-50 — keep lead lines fully readable */
@@ -80,7 +89,7 @@
 }
 
 .caption {
-  font-size: 0.78rem;
+  font-size: 0.92rem;
   color: var(--st-muted);
   line-height: 1.45;
 }
@@ -105,8 +114,8 @@ div[class*='page-number'] {
   padding: 0.4rem 0.7rem;
   border-radius: 0.4rem;
   text-align: left;
-  font-size: 0.88rem;
-  line-height: 1.4;
+  font-size: 1.02rem;
+  line-height: 1.42;
   color: var(--st-ink);
 }
 
@@ -184,7 +193,7 @@ div[class*='page-number'] {
 
 .diagram-caption {
   margin-top: 0.35rem;
-  font-size: 0.75rem;
+  font-size: 0.88rem;
   color: var(--st-muted);
   text-align: center;
   line-height: 1.4;

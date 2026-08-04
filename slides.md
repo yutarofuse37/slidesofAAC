@@ -110,7 +110,7 @@ $$
 $$
 
 <div class="grid grid-cols-[1.1fr_0.9fr] gap-5 items-center mt-2">
-  <div class="text-sm leading-relaxed">
+  <div class="leading-relaxed">
 
   **ゲームとしてみる：**
 
@@ -378,7 +378,7 @@ layoutClass: gap-4
 
 # 計算量の比較
 
-<div class="text-sm leading-relaxed pr-2">
+<div class="leading-relaxed pr-2">
 
 <v-clicks>
 
@@ -421,7 +421,7 @@ layoutClass: gap-4
 
 # FiedlerベクトルとMWU更新
 
-<div class="text-sm leading-relaxed pr-1">
+<div class="leading-relaxed pr-1">
 
 現在の重み $w^{(t)}$ に対する内側の最小化：
 
@@ -456,7 +456,7 @@ $$
 $\max_{w\in\Delta_E}\min_{x\in X}x^\top L(w)x$
 に対し，MWUを適用する <a href="https://theoryofcomputing.org/articles/v008a006/" target="_blank" rel="noopener">&#91;Arora–Hazan–Kale 2012&#93;</a>．
 
-<div class="callout text-sm leading-relaxed">
+<div class="callout leading-relaxed">
 
 **アルゴリズム $A_1$**
 
@@ -588,7 +588,7 @@ layoutClass: gap-4
 
 # まとめ
 
-<div class="text-sm leading-relaxed pr-2">
+<div class="leading-relaxed pr-2">
 
 <div class="callout-alert">
 
@@ -631,7 +631,7 @@ class: text-center
 
 # 参考文献
 
-<div class="text-left text-sm max-w-3xl mx-auto space-y-1.5">
+<div class="text-left max-w-3xl mx-auto space-y-1.5" style="font-size: 0.95rem">
 
 1. <a href="https://dml.cz/handle/10338.dmlcz/101168" target="_blank" rel="noopener">&#91;Fiedler 1973&#93;</a> M. Fiedler. Algebraic connectivity of graphs. *Czechoslovak Math. J.*, 1973.
 2. <a href="https://doi.org/10.1080/03081089008817967" target="_blank" rel="noopener">&#91;Fiedler 1990&#93;</a> M. Fiedler. Absolute algebraic connectivity of trees. *Linear Multilinear Algebra*, 1990.

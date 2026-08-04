@@ -88,12 +88,12 @@ const WEAK = '#b42318'
   max-width: 42rem;
   margin: 0 auto;
   color: #1a1a1a;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   line-height: 1.35;
 }
 .gb__panel { text-align: center; }
 .gb__phase {
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   font-weight: 700;
   color: #555555;
 }
@@ -105,12 +105,12 @@ const WEAK = '#b42318'
 }
 .gb__label {
   margin-top: 0.2rem;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: #1a1a1a;
 }
 .gb__hint {
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   color: #444444;
   margin-top: 0.1rem;
 }

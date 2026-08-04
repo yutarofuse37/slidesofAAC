@@ -133,7 +133,7 @@ const step = computed(() => {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 700;
   color: #1a1a1a;
 }
@@ -180,7 +180,7 @@ const step = computed(() => {
 .cr__panel--path { border: 2px solid #c2410c; }
 .cr__panel--dense { border: 2px solid #0f766e; }
 .cr__panel-head {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: #1a1a1a;
   text-align: center;
@@ -188,7 +188,7 @@ const step = computed(() => {
 .cr__mini { width: 100%; height: auto; display: block; margin-top: 0.2rem; }
 .cr__panel-meta {
   margin-top: 0.2rem;
-  font-size: 0.68rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: #1a1a1a;
   text-align: center;

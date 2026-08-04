@@ -122,7 +122,7 @@ const step = computed(() => {
 }
 .ad__title {
   text-align: center;
-  font-size: 0.72rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: #1a1a1a;
   margin-bottom: 0.1rem;
