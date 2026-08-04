@@ -12,8 +12,8 @@ const WEAK = '#b42318'
       <div class="gw__panel">
         <div class="gw__phase">① 細い橋が切れる</div>
         <svg viewBox="0 0 240 130" class="gw__svg" aria-hidden="true">
-          <path class="gw__pull gw__pull--l" d="M16 66 H42" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gwAL)" />
-          <path class="gw__pull gw__pull--r" d="M224 66 H198" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gwAR)" />
+          <path class="gw__pull gw__pull--l" d="M42 66 H16" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gwAL)" />
+          <path class="gw__pull gw__pull--r" d="M198 66 H224" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gwAR)" />
 
           <!-- left cluster + half bridge move together -->
           <g class="gw__side gw__side--l">
@@ -59,8 +59,8 @@ const WEAK = '#b42318'
       <div class="gw__panel">
         <div class="gw__phase">② 太い橋が耐える</div>
         <svg viewBox="0 0 240 130" class="gw__svg" aria-hidden="true">
-          <path class="gw__pull gw__pull--l" d="M16 66 H42" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gwBL)" />
-          <path class="gw__pull gw__pull--r" d="M224 66 H198" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gwBR)" />
+          <path class="gw__pull gw__pull--l" d="M42 66 H16" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gwBL)" />
+          <path class="gw__pull gw__pull--r" d="M198 66 H224" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gwBR)" />
 
           <g class="gw__side gw__side--l-hold">
             <line x1="38" y1="56" x2="66" y2="26" :stroke="SUB" stroke-width="2" stroke-linecap="round" />

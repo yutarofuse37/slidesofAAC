@@ -9,8 +9,8 @@ const WEAK = '#b42318'
     <div class="gb__panel">
       <div class="gb__phase">細い接続</div>
       <svg viewBox="0 0 240 120" class="gb__svg" aria-hidden="true">
-        <path class="gb__pull-l" d="M14 60 H40" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gL)" />
-        <path class="gb__pull-r" d="M226 60 H200" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gR)" />
+        <path class="gb__pull-l" d="M40 60 H14" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gL)" />
+        <path class="gb__pull-r" d="M200 60 H226" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gR)" />
         <g class="gb__side gb__side--l">
           <line x1="40" y1="50" x2="68" y2="22" :stroke="SUB" stroke-width="2" />
           <line x1="68" y1="22" x2="80" y2="72" :stroke="SUB" stroke-width="2" />
@@ -45,8 +45,8 @@ const WEAK = '#b42318'
     <div class="gb__panel">
       <div class="gb__phase">太い接続</div>
       <svg viewBox="0 0 240 120" class="gb__svg" aria-hidden="true">
-        <path class="gb__pull-l" d="M14 60 H40" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gL2)" />
-        <path class="gb__pull-r" d="M226 60 H200" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gR2)" />
+        <path class="gb__pull-l" d="M40 60 H14" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gL2)" />
+        <path class="gb__pull-r" d="M200 60 H226" :stroke="BLUE" stroke-width="2.2" fill="none" marker-end="url(#gR2)" />
         <g class="gb__side gb__side--l-hold">
           <line x1="40" y1="50" x2="68" y2="22" :stroke="SUB" stroke-width="2" />
           <line x1="68" y1="22" x2="80" y2="72" :stroke="SUB" stroke-width="2" />

@@ -15,8 +15,8 @@ const WEAK = '#b42318'
       </div>
 
       <svg viewBox="0 0 320 150" class="ad__svg" aria-hidden="true">
-        <path class="ad__pull ad__pull--l" d="M16 75 H48" :stroke="BLUE" stroke-width="2.4" fill="none" marker-end="url(#adL)" />
-        <path class="ad__pull ad__pull--r" d="M304 75 H272" :stroke="BLUE" stroke-width="2.4" fill="none" marker-end="url(#adR)" />
+        <path class="ad__pull ad__pull--l" d="M48 75 H16" :stroke="BLUE" stroke-width="2.4" fill="none" marker-end="url(#adL)" />
+        <path class="ad__pull ad__pull--r" d="M272 75 H304" :stroke="BLUE" stroke-width="2.4" fill="none" marker-end="url(#adR)" />
 
         <!-- left cluster + half bridges -->
         <g class="ad__side ad__side--l">
