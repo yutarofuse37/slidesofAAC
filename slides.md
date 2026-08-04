@@ -102,11 +102,15 @@ $$
 
   **ゲームとしてみる：**
 
+  <v-clicks>
+
   - **守備側**：総量1の強度を辺へ配分（$w\in\Delta_E$）
   - **攻撃側**：頂点の引っ張り $x$ を選ぶ<br>
     （$x^\top\mathbf{1}=0$，$\|x\|_2=1$）
   - 利得 $C(x;w)=\sum w_e(x_u-x_v)^2$（弾性エネルギー）
   - 攻撃側は $C$ を最小化し，$\lambda_2(L(w))=\min_x C(x;w)$
+
+  </v-clicks>
 
   </div>
   <div class="text-center">
