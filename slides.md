@@ -8,7 +8,6 @@ info: |
   夏のLAシンポジウム2026
 drawings:
   persist: false
-transition: slide-left
 comark: true
 duration: 35min
 colorSchema: light
@@ -21,17 +20,11 @@ class: text-left
   src="./logo.png"
   alt="Institute of Science Tokyo"
   class="absolute bottom-6 left-8 h-9"
-  v-motion
-  :initial="{ opacity: 0, y: 12 }"
-  :enter="{ opacity: 1, y: 0, transition: { duration: 600 } }"
 />
 
 <div class="absolute inset-0 flex flex-col justify-center pl-12 pr-40 -mt-4 text-black">
   <h1
     class="!text-2xl !leading-snug !text-left !text-black !font-normal"
-    v-motion
-    :initial="{ opacity: 0, x: -24 }"
-    :enter="{ opacity: 1, x: 0, transition: { delay: 200, duration: 700 } }"
   >
     Multiplicative Weights Update<br>
     for Absolute Algebraic Connectivity
@@ -39,25 +32,16 @@ class: text-left
 
   <div
     class="pt-6 text-lg text-black"
-    v-motion
-    :initial="{ opacity: 0 }"
-    :enter="{ opacity: 1, transition: { delay: 500, duration: 600 } }"
   >
     布施 祐大郎, 清水 伸高
   </div>
   <div
     class="pt-1 text-black"
-    v-motion
-    :initial="{ opacity: 0 }"
-    :enter="{ opacity: 1, transition: { delay: 650, duration: 600 } }"
   >
     東京科学大学
   </div>
   <div
     class="pt-8 text-sm text-black"
-    v-motion
-    :initial="{ opacity: 0 }"
-    :enter="{ opacity: 1, transition: { delay: 800, duration: 600 } }"
   >
     夏のLAシンポジウム2026
   </div>
@@ -77,17 +61,17 @@ layout: section
 
 <div class="mt-4" />
 
-- <span v-mark.circle.orange="1">通信網</span>：障害が起きても通信を維持したい．
-- <span v-mark.circle.orange="2">交通網・物流網</span>：一部の経路が止まっても全体機能を保ちたい．
-- <span v-mark.circle.orange="3">分散システム</span>：情報共有や合意形成を安定かつ高速に行いたい．
+- 通信網：障害が起きても通信を維持したい．
+- 交通網・物流網：一部の経路が止まっても全体機能を保ちたい．
+- 分散システム：情報共有や合意形成を安定かつ高速に行いたい．
 
-<div v-click class="mt-6 p-4 rounded bg-primary/8 border-l-4 border-primary">
+<div class="mt-6 p-4 rounded bg-primary/8 border-l-4 border-primary">
 
 この共通課題は，「ネットワークをどれだけ頑健に設計できるか」である．
 
 </div>
 
-<div v-click class="mt-4">
+<div class="mt-4">
 
 本研究ではあるグラフが与えられたときに，各辺に重みを配分し，その重み付きグラフの連結性を最大化する問題を考える．
 
@@ -151,7 +135,7 @@ layout: section
   <span><span class="inline-block w-8 border-t border-black align-middle mr-1"></span>細線：配分小</span>
 </div>
 
-<div v-click class="mt-4 text-center">
+<div class="mt-4 text-center">
 
 「分断されにくさ」を測り，その値を重み配分によって**最大化**できるか．
 
@@ -161,7 +145,7 @@ layout: section
 
 # 連結性指標 $\lambda_2$ とその解釈
 
-重み付きラプラシアン $L(w)$ の第二固有値（algebraic connectivity）[Fiedler 1973]：
+重み付きラプラシアン $L(w)$ の第二固有値（algebraic connectivity）[[Fiedler 1973]](https://dml.cz/handle/10338.dmlcz/101168)：
 
 $$
 \lambda_2(L(w))
@@ -205,7 +189,7 @@ $$
 </div>
 
 <div class="grid grid-cols-2 gap-8 mt-3">
-  <div v-click class="text-center text-sm">
+  <div class="text-center text-sm">
     <div class="font-bold mb-1">守備A：$\{2,3\}$ が細い</div>
     <div class="opacity-70 text-xs mb-1">$w_{12}=w_{34}=0.45$，$w_{23}=0.10$</div>
     <svg viewBox="0 0 280 80" class="w-full max-h-20 mx-auto">
@@ -227,7 +211,7 @@ $$
     </svg>
     <div class="mt-1 text-red-700 font-medium">$C=0.10$（攻撃側に有利）</div>
   </div>
-  <div v-click class="text-center text-sm">
+  <div class="text-center text-sm">
     <div class="font-bold mb-1">守備B：$\{2,3\}$ が太い</div>
     <div class="opacity-70 text-xs mb-1">$w_{12}=w_{34}=0.05$，$w_{23}=0.90$</div>
     <svg viewBox="0 0 280 80" class="w-full max-h-20 mx-auto">
@@ -251,7 +235,7 @@ $$
   </div>
 </div>
 
-<div v-click class="mt-4 text-sm">
+<div class="mt-4 text-sm">
 
 - 同じ引っ張りでも，$w_{23}$ の大きさでコストが大きく変わる．
 - 守備側は，あらゆる攻撃に対してコストが高くなるよう $w$ を配分したい．
@@ -315,7 +299,7 @@ $$
   </div>
 </div>
 
-<div v-click class="mt-2 text-sm">
+<div class="mt-2 text-sm">
 
 - 戦略：攻撃されやすい辺の強度を高め，どの引っ張りでもコストが同程度になるようにする．
 - これが algebraic connectivity の最大化問題である．
@@ -326,13 +310,13 @@ $$
 
 # 今回扱う問題
 
-- <span v-click>グラフ構造は固定し，辺重みを変数として最適化する．</span>
-- <span v-click>制約は「非負」かつ「総和1」：$w\in\Delta_E$．</span>
-- <span v-click>目的は $\lambda_2(L(w))$ の最大化である．</span>
+- <span>グラフ構造は固定し，辺重みを変数として最適化する．</span>
+- <span>制約は「非負」かつ「総和1」：$w\in\Delta_E$．</span>
+- <span>目的は $\lambda_2(L(w))$ の最大化である．</span>
 
-<div v-click class="mt-4 p-4 rounded border border-primary/30 bg-primary/5 text-left text-sm">
+<div class="mt-4 p-4 rounded border border-primary/30 bg-primary/5 text-left text-sm">
 
-**定義**（Absolute Algebraic Connectivity [Fiedler 1990]）
+**定義**（Absolute Algebraic Connectivity [[Fiedler 1990]](https://doi.org/10.1080/03081089008817967)）
 
 $$
 \begin{aligned}
@@ -350,11 +334,11 @@ $$
 
 # この問題の難しさ
 
-- <span v-click>目的関数は固有値に基づく非平滑関数であり，解析・計算の両面で取り扱いが難しい．</span>
-- <span v-click>SDP定式化は可能であるが，実装負荷および計算負荷が高くなりやすい．</span>
-- <span v-click>汎用ブラックボックス解法ではなく，グラフ構造を直接活用する解法が望まれる．</span>
+- <span>目的関数は固有値に基づく非平滑関数であり，解析・計算の両面で取り扱いが難しい．</span>
+- <span>SDP定式化は可能であるが，実装負荷および計算負荷が高くなりやすい．</span>
+- <span>汎用ブラックボックス解法ではなく，グラフ構造を直接活用する解法が望まれる．</span>
 
-<div v-click class="mt-8 p-5 rounded border-2 border-red-500/50 bg-red-500/5">
+<div class="mt-8 p-5 rounded border-2 border-red-500/50 bg-red-500/5">
 
 **本研究の目標**
 
@@ -377,7 +361,7 @@ $L_e := (\chi_u - \chi_v)(\chi_u - \chi_v)^\top$ と定める．
 
 重み $w\in\Delta_E$ に対するラプラシアンは $L(w)=\sum_{e\in E} w_eL_e$ である．
 
-<div v-click class="mt-4">
+<div class="mt-4">
 
 - $L(w)$ の最小固有値は常に $0$（対応固有ベクトルは $\mathbf{1}$）．
 - $X := \left\{x \in \mathbb{R}^n \mid x^\top \mathbf{1} = 0, \; \|x\|_2 = 1\right\}$ とおくと：
@@ -388,7 +372,7 @@ $$
 
 </div>
 
-<div v-click>
+<div>
 
 この最小値を与える $x$ は $L(w)$ の第二固有ベクトルであり，**Fiedlerベクトル**と呼ばれる．
 
@@ -400,9 +384,9 @@ $$
 
 正確なFiedlerベクトルの計算は難しいので，**近似Fiedlerベクトル**を用いる．
 
-<div v-click class="mt-3 p-4 rounded border border-primary/30 bg-primary/5 text-sm">
+<div class="mt-3 p-4 rounded border border-primary/30 bg-primary/5 text-sm">
 
-**定義**（近似Fiedlerベクトル [Spielman–Teng 2014]）
+**定義**（近似Fiedlerベクトル [[Spielman–Teng 2014]](https://doi.org/10.1137/130915984)）
 
 $x\in X$ が
 $x^\top L x \le (1+\alpha)\lambda_2(L)$
@@ -410,9 +394,9 @@ $x^\top L x \le (1+\alpha)\lambda_2(L)$
 
 </div>
 
-<div v-click class="mt-4 p-4 rounded border border-amber-500/30 bg-amber-500/5 text-sm">
+<div class="mt-4 p-4 rounded border border-amber-500/30 bg-amber-500/5 text-sm">
 
-**補題**（高速オラクル [Spielman–Teng 2014]）
+**補題**（高速オラクル [[Spielman–Teng 2014]](https://doi.org/10.1137/130915984)）
 
 任意の $\alpha>0$ に対し，確率 $1-\frac{1}{m^{10}}$ 以上で $\alpha$-近似Fiedlerベクトルを出力する
 ランダム化アルゴリズムが存在し，計算時間は $\widetilde{O}\!\left(\frac{m}{\alpha}\right)$．
@@ -425,7 +409,7 @@ $x^\top L x \le (1+\alpha)\lambda_2(L)$
 
 本研究では，汎用SDPソルバーの代替として，MWUに基づく組合せ的アルゴリズムを提案する．
 
-<div v-click class="mt-4 p-4 rounded border border-emerald-600/30 bg-emerald-600/5 text-sm">
+<div class="mt-4 p-4 rounded border border-emerald-600/30 bg-emerald-600/5 text-sm">
 
 - **入力**：連結無向グラフ $G=(V,E)$（$n$ 頂点，$m$ 辺）と $\varepsilon>0$
 - **出力**：次を満たす $\boldsymbol{w}\in\Delta_E$
@@ -438,7 +422,7 @@ $$
 
 </div>
 
-<div v-click class="mt-4">
+<div class="mt-4">
 
 また，$1/n^3\le \mathsf{OPT}\le 2/(n-1)$ が成り立つ．
 
@@ -448,7 +432,7 @@ $$
 
 # 主結果
 
-<div v-click class="p-4 rounded border border-primary/30 bg-primary/5">
+<div class="p-4 rounded border border-primary/30 bg-primary/5">
 
 **定理**（主定理）
 
@@ -461,9 +445,9 @@ $$
 
 </div>
 
-<div v-click class="mt-5">
+<div class="mt-5">
 
-- 比較対象：Jiangら [2020] の切除平面法 **$A_2$** → $\widetilde{O}(m^3\mathrm{polylog}(1/\varepsilon))$
+- 比較対象：[[Jiang et al. 2020]](https://arxiv.org/abs/2004.04250) の切除平面法 **$A_2$** → $\widetilde{O}(m^3\mathrm{polylog}(1/\varepsilon))$
 - $\mathsf{OPT}\gtrsim 1/m^2$ では $A_1$ が優位，$\mathsf{OPT}$ が小さい領域では $A_2$ が優位となり得る
 
 </div>
@@ -479,7 +463,7 @@ layoutClass: gap-4
 
 - $(x,y)=(\log_n m,\log_n\mathsf{OPT})$ に応じて最速アルゴリズムが変化する．
 
-<div v-click class="mt-3">
+<div class="mt-3">
 
 **例：**
 
@@ -490,7 +474,7 @@ layoutClass: gap-4
 
 </div>
 
-<div v-click class="mt-3">
+<div class="mt-3">
 
 - **直径 $O(1)$**：
   $\mathsf{OPT}=\Omega(n^{-2})$ より
@@ -508,12 +492,8 @@ layoutClass: gap-4
     src="./complexity_regions.png"
     alt="A1 と A2 の優位領域"
     class="w-full max-h-80 object-contain"
-    v-click
-    v-motion
-    :initial="{ opacity: 0, x: 20 }"
-    :enter="{ opacity: 1, x: 0, transition: { duration: 500 } }"
   />
-  <div v-click class="text-xs opacity-60 mt-2 text-center">
+  <div class="text-xs opacity-60 mt-2 text-center">
     $A_1$（ピンク）と $A_2$（シアン）の優位領域
   </div>
 </div>
@@ -535,11 +515,11 @@ $$
 = \max_{\boldsymbol{w} \in \Delta_E} \min_{\boldsymbol{x}\in X} \boldsymbol{x}^\top L(\boldsymbol{w}) \boldsymbol{x}
 $$
 
-<div v-click class="mt-4">
+<div class="mt-4">
 
 - $\boldsymbol{x}^\top L(\boldsymbol{w})\boldsymbol{x} = \sum_{e=\{u,v\}} w_e (x_u-x_v)^2$
 - 各辺の利得は $(x_u-x_v)^2$ で評価される
-- この構造に合わせて **MWU** を適用する [Arora–Hazan–Kale 2012]
+- この構造に合わせて **MWU** を適用する [[Arora–Hazan–Kale 2012]](https://theoryofcomputing.org/articles/v008a006/)
 
 </div>
 
@@ -551,12 +531,12 @@ $$
 
 **更新則**
 
-1. <span v-click>初期化：$w_e^{(0)}=1/m$（一様），学習率 $\eta$，近似度 $\alpha$，反復回数 $T$．</span>
-2. <span v-click>各時刻 $t=0,\dots,T-1$ について：</span>
-   1. <span v-click>$L(w^{(t)})$ の $\alpha$-近似Fiedlerベクトル $x^{(t)}$ を求める．</span>
-   2. <span v-click>損失 $\ell_t(e):=(x_u^{(t)}-x_v^{(t)})^2/4$（$0\le\ell_t(e)\le1$）．</span>
-   3. <span v-click>乗法的更新：$w_e^{(t+1)} \propto w_e^{(t)}\exp\bigl(\eta\,\ell_t(e)\bigr)$．</span>
-3. <span v-click>出力は平均 $\bar{w} = \frac{1}{T}\sum_{t=0}^{T-1}w^{(t)}$．</span>
+1. <span>初期化：$w_e^{(0)}=1/m$（一様），学習率 $\eta$，近似度 $\alpha$，反復回数 $T$．</span>
+2. <span>各時刻 $t=0,\dots,T-1$ について：</span>
+   1. <span>$L(w^{(t)})$ の $\alpha$-近似Fiedlerベクトル $x^{(t)}$ を求める．</span>
+   2. <span>損失 $\ell_t(e):=(x_u^{(t)}-x_v^{(t)})^2/4$（$0\le\ell_t(e)\le1$）．</span>
+   3. <span>乗法的更新：$w_e^{(t+1)} \propto w_e^{(t)}\exp\bigl(\eta\,\ell_t(e)\bigr)$．</span>
+3. <span>出力は平均 $\bar{w} = \frac{1}{T}\sum_{t=0}^{T-1}w^{(t)}$．</span>
 
 </div>
 
@@ -566,16 +546,16 @@ $$
 
 通常のMWUのリグレット解析では，必要な反復回数は $O(1/\mathsf{OPT}^2)$ である．
 
-<div v-click class="mt-4 p-4 rounded border-2 border-red-500/40 bg-red-500/5">
+<div class="mt-4 p-4 rounded border-2 border-red-500/40 bg-red-500/5">
 
-**local norm technique** [SS2011]
+**local norm technique** [[Shalev-Shwartz 2012]](https://doi.org/10.1561/2200000018)
 
 反復回数を $O(1/\mathsf{OPT})$ まで減らせる．
 定数 $\varepsilon$ のもとでは $\widetilde{O}(m/\mathsf{OPT})$ が得られる．
 
 </div>
 
-<div v-click class="mt-4 p-4 rounded border border-amber-500/30 bg-amber-500/5 text-sm">
+<div class="mt-4 p-4 rounded border border-amber-500/30 bg-amber-500/5 text-sm">
 
 **補題**（リグレットバウンド・概略）
 
@@ -594,7 +574,7 @@ $$
 
 # 近似保証
 
-<div v-click class="p-4 rounded border border-amber-500/30 bg-amber-500/5 text-sm">
+<div class="p-4 rounded border border-amber-500/30 bg-amber-500/5 text-sm">
 
 **補題**
 
@@ -610,7 +590,7 @@ $$
 
 </div>
 
-<div v-click class="mt-5 text-sm">
+<div class="mt-5 text-sm">
 
 パラメータ例（下界 $\gamma\le\mathsf{OPT}$ が既知）：
 
@@ -630,7 +610,7 @@ $$
 学習率と反復回数は未知の $\mathsf{OPT}$ に依存する．
 そこで **Doubling Trick** により，下界 $\gamma$ を段階的に推定する．
 
-<div v-click class="mt-3 p-4 rounded border border-primary/30 bg-primary/5 text-sm">
+<div class="mt-3 p-4 rounded border border-primary/30 bg-primary/5 text-sm">
 
 **手順**
 
@@ -641,7 +621,7 @@ $$
 
 </div>
 
-<div v-click class="mt-4 text-sm">
+<div class="mt-4 text-sm">
 
 - 成功する最小の推定値は $\Theta(\mathsf{OPT})$．失敗試行のコストは等比級数に収まる
 - 全体の計算量は $\widetilde{O}(m/(\varepsilon^3\mathsf{OPT}))$（定数 $\varepsilon$ では $\widetilde{O}(m/\mathsf{OPT})$）
@@ -652,9 +632,9 @@ $$
 
 # まとめ
 
-- <span v-click>absolute algebraic connectivity に対し，汎用SDPを用いず，組合せ的な近似アルゴリズムを与えた．</span>
-- <span v-click>MWU・近似Fiedlerオラクル・local norm technique を組み合わせ，定数 $\varepsilon$ のもとで $\widetilde{O}(m/\mathsf{OPT})$ を達成した．</span>
-- <span v-click>$\mathsf{OPT}$ が比較的大きい場合（例：直径 $O(1)$ の密グラフ）には，$A_2$ より有利になり得る．</span>
+- <span>absolute algebraic connectivity に対し，汎用SDPを用いず，組合せ的な近似アルゴリズムを与えた．</span>
+- <span>MWU・近似Fiedlerオラクル・local norm technique を組み合わせ，定数 $\varepsilon$ のもとで $\widetilde{O}(m/\mathsf{OPT})$ を達成した．</span>
+- <span>$\mathsf{OPT}$ が比較的大きい場合（例：直径 $O(1)$ の密グラフ）には，$A_2$ より有利になり得る．</span>
 
 ---
 layout: center
@@ -665,10 +645,11 @@ class: text-center
 
 <div class="text-left text-sm max-w-2xl mx-auto space-y-2 opacity-90">
 
-1. M. Fiedler. Algebraic connectivity of graphs. *Czechoslovak Math. J.*, 1973.
-2. M. Fiedler. Absolute algebraic connectivity of trees. *Linear Multilinear Algebra*, 1990.
-3. D. A. Spielman and S.-H. Teng. Nearly linear time algorithms for preconditioning and solving symmetric, diagonally dominant linear systems. *SIAM J. Matrix Anal. Appl.*, 2014.
-4. S. Arora, E. Hazan, and S. Kale. The multiplicative weights update method: a meta-algorithm and applications. *Theory of Computing*, 2012.
-5. H. Jiang, Y. T. Lee, Z. Song, and S. C.-W. Wong. An improved cutting plane method for convex optimization, convex-concave games, and its applications. *STOC*, 2020.
+1. [[Fiedler 1973]](https://dml.cz/handle/10338.dmlcz/101168) M. Fiedler. Algebraic connectivity of graphs. *Czechoslovak Math. J.*, 1973.
+2. [[Fiedler 1990]](https://doi.org/10.1080/03081089008817967) M. Fiedler. Absolute algebraic connectivity of trees. *Linear Multilinear Algebra*, 1990.
+3. [[Spielman–Teng 2014]](https://doi.org/10.1137/130915984) D. A. Spielman and S.-H. Teng. Nearly linear time algorithms for preconditioning and solving symmetric, diagonally dominant linear systems. *SIAM J. Matrix Anal. Appl.*, 2014.
+4. [[Arora–Hazan–Kale 2012]](https://theoryofcomputing.org/articles/v008a006/) S. Arora, E. Hazan, and S. Kale. The multiplicative weights update method: a meta-algorithm and applications. *Theory of Computing*, 2012.
+5. [[Jiang et al. 2020]](https://arxiv.org/abs/2004.04250) H. Jiang, Y. T. Lee, Z. Song, and S. C.-W. Wong. An improved cutting plane method for convex optimization, convex-concave games, and its applications. *STOC*, 2020.
+6. [[Shalev-Shwartz 2012]](https://doi.org/10.1561/2200000018) S. Shalev-Shwartz. Online learning and online convex optimization. *Found. Trends Mach. Learn.*, 2012.
 
 </div>
