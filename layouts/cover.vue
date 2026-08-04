@@ -10,11 +10,11 @@ const props = defineProps({
 const style = computed(() => {
   const background = props.background
   if (!background)
-    return { color: '#000' }
+    return { color: '#0f172a' }
 
   const isColor = ['#', 'rgb', 'hsl'].some(v => background.indexOf(v) === 0)
   if (isColor)
-    return { background, color: '#000' }
+    return { background, color: '#0f172a' }
 
   const url = background.startsWith('/')
     ? import.meta.env.BASE_URL + background.slice(1)
@@ -25,7 +25,7 @@ const style = computed(() => {
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
-    color: '#000',
+    color: '#0f172a',
   }
 })
 </script>

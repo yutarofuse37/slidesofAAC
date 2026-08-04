@@ -23,26 +23,18 @@ class: text-left
 />
 
 <div class="absolute inset-0 flex flex-col justify-center pl-12 pr-40 -mt-4 text-black">
-  <h1
-    class="!text-2xl !leading-snug !text-left !text-black !font-normal"
-  >
+  <h1 class="!text-2xl !leading-snug !text-left !text-black !font-normal">
     Multiplicative Weights Update<br>
     for Absolute Algebraic Connectivity
   </h1>
 
-  <div
-    class="pt-6 text-lg text-black"
-  >
+  <div class="pt-6 text-lg text-black">
     布施 祐大郎, 清水 伸高
   </div>
-  <div
-    class="pt-1 text-black"
-  >
+  <div class="pt-1 text-black">
     東京科学大学
   </div>
-  <div
-    class="pt-8 text-sm text-black"
-  >
+  <div class="pt-8 text-sm text-black">
     夏のLAシンポジウム2026
   </div>
 </div>
@@ -65,7 +57,7 @@ layout: section
 - 交通網・物流網：一部の経路が止まっても全体機能を保ちたい．
 - 分散システム：情報共有や合意形成を安定かつ高速に行いたい．
 
-<div class="mt-6 p-4 rounded bg-primary/8 border-l-4 border-primary">
+<div class="callout-bar">
 
 この共通課題は，「ネットワークをどれだけ頑健に設計できるか」である．
 
@@ -83,11 +75,11 @@ layout: section
 
 構造が同じグラフでも，重み配分により「分断されにくさ」は大きく変化する．
 
-<div class="mt-4 flex justify-center">
-  <img src="./graph_weights.png" alt="悪い配分と良い配分" class="w-full max-w-3xl object-contain" />
+<div class="diagram-wrap">
+  <GraphWeights />
 </div>
 
-<div class="mt-4 text-center">
+<div class="mt-3 text-center">
 
 「分断されにくさ」を測り，その値を重み配分によって**最大化**できるか．
 
@@ -105,7 +97,7 @@ $$
 \sum_{\{u,v\}\in E} w_{\{u,v\}}(x_u-x_v)^2
 $$
 
-<div class="grid grid-cols-[1.15fr_0.85fr] gap-6 items-center mt-2">
+<div class="grid grid-cols-[1.1fr_0.9fr] gap-5 items-center mt-2">
   <div class="text-sm leading-relaxed">
 
   **ゲームとしてみる：**
@@ -118,14 +110,7 @@ $$
 
   </div>
   <div class="text-center">
-    <img
-      src="./breaker_tug.png"
-      alt="攻撃と守備のイメージ"
-      class="w-full max-h-56 object-contain mx-auto"
-    />
-    <div class="text-xs opacity-60 mt-1 leading-snug">
-      攻撃＝頂点の引っ張り，守備＝辺強度の配分
-    </div>
+    <AttackDefense />
   </div>
 </div>
 
@@ -140,11 +125,11 @@ $$
 
 </div>
 
-<div class="mt-3 flex justify-center">
-  <img src="./graph_path.png" alt="パス上の攻撃と守備" class="w-full max-w-4xl object-contain" />
+<div class="diagram-wrap">
+  <GraphPath />
 </div>
 
-<div class="mt-4 text-sm">
+<div class="mt-3 text-sm">
 
 - 同じ引っ張りでも，$w_{23}$ の大きさでコストが大きく変わる．
 - 守備側は，あらゆる攻撃に対してコストが高くなるよう $w$ を配分したい．
@@ -163,8 +148,8 @@ $$
 \sum_{\{u,v\}} w_{\{u,v\}}(x_u-x_v)^2
 $$
 
-<div class="mt-3 flex justify-center">
-  <img src="./graph_bridge.png" alt="細い辺と太い辺" class="w-full max-w-3xl object-contain" />
+<div class="diagram-wrap">
+  <GraphBridge />
 </div>
 
 <div class="mt-2 text-sm">
@@ -178,11 +163,11 @@ $$
 
 # 今回扱う問題
 
-- <span>グラフ構造は固定し，辺重みを変数として最適化する．</span>
-- <span>制約は「非負」かつ「総和1」：$w\in\Delta_E$．</span>
-- <span>目的は $\lambda_2(L(w))$ の最大化である．</span>
+- グラフ構造は固定し，辺重みを変数として最適化する．
+- 制約は「非負」かつ「総和1」：$w\in\Delta_E$．
+- 目的は $\lambda_2(L(w))$ の最大化である．
 
-<div class="mt-4 p-4 rounded border border-primary/30 bg-primary/5 text-left text-sm">
+<div class="callout">
 
 **定義**（Absolute Algebraic Connectivity <a href="https://doi.org/10.1080/03081089008817967" target="_blank" rel="noopener">&#91;Fiedler 1990&#93;</a>）
 
@@ -202,11 +187,11 @@ $$
 
 # この問題の難しさ
 
-- <span>目的関数は固有値に基づく非平滑関数であり，解析・計算の両面で取り扱いが難しい．</span>
-- <span>SDP定式化は可能であるが，実装負荷および計算負荷が高くなりやすい．</span>
-- <span>汎用ブラックボックス解法ではなく，グラフ構造を直接活用する解法が望まれる．</span>
+- 目的関数は固有値に基づく非平滑関数であり，解析・計算の両面で取り扱いが難しい．
+- SDP定式化は可能であるが，実装負荷および計算負荷が高くなりやすい．
+- 汎用ブラックボックス解法ではなく，グラフ構造を直接活用する解法が望まれる．
 
-<div class="mt-8 p-5 rounded border-2 border-red-500/50 bg-red-500/5">
+<div class="callout-alert">
 
 **本研究の目標**
 
@@ -240,7 +225,7 @@ $$
 
 </div>
 
-<div>
+<div class="mt-3">
 
 この最小値を与える $x$ は $L(w)$ の第二固有ベクトルであり，**Fiedlerベクトル**と呼ばれる．
 
@@ -252,7 +237,7 @@ $$
 
 正確なFiedlerベクトルの計算は難しいので，**近似Fiedlerベクトル**を用いる．
 
-<div class="mt-3 p-4 rounded border border-primary/30 bg-primary/5 text-sm">
+<div class="callout">
 
 **定義**（近似Fiedlerベクトル <a href="https://doi.org/10.1137/130915984" target="_blank" rel="noopener">&#91;Spielman–Teng 2014&#93;</a>）
 
@@ -262,7 +247,7 @@ $x^\top L x \le (1+\alpha)\lambda_2(L)$
 
 </div>
 
-<div class="mt-4 p-4 rounded border border-amber-500/30 bg-amber-500/5 text-sm">
+<div class="callout">
 
 **補題**（高速オラクル <a href="https://doi.org/10.1137/130915984" target="_blank" rel="noopener">&#91;Spielman–Teng 2014&#93;</a>）
 
@@ -277,7 +262,7 @@ $x^\top L x \le (1+\alpha)\lambda_2(L)$
 
 本研究では，汎用SDPソルバーの代替として，MWUに基づく組合せ的アルゴリズムを提案する．
 
-<div class="mt-4 p-4 rounded border border-emerald-600/30 bg-emerald-600/5 text-sm">
+<div class="callout">
 
 - **入力**：連結無向グラフ $G=(V,E)$（$n$ 頂点，$m$ 辺）と $\varepsilon>0$
 - **出力**：次を満たす $\boldsymbol{w}\in\Delta_E$
@@ -300,7 +285,7 @@ $$
 
 # 主結果
 
-<div class="p-4 rounded border border-primary/30 bg-primary/5">
+<div class="callout-strong">
 
 **定理**（主定理）
 
@@ -356,13 +341,9 @@ layoutClass: gap-4
 ::right::
 
 <div class="flex flex-col items-center justify-center h-full">
-  <img
-    src="./complexity_regions.png"
-    alt="A1 と A2 の優位領域"
-    class="w-full max-h-80 object-contain"
-  />
-  <div class="text-xs opacity-60 mt-2 text-center">
-    $A_1$（ピンク）と $A_2$（シアン）の優位領域
+  <ComplexityRegions />
+  <div class="diagram-caption">
+    領域が切り替わる様子：A₂（OPT小）→ A₁（OPT大／密）
   </div>
 </div>
 
@@ -395,16 +376,16 @@ $$
 
 # アルゴリズム $A_1$：近似Fiedlerオラクル付きMWU
 
-<div class="p-4 rounded border border-primary/30 bg-primary/5 text-sm leading-relaxed">
+<div class="callout">
 
 **更新則**
 
-1. <span>初期化：$w_e^{(0)}=1/m$（一様），学習率 $\eta$，近似度 $\alpha$，反復回数 $T$．</span>
-2. <span>各時刻 $t=0,\dots,T-1$ について：</span>
-   1. <span>$L(w^{(t)})$ の $\alpha$-近似Fiedlerベクトル $x^{(t)}$ を求める．</span>
-   2. <span>損失 $\ell_t(e):=(x_u^{(t)}-x_v^{(t)})^2/4$（$0\le\ell_t(e)\le1$）．</span>
-   3. <span>乗法的更新：$w_e^{(t+1)} \propto w_e^{(t)}\exp\bigl(\eta\,\ell_t(e)\bigr)$．</span>
-3. <span>出力は平均 $\bar{w} = \frac{1}{T}\sum_{t=0}^{T-1}w^{(t)}$．</span>
+1. 初期化：$w_e^{(0)}=1/m$（一様），学習率 $\eta$，近似度 $\alpha$，反復回数 $T$．
+2. 各時刻 $t=0,\dots,T-1$ について：
+   1. $L(w^{(t)})$ の $\alpha$-近似Fiedlerベクトル $x^{(t)}$ を求める．
+   2. 損失 $\ell_t(e):=(x_u^{(t)}-x_v^{(t)})^2/4$（$0\le\ell_t(e)\le1$）．
+   3. 乗法的更新：$w_e^{(t+1)} \propto w_e^{(t)}\exp\bigl(\eta\,\ell_t(e)\bigr)$．
+3. 出力は平均 $\bar{w} = \frac{1}{T}\sum_{t=0}^{T-1}w^{(t)}$．
 
 </div>
 
@@ -414,7 +395,7 @@ $$
 
 通常のMWUのリグレット解析では，必要な反復回数は $O(1/\mathsf{OPT}^2)$ である．
 
-<div class="mt-4 p-4 rounded border-2 border-red-500/40 bg-red-500/5">
+<div class="callout-alert">
 
 **local norm technique** <a href="https://doi.org/10.1561/2200000018" target="_blank" rel="noopener">&#91;Shalev-Shwartz 2012&#93;</a>
 
@@ -423,7 +404,7 @@ $$
 
 </div>
 
-<div class="mt-4 p-4 rounded border border-amber-500/30 bg-amber-500/5 text-sm">
+<div class="callout">
 
 **補題**（リグレットバウンド・概略）
 
@@ -442,7 +423,7 @@ $$
 
 # 近似保証
 
-<div class="p-4 rounded border border-amber-500/30 bg-amber-500/5 text-sm">
+<div class="callout">
 
 **補題**
 
@@ -478,7 +459,7 @@ $$
 学習率と反復回数は未知の $\mathsf{OPT}$ に依存する．
 そこで **Doubling Trick** により，下界 $\gamma$ を段階的に推定する．
 
-<div class="mt-3 p-4 rounded border border-primary/30 bg-primary/5 text-sm">
+<div class="callout">
 
 **手順**
 
@@ -500,9 +481,9 @@ $$
 
 # まとめ
 
-- <span>absolute algebraic connectivity に対し，汎用SDPを用いず，組合せ的な近似アルゴリズムを与えた．</span>
-- <span>MWU・近似Fiedlerオラクル・local norm technique を組み合わせ，定数 $\varepsilon$ のもとで $\widetilde{O}(m/\mathsf{OPT})$ を達成した．</span>
-- <span>$\mathsf{OPT}$ が比較的大きい場合（例：直径 $O(1)$ の密グラフ）には，$A_2$ より有利になり得る．</span>
+- absolute algebraic connectivity に対し，汎用SDPを用いず，組合せ的な近似アルゴリズムを与えた．
+- MWU・近似Fiedlerオラクル・local norm technique を組み合わせ，定数 $\varepsilon$ のもとで $\widetilde{O}(m/\mathsf{OPT})$ を達成した．
+- $\mathsf{OPT}$ が比較的大きい場合（例：直径 $O(1)$ の密グラフ）には，$A_2$ より有利になり得る．
 
 ---
 layout: center
